@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './parentSurvey.css';
 import PersonalInfo from '../components/personalInfo/personalInfo';
 import ClearnessCalculator from '../components//clearnessCalculator/clearnessCalculator';
 import MasterpieceMeter from '../components/masterpieceMeter/masterpieceMeter';
@@ -10,6 +10,12 @@ import FeelingFactor from '../components/feelingFactor/feelingFactor';
 import AccessibilityScore from '../components/accessibilityScore/accessibilityScore';
 import DiversityRep from '../components/diversityRepresentation/diversityRep';
 import FavLeastFav from '../components/favLeastFav/favLeastFav';
+import {StarRating} from '../components/starRating/starRating';
+import Keywords from '../components/keywords/keywords';
+import ExtraInfo from '../components/extraInfo/extraInfo';
+import InputThanks from '../components/inputThanks/inputThanks';
+
+
 
 export default class ParentSurvey extends React.Component{
     render() {
@@ -28,7 +34,7 @@ export default class ParentSurvey extends React.Component{
 
 
         return (
-          <form>
+          <form type='POST'>
             <div style={container}>
               <h2>Picture Book Survey for Parents/Guardians</h2>
               <p style={bookInfo}>
@@ -44,9 +50,14 @@ export default class ParentSurvey extends React.Component{
               <AccessibilityScore />
               <DiversityRep />
               <FavLeastFav />
+              <StarRating />
+              <Keywords />
+              <ExtraInfo />
+              <InputThanks />
+
             </div>
 
-            <button type='submit'>SUBMIT</button>
+            <button type='submit' className='submitButton'>SUBMIT</button>
           </form>
         );
     }

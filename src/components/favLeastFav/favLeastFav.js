@@ -3,13 +3,11 @@ import "./favLeastFav.css";
 
 export default class FavLeastFav extends React.Component {
   render() {
-    const title = {
-      paddingTop: 20,
-    };
+    
 
     return (
       <>
-        <p>
+        <p className='favTopInfo'>
           10. What was your{" "}
           <span className="colorChange8">FAVORITE </span>
           and <span className="colorChange9">LEAST FAVORITE </span>

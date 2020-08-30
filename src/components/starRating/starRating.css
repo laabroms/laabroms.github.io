@@ -1,0 +1,12 @@
+.stars {
+    outline: none;
+    background-color: #e3e3e3;
+    width:412px;
+    border: none;
+    margin-left: 0px;
+}
+
+.starsTextColor {
+    color: #CE9CFC;
+    font-weight: bold;
+}

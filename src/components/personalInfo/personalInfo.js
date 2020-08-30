@@ -8,8 +8,9 @@ export default class PersonalInfo extends React.Component {
     render() {
 
         const title = {
-            paddingTop: 20,
-        }
+          paddingTop: 20,
+          color: "#797D7F",
+        };
 
    
         
@@ -30,7 +31,7 @@ export default class PersonalInfo extends React.Component {
                 <p>Your Name:</p>
               </div>
               <div className="column2">
-                <input className="input"></input>
+                <input className="input" required></input>
               </div>
             </div>
 
@@ -44,7 +45,7 @@ export default class PersonalInfo extends React.Component {
                 <p>How old is the child with whom you read this book?:</p>
               </div>
               <div className="column2">
-                <input className="input"></input>
+                <input className="input" type='number' min='0' required></input>
               </div>
             </div>
 
@@ -58,7 +59,7 @@ export default class PersonalInfo extends React.Component {
                 <p>State/Province:</p>
               </div>
               <div className="column2">
-                <input className="input"></input>
+                <input className="input" required></input>
               </div>
             </div>
 
@@ -72,7 +73,7 @@ export default class PersonalInfo extends React.Component {
                 <p>Country:</p>
               </div>
               <div className="column2">
-                <input className="input"></input>
+                <input className="input" required></input>
               </div>
             </div>
           </>
