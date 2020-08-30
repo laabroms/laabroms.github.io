@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import ParentSurvey from './surveys/parentSurvey.js';
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    < ParentSurvey />
   </React.StrictMode>,
   document.getElementById('root')
 );

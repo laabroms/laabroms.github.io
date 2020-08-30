@@ -1,0 +1,19 @@
+.colorChange7 {
+    color: #FE9D2E;
+    font-weight: bold;
+}
+
+.textarea {
+    flex: 60%;
+    border: none;
+    /* border-bottom: 2px solid red; */
+    background-color: #e3e3e3;
+    padding: 5px;
+    color: black;
+    outline: none;
+    width: 75%;
+    margin-top: 13px;
+    height: 100px;
+    resize: none;
+    /* margin-left: 3%; */
+}
