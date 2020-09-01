@@ -1,51 +1,85 @@
-import React,{useState} from "react";
+import React from "react";
 import './clearnessCalculator.css';
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
+
 import Slider from "@material-ui/core/Slider";
 
-export default function ClearnessCalculator() {
+class ClearnessCalculator extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        clearnessInt: '33',
+        clearness: 'Sometimes clear'
+      }
+    }
 
-    const [data, setData] = useState({
-      clearnessInt: '33',
-      clearness: 'Sometimes clear'
-    });
+
+    // const [data, setData] = useState({
+    //   clearnessInt: '33',
+    //   clearness: 'Sometimes clear'
+    // });
 
 
-    const classes = useStyles();
     
-   const handleChange = (newValue) => {
+   handleChange = (newValue) => {
     //  alert(newValue);
      if(newValue === 0) {
-       setData({
-         ...data,
-         clearnessInt: '0',
-         clearness: 'No, very unclear'
-       })
+       this.setState(
+         {
+           clearnessInt: "0",
+           clearness: "No, very unclear",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
      }
      else if (newValue === 33) {
-       setData({
-         clearnessInt: "33",
-         clearness: "Sometimes clear",
-       });
+       this.setState(
+         {
+           clearnessInt: "33",
+           clearness: "Sometimes clear",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
      }
      else if (newValue === 66) {
-       setData({
-         ...data,
-         clearnessInt: '66',
-         clearness: "Yes, very clear"
-       })
+       this.setState(
+         {
+           clearnessInt: "66",
+           clearness: "Yes, very clear",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
      }
      else if (newValue === 100) {
-       setData({
-         ...data,
-         clearnessInt: '100',
-         clearness: 'N/A'
-       })
+       this.setState(
+         {
+           clearnessInt: "100",
+           clearness: "N/A",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
      }
 
    }
 
-
+   render() {
+     const { classes } = this.props;
    
    
     return (
@@ -65,9 +99,9 @@ export default function ClearnessCalculator() {
         <div className={classes.root}>
       
       <Slider
-        value={data.clearnessInt}
-        onChange={(e, value)=> handleChange(value)}
-        // defaultValue={33}
+        // value={data.clearnessInt}
+        onChange={(e, value)=> this.handleChange(value)}
+        defaultValue={33}
         valueLabelFormat={valueLabelFormat}
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider-restrict"
@@ -82,9 +116,12 @@ export default function ClearnessCalculator() {
     );
   }
 
+}
 
 
-const useStyles = makeStyles({
+
+
+const styles = (theme) => ({
   root: {
     width: "80%",
     paddingLeft: "12%",
@@ -119,3 +156,5 @@ function valuetext(value) {
 function valueLabelFormat(value) {
   return marks.findIndex((mark) => mark.value === value) + 1;
 }
+
+export default withStyles(styles)(ClearnessCalculator);

@@ -20,19 +20,19 @@ import Feedback from '../components/feedback/feedback';
 export default class ParentSurvey extends React.Component {
   constructor(props) {
     super(props);
-    this.eventHandler = this.eventHandler.bind(this);
+    // this.eventHandler = this.eventHandler.bind(this);
     this.state = {
       name: "",
       age: "",
       location: "",
       country: "",
-      clearness: "",
-      masterpiece: "",
-      educational: "",
-      chatter: "",
-      heart: "",
-      feeling: "",
-      accessibility: "",
+      clearness: "Sometimes clear",
+      masterpiece: "They were okay",
+      educational: "Sort of",
+      chatter: "Sort of",
+      heart: "Sort of",
+      feeling: "Sort of",
+      accessibility: "Somewhat accessible",
       diversity: "",
       favorite: "",
       leastFav: "",
@@ -43,7 +43,7 @@ export default class ParentSurvey extends React.Component {
     };
   }
 
-  eventHandler(data) {
+  handlePersonalInfo = data => {
     this.setState({
       name: data.name,
       age: data.age,
@@ -53,60 +53,137 @@ export default class ParentSurvey extends React.Component {
   }
 
 
-//   handleDiversity(data) {
-//     // this.setState({
-//     //   diversity: data.diversityAndRepresentation
-//     // });
-//   }
-handleDiversity = data => {
-    this.setState({
-      diversity: data.diversityAndRepresentation,
-    });
-}
-handleFav = data => {
-    this.setState({
-        favorite: data.favorite,
-        leastFav: data.leastFav,
-    })
-}
+    handleDiversity = data => {
+        this.setState({
+        diversity: data.diversityAndRepresentation,
+        });
+    }
+    handleFav = data => {
+        this.setState({
+            favorite: data.favorite,
+            leastFav: data.leastFav,
+        })
+    }
 
-handleKeywords = data => {
-    this.setState({
-        keywords: data.keywords
-    })
-}
-handleFeedback = data => {
-    this.setState({
-        feedback: data.feedback,
-    })
-}
+    handleKeywords = data => {
+        this.setState({
+            keywords: data.keywords
+        })
+    }
+    handleFeedback = data => {
+        this.setState({
+            feedback: data.feedback,
+        })
+    }
 
-handleExtraInfo = data => {
-    this.setState({
-        extraInfo: data.extraInfo,
-    })
-}
+    handleExtraInfo = data => {
+        this.setState({
+            extraInfo: data.extraInfo,
+        })
+    }
 
-handleStars = data => {
-    this.setState({
-        stars: data.rating
-    })
-}
+    handleStars = data => {
+        this.setState({
+            stars: data.rating
+        })
+    }
+
+    handleClearness = data => {
+        this.setState({
+            clearness: data.clearness
+        })
+    }
+
+    handleMasterpiece = data => {
+        this.setState({
+            masterpiece: data.masterpiece
+        })
+    }
+
+    handleEducational = data => {
+        this.setState({
+            educational: data.educational
+        })
+    }
+
+    handleChatter = data => {
+        this.setState({
+            chatter: data.chatter
+        })
+    }
+    handleHeart = data => {
+        this.setState({
+            heart: data.heart
+        })
+    }
+
+    handleFeeling = data => {
+        this.setState({
+            feeling: data.feeling
+        })
+    }
+    handleAccessibilty = data => {
+        this.setState({
+            accessibility: data.accessibility
+        })
+    }
 
   submitHandler = (e) => {
     alert(
-      'Name: ' + this.state.name +
-        ' Age: ' + this.state.age +
-        ' Location: ' + this.state.location +
-        ' Country: ' + this.state.country +
-        ' Diversity Response: ' + this.state.diversity +
-        ' Favorite Part: ' + this.state.favorite +
-        ' Least Favorite Part' + this.state.leastFav + 
-        ' Keywords: ' + this.state.keywords + 
-        ' Extra Info: ' + this.state.extraInfo +
-        ' Feedback: ' + this.state.feedback + 
-        ' Stars: ' + this.state.stars
-    )
+      "Name: " +
+        this.state.name +
+        ";" +
+        " Age: " +
+        this.state.age +
+        ";" +
+        " Location: " +
+        this.state.location +
+        ";" +
+        " Country: " +
+        this.state.country +
+        ";" +
+        " Clearness Calculator: " +
+        this.state.clearness +
+        ";" +
+        " Masterpiece Meter: " +
+        this.state.masterpiece +
+        ";" +
+        " Educational Element: " +
+        this.state.educational +
+        ";" +
+        " Chatter Bar: " +
+        this.state.chatter +
+        ";" +
+        " Heart to Heart: " +
+        this.state.heart +
+        ";" +
+        " Feeling Factor: " +
+        this.state.feeling +
+        ";" +
+        " Accessibility Score: " +
+        this.state.accessibility +
+        ";" +
+        " Diversity and Representation Response: " +
+        this.state.diversity +
+        ";" +
+        " Favorite Part: " +
+        this.state.favorite +
+        ";" +
+        " Least Favorite Part: " +
+        this.state.leastFav +
+        ";" +
+        " Stars: " +
+        this.state.stars +
+        ";" +
+        " Keywords: " +
+        this.state.keywords +
+        ";" +
+        " Extra Info: " +
+        this.state.extraInfo +
+        ";" +
+        " Feedback: " +
+        this.state.feedback + ';'
+    );
   };
 
   render() {
@@ -128,14 +205,14 @@ handleStars = data => {
           <p style={bookInfo}>
             <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
           </p>
-          <PersonalInfo onChange={this.eventHandler} />
-          <ClearnessCalculator />
-          <MasterpieceMeter />
-          <EducationalElement />
-          <ChatterBar />
-          <HeartToHeart />
-          <FeelingFactor />
-          <AccessibilityScore />
+          <PersonalInfo onChange={this.handlePersonalInfo} />
+          <ClearnessCalculator onChange={this.handleClearness} />
+          <MasterpieceMeter onChange={this.handleMasterpiece} />
+          <EducationalElement onChange={this.handleEducational} />
+          <ChatterBar onChange={this.handleChatter} />
+          <HeartToHeart onChange={this.handleHeart} />
+          <FeelingFactor onChange={this.handleFeeling} />
+          <AccessibilityScore onChange={this.handleAccessibilty} />
           <DiversityRep onChange={this.handleDiversity} />
           <FavLeastFav onChange={this.handleFav} />
           <StarRating onChange={this.handleStars} />

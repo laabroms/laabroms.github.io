@@ -1,45 +1,81 @@
-import React, {useState} from "react";
+import React from "react";
 import "./masterpieceMeter.css";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 
-export default function MasterpieceMeter() {
-  const classes = useStyles();
-
-  const [data, setData] = useState({
-    masterpieceInt: "33",
-    masterpiece: "They were okay",
-  });
-
-
-  const handleChange = (newValue) => {
-    if (newValue === 0) {
-      setData({
-        ...data,
-        masterpieceInt: "0",
-        masterpiece: "Not at all",
-      });
-    } else if (newValue === 33) {
-      setData({
-        masterpieceInt: "33",
-        masterpiece: "They were okay",
-      });
-    } else if (newValue === 66) {
-      setData({
-        ...data,
-        masterpieceInt: "66",
-        masterpiece: "Loved them",
-      });
-    } else if (newValue === 100) {
-      setData({
-        ...data,
-        masterpieceInt: "100",
-        masterpiece: "N/A",
-      });
+class MasterpieceMeter extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        masterpieceInt: '33',
+        masterpiece: 'They were okay'
+      }
     }
-  };
 
 
+
+    
+   handleChange = (newValue) => {
+    //  alert(newValue);
+     if(newValue === 0) {
+       this.setState(
+         {
+           masterpieceInt: "0",
+           masterpiece: "Not at all",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 33) {
+       this.setState(
+         {
+           masterpieceInt: "33",
+           masterpiece: "They were okay",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 66) {
+       this.setState(
+         {
+           masterpieceInt: "66",
+           masterpiece: "Loved them",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 100) {
+       this.setState(
+         {
+           masterpieceInt: "100",
+           masterpiece: "N/A",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+
+   }
+
+   render() {
+     const { classes } = this.props;
+   
+   
 
   return (
     <>
@@ -50,8 +86,8 @@ export default function MasterpieceMeter() {
 
       <div className={classes.root}>
         <Slider
-          value={data.masterpieceInt}
-          onChange={(e, value) => handleChange(value)}
+          // value={data.masterpieceInt}
+          onChange={(e, value) => this.handleChange(value)}
           defaultValue={33}
           valueLabelFormat={valueLabelFormat}
           getAriaValueText={valuetext}
@@ -64,15 +100,17 @@ export default function MasterpieceMeter() {
     </>
   );
 }
+}
 
-const useStyles = makeStyles({
+const styles = (theme) => ({
   root: {
     width: "80%",
     paddingLeft: "12%",
-    paddingRight: "8%",
+    paddingRight:'8%',
     backgroundColor: "#e3e3e3",
   },
 });
+
 
 const marks = [
   {
@@ -100,3 +138,6 @@ function valuetext(value) {
 function valueLabelFormat(value) {
   return marks.findIndex((mark) => mark.value === value) + 1;
 }
+
+
+export default withStyles(styles)(MasterpieceMeter);

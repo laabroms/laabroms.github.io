@@ -1,44 +1,81 @@
-import React, {useState} from "react";
+import React from "react";
 import "./chatterBar.css";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 
-export default function ChatterBar() {
-  const classes = useStyles();
-
-  const [data, setData] = useState({
-    chatterInt: "33",
-    chatter: "They were okay",
-  });
-
-  const handleChange = (newValue) => {
-    if (newValue === 0) {
-      setData({
-        ...data,
-        chatterInt: "0",
-        chatter: "Not at all",
-      });
-    } else if (newValue === 33) {
-      setData({
-        chatterInt: "33",
-        chatter: "Sort of",
-      });
-    } else if (newValue === 66) {
-      setData({
-        ...data,
-        chatterInt: "66",
-        chatter: "Definitely",
-      });
-    } else if (newValue === 100) {
-      setData({
-        ...data,
-        chatterInt: "100",
-        chatter: "N/A",
-      });
+class ChatterBar extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        chatterInt: '33',
+        chatter: 'Sort of'
+      }
     }
-  };
 
 
+    
+
+    
+   handleChange = (newValue) => {
+    //  alert(newValue);
+     if(newValue === 0) {
+       this.setState(
+         {
+           chatterInt: "0",
+           chatter: "Not at all",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 33) {
+       this.setState(
+         {
+           chatterInt: "33",
+           chatter: "Sort of",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 66) {
+       this.setState(
+         {
+           chatterInt: "66",
+           chatter: "Definitely",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 100) {
+       this.setState(
+         {
+           chatterInt: "100",
+           chatter: "N/A",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+
+   }
+
+   render() {
+     const { classes } = this.props;
+   
 
   return (
     <>
@@ -50,8 +87,7 @@ export default function ChatterBar() {
 
       <div className={classes.root}>
         <Slider
-          value={data.chatterInt}
-          onChange={(e, value) => handleChange(value)}
+          onChange={(e, value) => this.handleChange(value)}
           defaultValue={33}
           valueLabelFormat={valueLabelFormat}
           getAriaValueText={valuetext}
@@ -64,15 +100,17 @@ export default function ChatterBar() {
     </>
   );
 }
+}
 
-const useStyles = makeStyles({
+const styles = (theme) => ({
   root: {
     width: "80%",
     paddingLeft: "12%",
-    paddingRight: "8%",
+    paddingRight:'8%',
     backgroundColor: "#e3e3e3",
   },
 });
+
 
 const marks = [
   {
@@ -100,3 +138,6 @@ function valuetext(value) {
 function valueLabelFormat(value) {
   return marks.findIndex((mark) => mark.value === value) + 1;
 }
+
+
+export default withStyles(styles)(ChatterBar);

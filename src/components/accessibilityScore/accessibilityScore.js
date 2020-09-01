@@ -1,43 +1,81 @@
-import React, {useState} from "react";
+import React from "react";
 import "./accessibilityScore.css";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 
-export default function AccessibilityScore() {
-  const classes = useStyles();
-
-  const [data, setData] = useState({
-    accessibilityInt: "33",
-    accessibility: "Somewhat accessible",
-  });
-
-  const handleChange = (newValue) => {
-    if (newValue === 0) {
-      setData({
-        ...data,
-        accessibilityInt: "0",
-        accessibility: "Inaccessible",
-      });
-    } else if (newValue === 33) {
-      setData({
-        accessibilityInt: "33",
-        accessibility: "Somewhat accessible",
-      });
-    } else if (newValue === 66) {
-      setData({
-        ...data,
-        accessibilityInt: "66",
-        accessibility: "Age-appropriate",
-      });
-    } else if (newValue === 100) {
-      setData({
-        ...data,
-        accessibilityInt: "100",
-        accessibility: "N/A",
-      });
+class AccessibilityScore extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        accessibilityInt: '33',
+        accessibility: 'Somewhat accessible'
+      }
     }
-  };
 
+
+    
+
+    
+   handleChange = (newValue) => {
+    //  alert(newValue);
+     if(newValue === 0) {
+       this.setState(
+         {
+           accessibilityInt: "0",
+           accessibility: "Inaccessible",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 33) {
+       this.setState(
+         {
+           accessibilityInt: "33",
+           accessibility: "Somewhat accessible",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 66) {
+       this.setState(
+         {
+           accessibilityInt: "66",
+           accessibility: "Age-appropriate",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 100) {
+       this.setState(
+         {
+           accessibilityInt: "100",
+           accessibility: "N/A",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+
+   }
+
+   render() {
+     const { classes } = this.props;
+   
 
   return (
     <>
@@ -49,8 +87,7 @@ export default function AccessibilityScore() {
 
       <div className={classes.root}>
         <Slider
-          value={data.accessibilityInt}
-          onChange={(e, value) => handleChange(value)}
+          onChange={(e, value) => this.handleChange(value)}
           defaultValue={33}
           valueLabelFormat={valueLabelFormat}
           getAriaValueText={valuetext}
@@ -63,8 +100,9 @@ export default function AccessibilityScore() {
     </>
   );
 }
+}
 
-const useStyles = makeStyles({
+const styles = (theme) => ({
   root: {
     width: "80%",
     paddingLeft: "12%",
@@ -72,6 +110,7 @@ const useStyles = makeStyles({
     backgroundColor: "#e3e3e3",
   },
 });
+
 
 const marks = [
   {
@@ -99,3 +138,6 @@ function valuetext(value) {
 function valueLabelFormat(value) {
   return marks.findIndex((mark) => mark.value === value) + 1;
 }
+
+
+export default withStyles(styles)(AccessibilityScore);

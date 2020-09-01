@@ -1,44 +1,80 @@
-import React, {useState} from "react";
+import React from "react";
 import "./educationalElement.css";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 
-export default function EducationalElement() {
-  const classes = useStyles();
-
-  const [data, setData] = useState({
-    educationalInt: "33",
-    educational: "Sort of",
-  });
-
-  const handleChange = (newValue) => {
-    if (newValue === 0) {
-      setData({
-        ...data,
-        educationalInt: "0",
-        educational: "Not at all",
-      });
-    } else if (newValue === 33) {
-      setData({
-        educationalInt: "33",
-        educational: "Sort of",
-      });
-    } else if (newValue === 66) {
-      setData({
-        ...data,
-        educationalInt: "66",
-        educational: "Definitely",
-      });
-    } else if (newValue === 100) {
-      setData({
-        ...data,
-        educationalInt: "100",
-        educational: "N/A",
-      });
+class EducationalElement extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        educationalInt: '33',
+        educational: 'Sort of'
+      }
     }
-  };
- 
 
+
+
+    
+   handleChange = (newValue) => {
+    //  alert(newValue);
+     if(newValue === 0) {
+       this.setState(
+         {
+           educationalInt: "0",
+           educational: "Not at all",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 33) {
+       this.setState(
+         {
+           educationalInt: "33",
+           educational: "Sort of",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 66) {
+       this.setState(
+         {
+           educationalInt: "66",
+           educational: "Definitely",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 100) {
+       this.setState(
+         {
+           educationalInt: "100",
+           educational: "N/A",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+
+   }
+
+   render() {
+     const { classes } = this.props;
+   
   return (
     <>
       <p className="title2">
@@ -49,8 +85,7 @@ export default function EducationalElement() {
 
       <div className={classes.root}>
         <Slider
-          value={data.educationalInt}
-          onChange={(e, value) => handleChange(value)}
+          onChange={(e, value) => this.handleChange(value)}
           defaultValue={33}
           valueLabelFormat={valueLabelFormat}
           getAriaValueText={valuetext}
@@ -63,8 +98,10 @@ export default function EducationalElement() {
     </>
   );
 }
+}
 
-const useStyles = makeStyles({
+
+const styles = (theme) => ({
   root: {
     width: "80%",
     paddingLeft: "12%",
@@ -99,3 +136,6 @@ function valuetext(value) {
 function valueLabelFormat(value) {
   return marks.findIndex((mark) => mark.value === value) + 1;
 }
+
+
+export default withStyles(styles)(EducationalElement);

@@ -1,42 +1,82 @@
-import React, {useState} from "react";
+import React from "react";
 import "./feelingFactor.css";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 
-export default function FeelingFactor() {
-  const classes = useStyles();
-
-  const [data, setData] = useState({
-    feelingInt: "33",
-    feeling: "Sort of",
-  });
-
-  const handleChange = (newValue) => {
-    if (newValue === 0) {
-      setData({
-        ...data,
-        feelingInt: "0",
-        feeling: "Sort of",
-      });
-    } else if (newValue === 33) {
-      setData({
-        feelingInt: "33",
-        feeling: "Yes, very much so",
-      });
-    } else if (newValue === 66) {
-      setData({
-        ...data,
-        feelingInt: "66",
-        feeling: "Loved them",
-      });
-    } else if (newValue === 100) {
-      setData({
-        ...data,
-        feelingInt: "100",
-        feeling: "N/A",
-      });
+class FeelingFactor extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        feelingInt: '33',
+        feeling: 'Sort of'
+      }
     }
-  };
+
+
+    
+
+    
+   handleChange = (newValue) => {
+    //  alert(newValue);
+     if(newValue === 0) {
+       this.setState(
+         {
+           feelingInt: "0",
+           feeling: "Not at all",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 33) {
+       this.setState(
+         {
+           feelingInt: "33",
+           feeling: "Sort of",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 66) {
+       this.setState(
+         {
+           feelingInt: "66",
+           feeling: "Yes, very much so",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 100) {
+       this.setState(
+         {
+           feelingInt: "100",
+           feeling: "N/A",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+
+   }
+
+   render() {
+     const { classes } = this.props;
+   
+
 
 
   return (
@@ -51,8 +91,7 @@ export default function FeelingFactor() {
 
       <div className={classes.root}>
         <Slider
-          value={data.feelingInt}
-          onChange={(e, value) => handleChange(value)}
+          onChange={(e, value) => this.handleChange(value)}
           defaultValue={33}
           valueLabelFormat={valueLabelFormat}
           getAriaValueText={valuetext}
@@ -64,9 +103,10 @@ export default function FeelingFactor() {
       </div>
     </>
   );
+  }
 }
 
-const useStyles = makeStyles({
+const styles = (theme) => ({
   root: {
     width: "80%",
     paddingLeft: "12%",
@@ -101,3 +141,6 @@ function valuetext(value) {
 function valueLabelFormat(value) {
   return marks.findIndex((mark) => mark.value === value) + 1;
 }
+
+
+export default withStyles(styles)(FeelingFactor);

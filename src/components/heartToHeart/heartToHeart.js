@@ -1,43 +1,82 @@
-import React, {useState} from "react";
+import React from "react";
 import "./heartToHeart.css";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 
-export default function HeartToHeart() {
-  const classes = useStyles();
-
-
-  const [data, setData] = useState({
-    heartInt: "33",
-    heart: "Sort of",
-  });
-
-  const handleChange = (newValue) => {
-    if (newValue === 0) {
-      setData({
-        ...data,
-        heartInt: "0",
-        heart: "Not at all",
-      });
-    } else if (newValue === 33) {
-      setData({
-        heartInt: "33",
-        heart: "Sort of",
-      });
-    } else if (newValue === 66) {
-      setData({
-        ...data,
-        heartInt: "66",
-        heart: "Definitely",
-      });
-    } else if (newValue === 100) {
-      setData({
-        ...data,
-        heartInt: "100",
-        heart: "N/A",
-      });
+class HeartToHeart extends React.Component{
+  constructor(props) {
+      super(props);
+      this.state = {
+        heartInt: '33',
+        heart: 'Sort of'
+      }
     }
-  };
+
+
+    
+
+    
+   handleChange = (newValue) => {
+    //  alert(newValue);
+     if(newValue === 0) {
+       this.setState(
+         {
+           heartInt: "0",
+           heart: "Not at all",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 33) {
+       this.setState(
+         {
+           heartInt: "33",
+           heart: "Sort of",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 66) {
+       this.setState(
+         {
+           heartInt: "66",
+           heart: "Definitely",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+     else if (newValue === 100) {
+       this.setState(
+         {
+           heartInt: "100",
+           heart: "N/A",
+         },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         }
+       );
+     }
+
+   }
+
+   render() {
+     const { classes } = this.props;
+   
+
 
 
   return (
@@ -50,8 +89,7 @@ export default function HeartToHeart() {
 
       <div className={classes.root}>
         <Slider
-          value={data.heartInt}
-          onChange={(e, value) => handleChange(value)}
+          onChange={(e, value) => this.handleChange(value)}
           defaultValue={33}
           valueLabelFormat={valueLabelFormat}
           getAriaValueText={valuetext}
@@ -64,8 +102,10 @@ export default function HeartToHeart() {
     </>
   );
 }
+}
 
-const useStyles = makeStyles({
+
+const styles = (theme) => ({
   root: {
     width: "80%",
     paddingLeft: "12%",
@@ -100,3 +140,6 @@ function valuetext(value) {
 function valueLabelFormat(value) {
   return marks.findIndex((mark) => mark.value === value) + 1;
 }
+
+
+export default withStyles(styles)(HeartToHeart);
