@@ -1,32 +1,39 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactStars from "react-rating-stars-component";
 import './starRating.css';
 
+export class StarRating extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state={
+            rating: ''
+        }
+    }
 
-
-
-export function StarRating() {
-    const [data, setData] = useState({
-        rating: '',
-    });
+    // const [data, setData] = useState({
+    //     rating: '',
+    // });
     
 
-    const numStars = (newRating) => {
-        setData({
-            ...data,
-            rating: newRating,
-        })
-
+    handleChange = (newRating) => {
+        this.setState({rating: newRating}, () => {
+        if (this.props.onChange) {
+        this.props.onChange(this.state);
+        }
+    })
+    
     }
+
+    render() {
 
     const stars = {
       size: 40,
       count: 10,
       isHalf: false,
-      value: data.rating,
+    //   value: data.rating,
       color: "#c9c9c9",
       activeColor: "#FFD607",
-      onChange: newValue => numStars(newValue),
+      onChange: newValue => {this.handleChange(newValue)},
       
     };
     
@@ -37,12 +44,13 @@ return (
       11. How many<span className="starsTextColor"> STARS</span> would you give this book on a scale from 1 to 10?
     </p>
     <div className="stars">
-      <ReactStars {...stars} />
+      <ReactStars {...stars}/>
     </div>
 
   </>
 );
 
+}
 }
 
 

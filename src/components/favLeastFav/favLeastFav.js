@@ -2,18 +2,23 @@ import React from "react";
 import "./favLeastFav.css";
 
 export default class FavLeastFav extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            favorite: '',
-            leastFav: '',
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      favorite: "",
+      leastFav: "",
+    };
+  }
 
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(this.state);
+      }
+    });
+  };
 
   render() {
-    
-
     return (
       <>
         <p className="favTopInfo">
@@ -30,9 +35,11 @@ export default class FavLeastFav extends React.Component {
             <input
               className="input"
               required
-              value={this.state.favorite}
-              onChange={(e) => this.setState({ favorite: e.target.value })}
-            ></input>
+              name="favorite"
+              //   value={this.state.favorite}
+              //   onChange={(e) => this.setState({ favorite: e.target.value })}
+              onChange={this.handleChange}
+            />
           </div>
         </div>
 
@@ -44,11 +51,13 @@ export default class FavLeastFav extends React.Component {
             <input
               className="input"
               required
-              value={this.state.leastFav}
-              onChange={(e) =>
-                this.setState({ leastFav: e.target.value })
-              }
-            ></input>
+              name="leastFav"
+              //   value={this.state.leastFav}
+              //   onChange={(e) =>
+              //     this.setState({ leastFav: e.target.value })
+              //   }
+              onChange={this.handleChange}
+            />
           </div>
         </div>
       </>

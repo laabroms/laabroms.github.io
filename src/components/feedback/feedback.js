@@ -1,10 +1,10 @@
 import React from 'react';
 
-class ExtraInfo extends React.Component {
+class Feedback extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      extraInfo: "",
+      feedback: "",
     };
   }
 
@@ -15,24 +15,23 @@ class ExtraInfo extends React.Component {
       }
     });
   };
-
+  
   render() {
     return (
       <div>
         <div>
           <p className="titleText1">
-            13. Is there anything else you want to tell us? If you want to write
-            a review or even just a sentence, we would love to hear your
-            thoughts!
+            14. Thank you for your input! What did you like or not like about
+            our survey? We appreciate any and all feedback.
           </p>
 
           <textarea
             className="textarea"
             required
-            name="extraInfo"
-            // value={this.state.extraInfo}
+            name="feedback"
+            // value={this.state.surveyAdvice}
             // onChange={(e) =>
-            //   this.setState({ extraInfo: e.target.value })
+            //   this.setState({ surveyAdvice: e.target.value })
             // }
             onChange={this.handleChange}
           ></textarea>
@@ -42,4 +41,4 @@ class ExtraInfo extends React.Component {
   }
 }
 
-export default ExtraInfo;
+export default Feedback;

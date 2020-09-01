@@ -13,66 +13,145 @@ import FavLeastFav from '../components/favLeastFav/favLeastFav';
 import {StarRating} from '../components/starRating/starRating';
 import Keywords from '../components/keywords/keywords';
 import ExtraInfo from '../components/extraInfo/extraInfo';
-import InputThanks from '../components/inputThanks/inputThanks';
+import Feedback from '../components/feedback/feedback';
 
 
 
-export default class ParentSurvey extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            age: '',
-            location: '',
-            country: '',
-            clearness: '',
-            masterpiece:'',
-            
-        }
+export default class ParentSurvey extends React.Component {
+  constructor(props) {
+    super(props);
+    this.eventHandler = this.eventHandler.bind(this);
+    this.state = {
+      name: "",
+      age: "",
+      location: "",
+      country: "",
+      clearness: "",
+      masterpiece: "",
+      educational: "",
+      chatter: "",
+      heart: "",
+      feeling: "",
+      accessibility: "",
+      diversity: "",
+      favorite: "",
+      leastFav: "",
+      stars: "",
+      keywords: "",
+      extraInfo: '',
+      feedback: '',
+    };
+  }
 
-    }
-
-    render() {
-
-
-        const container = {
-            margin: '3%',
-        }
-        const bookTitle = {
-            fontSize: 20,
-            fontWeight: 'bold',
-        }
-        const bookInfo = {
-            fontSize: 20
-        }
+  eventHandler(data) {
+    this.setState({
+      name: data.name,
+      age: data.age,
+      location: data.location,
+      country: data.country,
+    });
+  }
 
 
-        return (
-          <form method='POST' action=''>
-            <div style={container}>
-              <h2>Picture Book Survey for Parents/Guardians</h2>
-              <p style={bookInfo}>
-                <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
-              </p>
-              <PersonalInfo />
-              <ClearnessCalculator />
-              <MasterpieceMeter />
-              <EducationalElement />
-              <ChatterBar />
-              <HeartToHeart />
-              <FeelingFactor />
-              <AccessibilityScore />
-              <DiversityRep />
-              <FavLeastFav />
-              <StarRating />
-              <Keywords />
-              <ExtraInfo />
-              <InputThanks />
+//   handleDiversity(data) {
+//     // this.setState({
+//     //   diversity: data.diversityAndRepresentation
+//     // });
+//   }
+handleDiversity = data => {
+    this.setState({
+      diversity: data.diversityAndRepresentation,
+    });
+}
+handleFav = data => {
+    this.setState({
+        favorite: data.favorite,
+        leastFav: data.leastFav,
+    })
+}
 
-            </div>
+handleKeywords = data => {
+    this.setState({
+        keywords: data.keywords
+    })
+}
+handleFeedback = data => {
+    this.setState({
+        feedback: data.feedback,
+    })
+}
 
-            <button type='submit' className='submitButton'>SUBMIT</button>
-          </form>
-        );
-    }
+handleExtraInfo = data => {
+    this.setState({
+        extraInfo: data.extraInfo,
+    })
+}
+
+handleStars = data => {
+    this.setState({
+        stars: data.rating
+    })
+}
+
+  submitHandler = (e) => {
+    alert(
+      'Name: ' + this.state.name +
+        ' Age: ' + this.state.age +
+        ' Location: ' + this.state.location +
+        ' Country: ' + this.state.country +
+        ' Diversity Response: ' + this.state.diversity +
+        ' Favorite Part: ' + this.state.favorite +
+        ' Least Favorite Part' + this.state.leastFav + 
+        ' Keywords: ' + this.state.keywords + 
+        ' Extra Info: ' + this.state.extraInfo +
+        ' Feedback: ' + this.state.feedback + 
+        ' Stars: ' + this.state.stars
+    )
+  };
+
+  render() {
+    const container = {
+      margin: "3%",
+    };
+    const bookTitle = {
+      fontSize: 20,
+      fontWeight: "bold",
+    };
+    const bookInfo = {
+      fontSize: 20,
+    };
+
+    return (
+      <form method="POST" action="">
+        <div style={container}>
+          <h2>Picture Book Survey for Parents/Guardians</h2>
+          <p style={bookInfo}>
+            <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
+          </p>
+          <PersonalInfo onChange={this.eventHandler} />
+          <ClearnessCalculator />
+          <MasterpieceMeter />
+          <EducationalElement />
+          <ChatterBar />
+          <HeartToHeart />
+          <FeelingFactor />
+          <AccessibilityScore />
+          <DiversityRep onChange={this.handleDiversity} />
+          <FavLeastFav onChange={this.handleFav} />
+          <StarRating onChange={this.handleStars} />
+          <Keywords onChange={this.handleKeywords} />
+          <ExtraInfo onChange={this.handleExtraInfo} />
+          <Feedback onChange={this.handleFeedback}/>
+        </div>
+
+        <button
+          type="submit"
+          className="submitButton"
+          onClick={this.submitHandler}
+        >
+          SUBMIT
+        </button>
+      </form>
+    );
+  }
 }

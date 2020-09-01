@@ -8,14 +8,20 @@ export default class PersonalInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      age: '',
-      location: '',
-      country: '',
+      name: "",
+      age: "",
+      location: "",
+      country: "",
     };
   }
 
-  
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(this.state);
+      }
+    });
+  };
 
   render() {
     const title = {
@@ -38,11 +44,12 @@ export default class PersonalInfo extends React.Component {
           </div>
           <div className="column2">
             <input
-              name='name'
+              name="name"
               className="input"
               required
-              value={this.state.name}
-              onChange={(e) => this.setState({ name: e.target.value })}
+              // value={this.state.name}
+              // onChange={(e) => this.setState({ name: e.target.value })}
+              onChange={this.handleChange}
             ></input>
           </div>
         </div>
@@ -58,13 +65,14 @@ export default class PersonalInfo extends React.Component {
           </div>
           <div className="column2">
             <input
-              name='age'
+              name="age"
               className="input"
               type="number"
               min="0"
               required
-              value={this.state.age}
-              onChange={(e) => this.setState({ age: e.target.value })}
+              // value={this.state.age}
+              // onChange={(e) => this.setState({ age: e.target.value })}
+              onChange={this.handleChange}
             ></input>
           </div>
         </div>
@@ -80,11 +88,12 @@ export default class PersonalInfo extends React.Component {
           </div>
           <div className="column2">
             <input
-              name='location'
+              name="location"
               className="input"
               required
-              value={this.state.location}
-              onChange={(e) => this.setState({ location: e.target.value })}
+              // value={this.state.location}
+              // onChange={(e) => this.setState({ location: e.target.value })}
+              onChange={this.handleChange}
             ></input>
           </div>
         </div>
@@ -100,11 +109,12 @@ export default class PersonalInfo extends React.Component {
           </div>
           <div className="column2">
             <input
-              name='country'
+              name="country"
               className="input"
               required
-              value={this.state.country}
-              onChange={(e) => this.setState({ country: e.target.value })}
+              // value={this.state.country}
+              // onChange={(e) => this.setState({ country: e.target.value })}
+              onChange={this.handleChange}
             ></input>
           </div>
         </div>

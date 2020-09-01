@@ -6,9 +6,17 @@ export default class DiversityRep extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      diversityAndRepresentation: ''
+      diversityAndRepresentation: "",
     };
   }
+  
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(this.state);
+      }
+    });
+  };
 
   render() {
     return (
@@ -23,8 +31,10 @@ export default class DiversityRep extends React.Component {
         <textarea
           className="textarea"
           required
-          value={this.state.diversityAndRepresentation}
-          onChange={(e) => this.setState({ diversityAndRepresentation: e.target.value })}
+          name="diversityAndRepresentation"
+          //   value={this.state.diversityAndRepresentation}
+          //   onChange={(e) => this.setState({ diversityAndRepresentation: e.target.value })}
+          onChange={this.handleChange}
         ></textarea>
       </>
     );
