@@ -18,6 +18,20 @@ import InputThanks from '../components/inputThanks/inputThanks';
 
 
 export default class ParentSurvey extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            age: '',
+            location: '',
+            country: '',
+            clearness: '',
+            masterpiece:'',
+            
+        }
+
+    }
+
     render() {
 
 
@@ -34,7 +48,7 @@ export default class ParentSurvey extends React.Component{
 
 
         return (
-          <form type='POST'>
+          <form method='POST' action=''>
             <div style={container}>
               <h2>Picture Book Survey for Parents/Guardians</h2>
               <p style={bookInfo}>

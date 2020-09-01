@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./masterpieceMeter.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
@@ -6,17 +6,52 @@ import Slider from "@material-ui/core/Slider";
 export default function MasterpieceMeter() {
   const classes = useStyles();
 
+  const [data, setData] = useState({
+    masterpieceInt: "33",
+    masterpiece: "They were okay",
+  });
+
+
+  const handleChange = (newValue) => {
+    if (newValue === 0) {
+      setData({
+        ...data,
+        masterpieceInt: "0",
+        masterpiece: "Not at all",
+      });
+    } else if (newValue === 33) {
+      setData({
+        masterpieceInt: "33",
+        masterpiece: "They were okay",
+      });
+    } else if (newValue === 66) {
+      setData({
+        ...data,
+        masterpieceInt: "66",
+        masterpiece: "Loved them",
+      });
+    } else if (newValue === 100) {
+      setData({
+        ...data,
+        masterpieceInt: "100",
+        masterpiece: "N/A",
+      });
+    }
+  };
+
 
 
   return (
     <>
       <p className="title">
-        3. <span className="colorChange">MASTERPIECE METER:</span> Are the pictures in this book{" "}
-        <span className="colorChange">enjoyable?</span>
+        3. <span className="colorChange">MASTERPIECE METER:</span> Are the
+        pictures in this book <span className="colorChange">enjoyable?</span>
       </p>
 
       <div className={classes.root}>
         <Slider
+          value={data.masterpieceInt}
+          onChange={(e, value) => handleChange(value)}
           defaultValue={33}
           valueLabelFormat={valueLabelFormat}
           getAriaValueText={valuetext}

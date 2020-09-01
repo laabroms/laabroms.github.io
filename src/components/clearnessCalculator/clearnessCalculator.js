@@ -1,14 +1,52 @@
-import React from "react";
+import React,{useState} from "react";
 import './clearnessCalculator.css';
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 
 export default function ClearnessCalculator() {
 
+    const [data, setData] = useState({
+      clearnessInt: '33',
+      clearness: 'Sometimes clear'
+    });
+
 
     const classes = useStyles();
-   
+    
+   const handleChange = (newValue) => {
+    //  alert(newValue);
+     if(newValue === 0) {
+       setData({
+         ...data,
+         clearnessInt: '0',
+         clearness: 'No, very unclear'
+       })
+     }
+     else if (newValue === 33) {
+       setData({
+         clearnessInt: "33",
+         clearness: "Sometimes clear",
+       });
+     }
+     else if (newValue === 66) {
+       setData({
+         ...data,
+         clearnessInt: '66',
+         clearness: "Yes, very clear"
+       })
+     }
+     else if (newValue === 100) {
+       setData({
+         ...data,
+         clearnessInt: '100',
+         clearness: 'N/A'
+       })
+     }
 
+   }
+
+
+   
    
     return (
         <>
@@ -27,7 +65,9 @@ export default function ClearnessCalculator() {
         <div className={classes.root}>
       
       <Slider
-        defaultValue={33}
+        value={data.clearnessInt}
+        onChange={(e, value)=> handleChange(value)}
+        // defaultValue={33}
         valueLabelFormat={valueLabelFormat}
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider-restrict"
@@ -36,6 +76,7 @@ export default function ClearnessCalculator() {
         marks={marks}
       />
     </div>
+
 
       </>
     );

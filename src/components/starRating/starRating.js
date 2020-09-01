@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactStars from "react-rating-stars-component";
 import './starRating.css';
 
@@ -6,6 +6,30 @@ import './starRating.css';
 
 
 export function StarRating() {
+    const [data, setData] = useState({
+        rating: '',
+    });
+    
+
+    const numStars = (newRating) => {
+        setData({
+            ...data,
+            rating: newRating,
+        })
+
+    }
+
+    const stars = {
+      size: 40,
+      count: 10,
+      isHalf: false,
+      value: data.rating,
+      color: "#c9c9c9",
+      activeColor: "#FFD607",
+      onChange: newValue => numStars(newValue),
+      
+    };
+    
   
 return (
   <>
@@ -15,20 +39,10 @@ return (
     <div className="stars">
       <ReactStars {...stars} />
     </div>
+
   </>
 );
 
 }
 
 
-const stars = {
-  size: 40,
-  count: 10,
-  isHalf: false,
-  value: 0,
-  color: "#c9c9c9",
-  activeColor: "#FFD607",
-  onChange: (newValue) => {
-    console.log(`Example 3: new value is ${newValue}`);
-  },
-};
