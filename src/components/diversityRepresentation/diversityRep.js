@@ -22,7 +22,7 @@ export default class DiversityRep extends React.Component {
     return (
       <>
         <p style={{ paddingTop: 20 }} className="textTop">
-          9. How do you feel about the{" "}
+          How do you feel about the{" "}
           <span className="colorChange7">DIVERSITY </span>
           and <span className="colorChange7">REPRESENTATION </span>
           in this book?

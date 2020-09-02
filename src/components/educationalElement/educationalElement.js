@@ -78,7 +78,7 @@ class EducationalElement extends React.Component {
   return (
     <>
       <p className="title2">
-        4. <span className="colorChange2">EDUCATIONAL ELEMENT:</span> Do you
+        <span className="colorChange2">EDUCATIONAL ELEMENT:</span> Do you
         think this book has{" "}
         <span className="colorChange2">significant educational value?</span>
       </p>

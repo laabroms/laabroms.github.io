@@ -15,13 +15,13 @@ class Feedback extends React.Component {
       }
     });
   };
-  
+
   render() {
     return (
       <div>
         <div>
           <p className="titleText1">
-            14. Thank you for your input! What did you like or not like about
+            Thank you for your input! What did you like or not like about
             our survey? We appreciate any and all feedback.
           </p>
 

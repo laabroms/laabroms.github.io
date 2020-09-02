@@ -1,17 +1,15 @@
-import React from 'react';
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faBirthdayCake, faMapMarkerAlt, faGlobe } from "@fortawesome/free-solid-svg-icons";
-import './personalInfo.css';
+import { faBook, faUserCircle, faImage } from "@fortawesome/free-solid-svg-icons";
+import "../personalInfo/personalInfo.css";
 
-
-export default class PersonalInfo extends React.Component {
+export default class PlatformInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      age: "",
-      location: "",
-      country: "",
+      platform: "",
+      accountName: "",
+      ageRange: '',
     };
   }
 
@@ -31,20 +29,20 @@ export default class PersonalInfo extends React.Component {
 
     return (
       <>
-        <p style={title}>Personal Information</p>
+        <p style={title}>Platform Information</p>
 
         <div className="row">
           <div className="col" id="name">
             <p>
-              <FontAwesomeIcon icon={faUser} />
+              <FontAwesomeIcon icon={faImage} />
             </p>
           </div>
           <div className="column1" id="name">
-            <p>Your Name:</p>
+            <p>Platform Type (Youtube, Blog, etc.):</p>
           </div>
           <div className="column2">
             <input
-              name="name"
+              name="platform"
               className="input"
               required
               // value={this.state.name}
@@ -57,18 +55,17 @@ export default class PersonalInfo extends React.Component {
         <div className="row">
           <div className="col">
             <p>
-              <FontAwesomeIcon icon={faBirthdayCake} />
+              <FontAwesomeIcon icon={faUserCircle} />
             </p>
           </div>
           <div className="column1">
-            <p>How old is the child with whom you read this book?:</p>
+            <p>Account Name:</p>
           </div>
           <div className="column2">
             <input
-              name="age"
+              name="accountName"
               className="input"
-              type="number"
-              min="0"
+              type="text"
               required
               // value={this.state.age}
               // onChange={(e) => this.setState({ age: e.target.value })}
@@ -76,44 +73,24 @@ export default class PersonalInfo extends React.Component {
             ></input>
           </div>
         </div>
-
         <div className="row">
           <div className="col">
             <p>
-              <FontAwesomeIcon icon={faMapMarkerAlt} />
+              <FontAwesomeIcon icon={faBook} />
             </p>
           </div>
           <div className="column1">
-            <p>State/Province:</p>
+            <p>Typical age range of books you review:</p>
           </div>
           <div className="column2">
             <input
-              name="location"
+              name="ageRange"
               className="input"
+              type="number"
+              min='0'
               required
-              // value={this.state.location}
-              // onChange={(e) => this.setState({ location: e.target.value })}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col">
-            <p>
-              <FontAwesomeIcon icon={faGlobe} />
-            </p>
-          </div>
-          <div className="column1">
-            <p>Country:</p>
-          </div>
-          <div className="column2">
-            <input
-              name="country"
-              className="input"
-              required
-              // value={this.state.country}
-              // onChange={(e) => this.setState({ country: e.target.value })}
+              // value={this.state.age}
+              // onChange={(e) => this.setState({ age: e.target.value })}
               onChange={this.handleChange}
             ></input>
           </div>
@@ -122,4 +99,3 @@ export default class PersonalInfo extends React.Component {
     );
   }
 }
-

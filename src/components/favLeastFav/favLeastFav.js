@@ -22,7 +22,7 @@ export default class FavLeastFav extends React.Component {
     return (
       <>
         <p className="favTopInfo">
-          10. What was your <span className="colorChange8">FAVORITE </span>
+          What was your <span className="colorChange8">FAVORITE </span>
           and <span className="colorChange9">LEAST FAVORITE </span>
           part of the book?
         </p>

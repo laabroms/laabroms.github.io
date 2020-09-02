@@ -41,7 +41,7 @@ export class StarRating extends React.Component {
 return (
   <>
     <p className="title1">
-      11. How many<span className="starsTextColor"> STARS</span> would you give this book on a scale from 1 to 10?
+      How many<span className="starsTextColor"> STARS</span> would you give this book on a scale from 1 to 10?
     </p>
     <div className="stars">
       <ReactStars {...stars}/>

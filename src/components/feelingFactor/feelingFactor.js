@@ -82,7 +82,7 @@ class FeelingFactor extends React.Component {
   return (
     <>
       <p className="title">
-        7. <span className="colorChange5">FEELING FACTOR:</span> Do you think
+        <span className="colorChange5">FEELING FACTOR:</span> Do you think
         this book effectively explores ways for readers to{" "}
         <span className="colorChange5">
           navigate difficult emotions and social situations?

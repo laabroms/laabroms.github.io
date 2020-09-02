@@ -2,10 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import ParentSurvey from './surveys/parentSurvey.js';
+import ParentSurvey from './surveys/parentSurvey/parentSurvey.js';
+import AuthorSurvey from './surveys/authorSurvey/authorSurvey';
+import CriticSurvey from './surveys/criticSurvey/criticSurvey';
+import TeacherSurvey from './surveys/teacherSurvey/teacherSurvey';
 ReactDOM.render(
   <React.StrictMode>
-    < ParentSurvey />
+    {/* < ParentSurvey /> */}
+    {/* < AuthorSurvey /> */}
+    {/* <CriticSurvey /> */}
+    <TeacherSurvey />
   </React.StrictMode>,
   document.getElementById('root')
 );

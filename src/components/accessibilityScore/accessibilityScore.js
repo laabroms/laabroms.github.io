@@ -80,7 +80,7 @@ class AccessibilityScore extends React.Component {
   return (
     <>
       <p className="title">
-        8. <span className="colorChange6">ACCESSIBILITY SCORE:</span> How
+        <span className="colorChange6">ACCESSIBILITY SCORE:</span> How
         accessible is this{" "}
         <span className="colorChange6">book's language?</span>
       </p>

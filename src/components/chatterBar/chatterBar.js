@@ -80,7 +80,7 @@ class ChatterBar extends React.Component {
   return (
     <>
       <p className="title">
-        5. <span className="colorChange3">CHATTER BAR:</span> Did you want to{" "}
+        <span className="colorChange3">CHATTER BAR:</span> Did you want to{" "}
         <span className="colorChange3">talk</span> about this book after you
         finished reading it?
       </p>

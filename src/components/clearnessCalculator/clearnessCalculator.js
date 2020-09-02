@@ -86,9 +86,9 @@ class ClearnessCalculator extends React.Component {
         <>
       
         <p className="title1">
-          2.{" "}
+          {" "}
           <span className='colorChange1'>
-            CLEARNESS CALCULATOR:
+          CLEARNESS CALCULATOR:
           </span>{" "}
           Is it easy to read and follow the{" "}
           <span className='colorChange1'>

@@ -1,0 +1,22 @@
+.colorChangeClassroomCreativity {
+    color: #2E66F9;
+    font-weight: bold;
+}
+
+.textarea {
+    flex: 60%;
+    border: none;
+    /* border-bottom: 2px solid red; */
+    background-color: #e3e3e3;
+    padding: 5px;
+    color: black;
+    outline: none;
+    width: 75%;
+    margin-top: 5px;
+    height: 100px;
+    resize: none;
+    /* margin-left: 3%; */
+}
+.textTop {
+    color: #6B6464;
+}

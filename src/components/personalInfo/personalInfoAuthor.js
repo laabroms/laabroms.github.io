@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faBirthdayCake, faMapMarkerAlt, faGlobe } from "@fortawesome/free-solid-svg-icons";
-import './personalInfo.css';
+import {
+  faUser,
+  faMapMarkerAlt,
+  faGlobe,
+} from "@fortawesome/free-solid-svg-icons";
+import "./personalInfo.css";
 
-
-export default class PersonalInfo extends React.Component {
+export default class PersonalInfoAuthor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
-      age: "",
       location: "",
       country: "",
     };
@@ -54,28 +56,7 @@ export default class PersonalInfo extends React.Component {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col">
-            <p>
-              <FontAwesomeIcon icon={faBirthdayCake} />
-            </p>
-          </div>
-          <div className="column1">
-            <p>How old is the child with whom you read this book?:</p>
-          </div>
-          <div className="column2">
-            <input
-              name="age"
-              className="input"
-              type="number"
-              min="0"
-              required
-              // value={this.state.age}
-              // onChange={(e) => this.setState({ age: e.target.value })}
-              onChange={this.handleChange}
-            ></input>
-          </div>
-        </div>
+        
 
         <div className="row">
           <div className="col">
@@ -122,4 +103,3 @@ export default class PersonalInfo extends React.Component {
     );
   }
 }
-

@@ -80,7 +80,7 @@ class MasterpieceMeter extends React.Component {
   return (
     <>
       <p className="title">
-        3. <span className="colorChange">MASTERPIECE METER:</span> Are the
+        <span className="colorChange">MASTERPIECE METER:</span> Are the
         pictures in this book <span className="colorChange">enjoyable?</span>
       </p>
 

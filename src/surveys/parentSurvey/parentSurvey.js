@@ -1,19 +1,19 @@
 import React from 'react';
 import './parentSurvey.css';
-import PersonalInfo from '../components/personalInfo/personalInfo';
-import ClearnessCalculator from '../components//clearnessCalculator/clearnessCalculator';
-import MasterpieceMeter from '../components/masterpieceMeter/masterpieceMeter';
-import EducationalElement from '../components/educationalElement/educationalElement';
-import ChatterBar from '../components/chatterBar/chatterBar';
-import HeartToHeart from '../components/heartToHeart/heartToHeart';
-import FeelingFactor from '../components/feelingFactor/feelingFactor';
-import AccessibilityScore from '../components/accessibilityScore/accessibilityScore';
-import DiversityRep from '../components/diversityRepresentation/diversityRep';
-import FavLeastFav from '../components/favLeastFav/favLeastFav';
-import {StarRating} from '../components/starRating/starRating';
-import Keywords from '../components/keywords/keywords';
-import ExtraInfo from '../components/extraInfo/extraInfo';
-import Feedback from '../components/feedback/feedback';
+import PersonalInfo from '../../components/personalInfo/personalInfo';
+import ClearnessCalculator from '../../components//clearnessCalculator/clearnessCalculator';
+import MasterpieceMeter from '../../components/masterpieceMeter/masterpieceMeter';
+import EducationalElement from '../../components/educationalElement/educationalElement';
+import ChatterBar from '../../components/chatterBar/chatterBar';
+import HeartToHeart from '../../components/heartToHeart/heartToHeart';
+import FeelingFactor from '../../components/feelingFactor/feelingFactor';
+import AccessibilityScore from '../../components/accessibilityScore/accessibilityScore';
+import DiversityRep from '../../components/diversityRepresentation/diversityRep';
+import FavLeastFav from '../../components/favLeastFav/favLeastFav';
+import {StarRating} from '../../components/starRating/starRating';
+import Keywords from '../../components/keywords/keywords';
+import ExtraInfo from '../../components/extraInfo/extraInfo';
+import Feedback from '../../components/feedback/feedback';
 
 
 

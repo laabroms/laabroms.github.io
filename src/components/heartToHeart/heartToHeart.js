@@ -82,7 +82,7 @@ class HeartToHeart extends React.Component{
   return (
     <>
       <p className="title">
-        6. <span className="colorChange4">HEART TO HEART:</span> Do you think
+        <span className="colorChange4">HEART TO HEART:</span> Do you think
         that this book had a{" "}
         <span className="colorChange4">positive message?</span>
       </p>
