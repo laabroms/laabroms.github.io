@@ -7,8 +7,7 @@ class EducationalElement extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        educationalInt: '33',
-        educational: 'Sort of'
+        educational: '50'
       }
     }
 
@@ -16,59 +15,15 @@ class EducationalElement extends React.Component {
 
     
    handleChange = (newValue) => {
-    //  alert(newValue);
-     if(newValue === 0) {
-       this.setState(
-         {
-           educationalInt: "0",
-           educational: "Not at all",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
-     else if (newValue === 33) {
-       this.setState(
-         {
-           educationalInt: "33",
-           educational: "Sort of",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
-     else if (newValue === 66) {
-       this.setState(
-         {
-           educationalInt: "66",
-           educational: "Definitely",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
-     else if (newValue === 100) {
-       this.setState(
-         {
-           educationalInt: "100",
-           educational: "N/A",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
+    
+    this.setState({
+      educational: newValue
+    }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(this.state)
+      }
+    })
+
 
    }
 
@@ -78,20 +33,20 @@ class EducationalElement extends React.Component {
   return (
     <>
       <p className="title2">
-        <span className="colorChange2">EDUCATIONAL ELEMENT:</span> Do you
-        think this book has{" "}
+        <span className="colorChange2">EDUCATIONAL ELEMENT:</span> Do you think
+        this book has{" "}
         <span className="colorChange2">significant educational value?</span>
       </p>
 
       <div className={classes.root}>
         <Slider
           onChange={(e, value) => this.handleChange(value)}
-          defaultValue={33}
-          valueLabelFormat={valueLabelFormat}
+          defaultValue={50}
+          value={this.state.educational}
+          valueLabelDisplay="auto"
           getAriaValueText={valuetext}
-          aria-labelledby="discrete-slider-restrict"
-          step={null}
-          // valueLabelDisplay="auto"
+          aria-labelledby="discrete-slider-custom"
+          step={10}
           marks={marks}
         />
       </div>
@@ -104,9 +59,13 @@ class EducationalElement extends React.Component {
 const styles = (theme) => ({
   root: {
     width: "80%",
-    paddingLeft: "12%",
-    paddingRight: "8%",
+    paddingLeft: "10%",
+    paddingTop: 10,
+    paddingRight: "9%",
     backgroundColor: "#e3e3e3",
+    border: "5px solid",
+    borderImageSource: "linear-gradient(to right, #f87D1D, #5222E2)",
+    borderImageSlice: "1",
   },
 });
 
@@ -116,26 +75,23 @@ const marks = [
     label: "Not at all",
   },
   {
-    value: 33,
+    value: 50,
     label: "Sort of",
   },
   {
-    value: 66,
+    value: 100,
     label: "Definitely",
   },
-  {
-    value: 100,
-    label: "N/A",
-  },
+  
 ];
 
 function valuetext(value) {
   return `${value}`;
 }
 
-function valueLabelFormat(value) {
-  return marks.findIndex((mark) => mark.value === value) + 1;
-}
+// function valueLabelFormat(value) {
+//   return marks.findIndex((mark) => mark.value === value) + 1;
+// }
 
 
 export default withStyles(styles)(EducationalElement);

@@ -15,6 +15,8 @@ import Keywords from '../../components/keywords/keywords';
 import ExtraInfo from '../../components/extraInfo/extraInfo';
 import Feedback from '../../components/feedback/feedback';
 
+import './authorSurvey.css';
+
 class AuthorSurvey extends React.Component {
   constructor(props) {
     super(props);
@@ -24,13 +26,13 @@ class AuthorSurvey extends React.Component {
       country: "",
       genre: "",
       ageGroup: "",
-      clearness: "Sometimes clear",
-      masterpiece: "They were okay",
-      educational: "Sort of",
-      discussion: "Some discussion",
-      heart: "Sort of",
-      feeling: "Sort of",
-      accessibility: "Somewhat accessible",
+      clearness: "50",
+      masterpiece: "50",
+      educational: "50",
+      discussion: "50",
+      heart: "50",
+      feeling: "50",
+      accessibility: "50",
       diversity: "",
       favorite: "",
       leastFav: "",
@@ -210,7 +212,7 @@ class AuthorSurvey extends React.Component {
     };
 
     return (
-      <form method="POST" action="">
+      <form method="POST" action="" className="form">
         <div style={container}>
           <h2>Picture Book Survey for Authors/Illustrators</h2>
           <p style={bookInfo}>

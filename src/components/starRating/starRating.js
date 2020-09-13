@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactStars from "react-rating-stars-component";
+
+
+
 import './starRating.css';
 
 export class StarRating extends React.Component {
@@ -46,6 +49,8 @@ return (
     <div className="stars">
       <ReactStars {...stars}/>
     </div>
+
+    
 
   </>
 );

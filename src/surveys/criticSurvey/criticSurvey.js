@@ -25,13 +25,13 @@ class CriticSurvey extends React.Component {
       platform: '',
       accountName: '',
       ageRange: '',
-      clearness: "Sometimes clear",
-      masterpiece: "They were okay",
-      educational: "Sort of",
-      discussion: "Some discussion",
-      heart: "Sort of",
-      feeling: "Sort of",
-      accessibility: "Somewhat accessible",
+      clearness: '50',
+      masterpiece: "50",
+      educational: "50",
+      discussion: "50",
+      heart: "50",
+      feeling: "50",
+      accessibility: "50",
       diversity: "",
       favorite: "",
       leastFav: "",
@@ -153,7 +153,7 @@ class CriticSurvey extends React.Component {
         this.state.platform + ';'+
         " Account Name: " + 
         this.state.accountName + ';' + 
-        "Typical age range of books: " + 
+        "Typical age r50 books: " + 
         this.state.ageRange + ';' +
         " Clearness Calculator: " +
         this.state.clearness +

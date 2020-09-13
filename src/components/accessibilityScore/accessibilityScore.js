@@ -7,8 +7,7 @@ class AccessibilityScore extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        accessibilityInt: '33',
-        accessibility: 'Somewhat accessible'
+        accessibility: '50',
       }
     }
 
@@ -17,59 +16,55 @@ class AccessibilityScore extends React.Component {
 
     
    handleChange = (newValue) => {
+       this.setState({
+           accessibility: newValue
+       },
+         () => {
+           if (this.props.onChange) {
+             this.props.onChange(this.state);
+           }
+         })
     //  alert(newValue);
-     if(newValue === 0) {
-       this.setState(
-         {
-           accessibilityInt: "0",
-           accessibility: "Inaccessible",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
-     else if (newValue === 33) {
-       this.setState(
-         {
-           accessibilityInt: "33",
-           accessibility: "Somewhat accessible",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
-     else if (newValue === 66) {
-       this.setState(
-         {
-           accessibilityInt: "66",
-           accessibility: "Age-appropriate",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
-     else if (newValue === 100) {
-       this.setState(
-         {
-           accessibilityInt: "100",
-           accessibility: "N/A",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
+    //  if(newValue === 0) {
+    //    this.setState(
+    //      {
+    //        accessibility: "0",
+    //        accessibilityVal: "Inaccessible",
+    //      },
+    //      () => {
+    //        if (this.props.onChange) {
+    //          this.props.onChange(this.state);
+    //        }
+    //      }
+    //    );
+    //  }
+    //  else if (newValue === 50) {
+    //    this.setState(
+    //      {
+    //        accessibility: "50",
+    //        accessibilityVal: "Somewhat accessible",
+    //      },
+    //      () => {
+    //        if (this.props.onChange) {
+    //          this.props.onChange(this.state);
+    //        }
+    //      }
+    //    );
+    //  }
+    //  else if (newValue === 100) {
+    //    this.setState(
+    //      {
+    //        accessibility: "100",
+    //        accessibilityVal: "Age-appropriate",
+    //      },
+    //      () => {
+    //        if (this.props.onChange) {
+    //          this.props.onChange(this.state);
+    //        }
+    //      }
+    //    );
+    //  }
+     
 
    }
 
@@ -88,12 +83,13 @@ class AccessibilityScore extends React.Component {
       <div className={classes.root}>
         <Slider
           onChange={(e, value) => this.handleChange(value)}
-          defaultValue={33}
-          valueLabelFormat={valueLabelFormat}
+        //   defaultValue={50}
+          value={this.state.accessibility}
+          //   valueLabelFormat={valueLabelFormat}
+          valueLabelDisplay="auto"
           getAriaValueText={valuetext}
-          aria-labelledby="discrete-slider-restrict"
-          step={null}
-          // valueLabelDisplay="auto"
+          aria-labelledby="discrete-slider-custom"
+          step={10}
           marks={marks}
         />
       </div>
@@ -105,8 +101,8 @@ class AccessibilityScore extends React.Component {
 const styles = (theme) => ({
   root: {
     width: "80%",
-    paddingLeft: "12%",
-    paddingRight: "8%",
+    paddingLeft: "10%",
+    paddingRight: "10%",
     backgroundColor: "#e3e3e3",
   },
 });
@@ -118,26 +114,23 @@ const marks = [
     label: "Inaccessible",
   },
   {
-    value: 33,
+    value: 50,
     label: "Somewhat accessible",
   },
   {
-    value: 66,
+    value: 100,
     label: "Age-appropriate",
   },
-  {
-    value: 100,
-    label: "N/A",
-  },
+  
 ];
 
 function valuetext(value) {
   return `${value}`;
 }
 
-function valueLabelFormat(value) {
-  return marks.findIndex((mark) => mark.value === value) + 1;
-}
+// function valueLabelFormat(value) {
+//   return marks.findIndex((mark) => mark.value === value) + 1;
+// }
 
 
 export default withStyles(styles)(AccessibilityScore);

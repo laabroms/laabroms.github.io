@@ -2,8 +2,17 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faUserCircle, faImage } from "@fortawesome/free-solid-svg-icons";
 import "../personalInfo/personalInfo.css";
+import { withStyles } from "@material-ui/core/styles";
 
-export default class PlatformInfo extends React.Component {
+import TextField from "@material-ui/core/TextField";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import MultipleSelectTypeOfBook from '../../parts/multipleSelectTypeOfBook';
+
+
+class PlatformInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,6 +35,8 @@ export default class PlatformInfo extends React.Component {
       paddingTop: 20,
       color: "#797D7F",
     };
+    const { classes } = this.props;
+
 
     return (
       <>
@@ -41,14 +52,24 @@ export default class PlatformInfo extends React.Component {
             <p>Platform Type (Youtube, Blog, etc.):</p>
           </div>
           <div className="column2">
-            <input
-              name="platform"
-              className="input"
-              required
-              // value={this.state.name}
-              // onChange={(e) => this.setState({ name: e.target.value })}
-              onChange={this.handleChange}
-            ></input>
+            
+            <FormControl className={classes.formControl}>
+              <InputLabel id="demo-simple-select-label">Platform Type</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                className="inputNew"
+                name="platform"
+                required
+                id="demo-simple-select"
+                // value={this.state.age}
+                onChange={this.handleChange}
+              >
+                <MenuItem value={'YouTube'}>YouTube</MenuItem>
+                <MenuItem value={'Blog'}>Blog</MenuItem>
+                <MenuItem value={'?'}>?</MenuItem>
+                
+              </Select>
+            </FormControl>
           </div>
         </div>
 
@@ -62,15 +83,15 @@ export default class PlatformInfo extends React.Component {
             <p>Account Name:</p>
           </div>
           <div className="column2">
-            <input
+          <div className={classes.root}>
+            <TextField
+              id="standard-basic"
               name="accountName"
-              className="input"
-              type="text"
-              required
-              // value={this.state.age}
-              // onChange={(e) => this.setState({ age: e.target.value })}
+              label="Account Name"
+              className="inputNew"
               onChange={this.handleChange}
-            ></input>
+            />
+            </div>
           </div>
         </div>
         <div className="row">
@@ -80,22 +101,42 @@ export default class PlatformInfo extends React.Component {
             </p>
           </div>
           <div className="column1">
-            <p>Typical age range of books you review:</p>
+            <p>Typical of books you typically Review:</p>
           </div>
           <div className="column2">
-            <input
+            {/* <input
               name="ageRange"
               className="input"
               type="number"
-              min='0'
+              min="0"
               required
               // value={this.state.age}
               // onChange={(e) => this.setState({ age: e.target.value })}
               onChange={this.handleChange}
-            ></input>
+            ></input> */}
+            <MultipleSelectTypeOfBook />
           </div>
         </div>
       </>
     );
   }
 }
+
+
+const styles = (theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+});
+
+export default withStyles(styles)(PlatformInfo);

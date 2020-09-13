@@ -7,8 +7,7 @@ class HeartToHeart extends React.Component{
   constructor(props) {
       super(props);
       this.state = {
-        heartInt: '33',
-        heart: 'Sort of'
+        heart: '50'
       }
     }
 
@@ -17,59 +16,14 @@ class HeartToHeart extends React.Component{
 
     
    handleChange = (newValue) => {
-    //  alert(newValue);
-     if(newValue === 0) {
-       this.setState(
-         {
-           heartInt: "0",
-           heart: "Not at all",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
-     else if (newValue === 33) {
-       this.setState(
-         {
-           heartInt: "33",
-           heart: "Sort of",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
-     else if (newValue === 66) {
-       this.setState(
-         {
-           heartInt: "66",
-           heart: "Definitely",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
-     else if (newValue === 100) {
-       this.setState(
-         {
-           heartInt: "100",
-           heart: "N/A",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
+    this.setState({
+        heart: newValue
+    }, () => {
+        if (this.props.onChange) {
+            this.props.onChange(this.state)
+        }
+    })
+    
 
    }
 
@@ -82,20 +36,19 @@ class HeartToHeart extends React.Component{
   return (
     <>
       <p className="title">
-        <span className="colorChange4">HEART TO HEART:</span> Do you think
-        that this book had a{" "}
-        <span className="colorChange4">positive message?</span>
+        <span className="colorChange4">HEART TO HEART:</span> Do you think that
+        this book had a <span className="colorChange4">positive message?</span>
       </p>
 
       <div className={classes.root}>
         <Slider
           onChange={(e, value) => this.handleChange(value)}
-          defaultValue={33}
-          valueLabelFormat={valueLabelFormat}
+          defaultValue={50}
+          value={this.state.heart}
+          valueLabelDisplay="auto"
           getAriaValueText={valuetext}
-          aria-labelledby="discrete-slider-restrict"
-          step={null}
-          // valueLabelDisplay="auto"
+          aria-labelledby="discrete-slider-custom"
+          step={10}
           marks={marks}
         />
       </div>
@@ -108,8 +61,8 @@ class HeartToHeart extends React.Component{
 const styles = (theme) => ({
   root: {
     width: "80%",
-    paddingLeft: "12%",
-    paddingRight: "8%",
+    paddingLeft: "10%",
+    paddingRight: "10%",
     backgroundColor: "#e3e3e3",
   },
 });
@@ -120,26 +73,20 @@ const marks = [
     label: "Not at all",
   },
   {
-    value: 33,
+    value: 50,
     label: "Sort of",
   },
   {
-    value: 66,
+    value: 100,
     label: "Definitely",
   },
-  {
-    value: 100,
-    label: "N/A",
-  },
+  
 ];
 
 function valuetext(value) {
   return `${value}`;
 }
 
-function valueLabelFormat(value) {
-  return marks.findIndex((mark) => mark.value === value) + 1;
-}
 
 
 export default withStyles(styles)(HeartToHeart);

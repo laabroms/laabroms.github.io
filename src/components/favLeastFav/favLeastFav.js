@@ -1,7 +1,10 @@
 import React from "react";
 import "./favLeastFav.css";
+import TextField from "@material-ui/core/TextField";
+import { withStyles } from "@material-ui/core/styles";
 
-export default class FavLeastFav extends React.Component {
+
+class FavLeastFav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,6 +22,10 @@ export default class FavLeastFav extends React.Component {
   };
 
   render() {
+
+    const { classes } = this.props;
+
+
     return (
       <>
         <p className="favTopInfo">
@@ -32,14 +39,17 @@ export default class FavLeastFav extends React.Component {
             <p>Favorite:</p>
           </div>
           <div className="column2">
-            <input
-              className="input"
-              required
-              name="favorite"
-              //   value={this.state.favorite}
-              //   onChange={(e) => this.setState({ favorite: e.target.value })}
-              onChange={this.handleChange}
-            />
+            
+            <div className={classes.root}>
+              <TextField
+                id="standard-basic"
+                name="favorite"
+                label="Favorite"
+                required
+                className="inputNew1"
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
         </div>
 
@@ -48,19 +58,38 @@ export default class FavLeastFav extends React.Component {
             <p>Least Favorite:</p>
           </div>
           <div className="column2">
-            <input
-              className="input"
-              required
-              name="leastFav"
-              //   value={this.state.leastFav}
-              //   onChange={(e) =>
-              //     this.setState({ leastFav: e.target.value })
-              //   }
-              onChange={this.handleChange}
-            />
+            <div className={classes.root}>
+              <TextField
+                id="standard-basic"
+                name="leastFav"
+                label="Least Favorite"
+                required
+                className="inputNew1"
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
         </div>
       </>
     );
   }
 }
+
+
+const styles = (theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+});
+
+export default withStyles(styles)(FavLeastFav);

@@ -7,8 +7,7 @@ class MasterpieceMeter extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        masterpieceInt: '33',
-        masterpiece: 'They were okay'
+        masterpiece: '50'
       }
     }
 
@@ -16,59 +15,13 @@ class MasterpieceMeter extends React.Component {
 
     
    handleChange = (newValue) => {
-    //  alert(newValue);
-     if(newValue === 0) {
-       this.setState(
-         {
-           masterpieceInt: "0",
-           masterpiece: "Not at all",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
-     else if (newValue === 33) {
-       this.setState(
-         {
-           masterpieceInt: "33",
-           masterpiece: "They were okay",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
-     else if (newValue === 66) {
-       this.setState(
-         {
-           masterpieceInt: "66",
-           masterpiece: "Loved them",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
-     else if (newValue === 100) {
-       this.setState(
-         {
-           masterpieceInt: "100",
-           masterpiece: "N/A",
-         },
-         () => {
-           if (this.props.onChange) {
-             this.props.onChange(this.state);
-           }
-         }
-       );
-     }
+    this.setState({
+      masterpiece: newValue
+    }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(this.state)
+      }
+    })
 
    }
 
@@ -80,20 +33,20 @@ class MasterpieceMeter extends React.Component {
   return (
     <>
       <p className="title">
-        <span className="colorChange">MASTERPIECE METER:</span> Are the
-        pictures in this book <span className="colorChange">enjoyable?</span>
+        <span className="colorChange">MASTERPIECE METER:</span> Are the pictures
+        in this book <span className="colorChange">enjoyable?</span>
       </p>
 
       <div className={classes.root}>
         <Slider
           // value={data.masterpieceInt}
           onChange={(e, value) => this.handleChange(value)}
-          defaultValue={33}
-          valueLabelFormat={valueLabelFormat}
+          defaultValue={50}
+          value={this.state.masterpiece}
+          valueLabelDisplay="auto"
           getAriaValueText={valuetext}
-          aria-labelledby="discrete-slider-restrict"
-          step={null}
-          // valueLabelDisplay="auto"
+          aria-labelledby="discrete-slider-custom"
+          step={10}
           marks={marks}
         />
       </div>
@@ -105,9 +58,15 @@ class MasterpieceMeter extends React.Component {
 const styles = (theme) => ({
   root: {
     width: "80%",
-    paddingLeft: "12%",
-    paddingRight:'8%',
+    paddingLeft: "10%",
+    paddingRight: "9%",
     backgroundColor: "#e3e3e3",
+    paddingTop: 10,
+
+    border: "5px solid",
+    borderImageSource: "linear-gradient(to right, red, orange)",
+    borderImageSlice: "1",
+    borderRadius: "25",
   },
 });
 
@@ -118,26 +77,20 @@ const marks = [
     label: "Not at all",
   },
   {
-    value: 33,
+    value: 50,
     label: "They were okay",
   },
   {
-    value: 66,
+    value: 100,
     label: "Loved them",
   },
-  {
-    value: 100,
-    label: "N/A",
-  },
+  
 ];
 
 function valuetext(value) {
   return `${value}`;
 }
 
-function valueLabelFormat(value) {
-  return marks.findIndex((mark) => mark.value === value) + 1;
-}
 
 
 export default withStyles(styles)(MasterpieceMeter);
