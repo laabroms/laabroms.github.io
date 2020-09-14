@@ -43,15 +43,13 @@ export class StarRating extends React.Component {
   
 return (
   <>
-    <p className="title1">
-      How many<span className="starsTextColor"> STARS</span> would you give this book on a scale from 1 to 10?
+    <p className="title1" style={{ paddingTop: 35 }}>
+      How many<span className="starsTextColor"> STARS</span> would you give this
+      book on a scale from 1 to 10?
     </p>
     <div className="stars">
-      <ReactStars {...stars}/>
+      <ReactStars {...stars} />
     </div>
-
-    
-
   </>
 );
 

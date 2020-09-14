@@ -20,7 +20,7 @@ class Keywords extends React.Component {
   render() {
     return (
       <div>
-        <p className="titleText1">
+        <p className="titleText1" style={{ paddingTop: 25 }}>
           What keywords would you type in a search bar to find this book and
           other books like it?
         </p>

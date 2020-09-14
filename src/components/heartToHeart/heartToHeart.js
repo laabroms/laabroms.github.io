@@ -48,7 +48,7 @@ class HeartToHeart extends React.Component{
           valueLabelDisplay="auto"
           getAriaValueText={valuetext}
           aria-labelledby="discrete-slider-custom"
-          step={10}
+          step={5}
           marks={marks}
         />
       </div>
@@ -62,8 +62,15 @@ const styles = (theme) => ({
   root: {
     width: "80%",
     paddingLeft: "10%",
-    paddingRight: "10%",
+    paddingTop: 10,
+    border: "5px solid",
+    borderColor: "#d1d1d1",
+    // borderImageSource: "linear-gradient(45deg, #c41b1b, #45f542)",
+    // borderImageSlice: "1",
+    // borderRadius: 10,
+    paddingRight: "9%",
     backgroundColor: "#e3e3e3",
+    borderRadius: 10,
   },
 });
 

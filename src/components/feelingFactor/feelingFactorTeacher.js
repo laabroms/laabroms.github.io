@@ -42,7 +42,7 @@ class FeelingFactorTeacher extends React.Component {
             valueLabelDisplay="auto"
             getAriaValueText={valuetext}
             aria-labelledby="discrete-slider-custom"
-            step={10}
+            step={5}
             marks={marks}
           />
         </div>
@@ -55,8 +55,12 @@ const styles = (theme) => ({
   root: {
     width: "80%",
     paddingLeft: "10%",
-    paddingRight: "10%",
+    paddingRight: "9%",
     backgroundColor: "#e3e3e3",
+    borderColor: "#d1d1d1",
+    border: "5px solid",
+    paddingTop: 10,
+    borderRadius: 10,
   },
 });
 

@@ -46,7 +46,7 @@ class MasterpieceMeter extends React.Component {
           valueLabelDisplay="auto"
           getAriaValueText={valuetext}
           aria-labelledby="discrete-slider-custom"
-          step={10}
+          step={5}
           marks={marks}
         />
       </div>
@@ -62,11 +62,11 @@ const styles = (theme) => ({
     paddingRight: "9%",
     backgroundColor: "#e3e3e3",
     paddingTop: 10,
-
+    borderColor: "#d1d1d1",
     border: "5px solid",
-    borderImageSource: "linear-gradient(to right, red, orange)",
+    // borderImageSource: "linear-gradient(to right, red, orange)",
     borderImageSlice: "1",
-    borderRadius: "25",
+    borderRadius: 10,
   },
 });
 

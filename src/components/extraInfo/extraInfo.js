@@ -20,10 +20,9 @@ class ExtraInfo extends React.Component {
     return (
       <div>
         <div>
-          <p className="titleText1">
-            Is there anything else you want to tell us? If you want to write
-            a review or even just a sentence, we would love to hear your
-            thoughts!
+          <p className="titleText1" style={{ paddingTop: 25 }}>
+            Is there anything else you want to tell us? If you want to write a
+            review or even just a sentence, we would love to hear your thoughts!
           </p>
 
           <textarea

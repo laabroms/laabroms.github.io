@@ -20,9 +20,9 @@ class Feedback extends React.Component {
     return (
       <div>
         <div>
-          <p className="titleText1">
-            Thank you for your input! What did you like or not like about
-            our survey? We appreciate any and all feedback.
+          <p className="titleText1" style={{ paddingTop: 25 }}>
+            Thank you for your input! What did you like or not like about our
+            survey? We appreciate any and all feedback.
           </p>
 
           <textarea

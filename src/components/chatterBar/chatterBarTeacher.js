@@ -109,8 +109,12 @@ const styles = (theme) => ({
   root: {
     width: "80%",
     paddingLeft: "10%",
-    paddingRight: "10%",
+    paddingRight: "9%",
     backgroundColor: "#e3e3e3",
+    borderRadius: 10,
+    border: "5px solid",
+    borderColor: "#d1d1d1",
+    paddingTop: 10,
   },
 });
 

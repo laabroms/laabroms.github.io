@@ -32,6 +32,8 @@ class ChatterBar extends React.Component {
      const { classes } = this.props;
    
 
+     
+
   return (
     <>
       <p className="title">
@@ -48,7 +50,7 @@ class ChatterBar extends React.Component {
           valueLabelDisplay="auto"
           getAriaValueText={valuetext}
           aria-labelledby="discrete-slider-custom"
-          step={10}
+          step={5}
           marks={marks}
         />
       </div>
@@ -61,8 +63,14 @@ const styles = (theme) => ({
   root: {
     width: "80%",
     paddingLeft: "10%",
-    paddingRight:'10%',
+    paddingTop: 10,
+    paddingRight: "9%",
     backgroundColor: "#e3e3e3",
+    border: "5px solid",
+    borderColor: "#d1d1d1",
+    // borderImageSource: "linear-gradient(to right, #f87D1D, #5222E2)",
+    borderImageSlice: "1",
+    borderRadius: 10,
   },
 });
 

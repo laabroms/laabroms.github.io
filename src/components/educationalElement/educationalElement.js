@@ -46,7 +46,7 @@ class EducationalElement extends React.Component {
           valueLabelDisplay="auto"
           getAriaValueText={valuetext}
           aria-labelledby="discrete-slider-custom"
-          step={10}
+          step={5}
           marks={marks}
         />
       </div>
@@ -63,8 +63,11 @@ const styles = (theme) => ({
     paddingTop: 10,
     paddingRight: "9%",
     backgroundColor: "#e3e3e3",
+    borderColor: "#d1d1d1",
     border: "5px solid",
-    borderImageSource: "linear-gradient(to right, #f87D1D, #5222E2)",
+        borderRadius: 10,
+
+    // borderImageSource: "linear-gradient(to right, #f87D1D, #5222E2)",
     borderImageSlice: "1",
   },
 });

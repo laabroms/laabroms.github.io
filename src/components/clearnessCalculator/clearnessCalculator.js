@@ -53,7 +53,7 @@ class ClearnessCalculator extends React.Component {
             valueLabelDisplay="auto"
             getAriaValueText={valuetext}
             aria-labelledby="discrete-slider-custom"
-            step={10}
+            step={5}
             marks={marks}
           />
         </div>
@@ -71,15 +71,16 @@ const styles = (theme) => ({
     width: "80%",
     paddingLeft: "10%",
     paddingRight: "9%",
-    // backgroundColor: "#e3e3e3",
+    backgroundColor: "#e3e3e3",
     // background: 'linear-gradient(to right, red, green)',
     // backgroundOpacity: '50%',
     paddingTop: 10,
 
     border: "5px solid",
-    borderImageSource: "linear-gradient(45deg, #c41b1b, #45f542)",
+    borderColor: "#d1d1d1",
+    // borderImageSource: "linear-gradient(45deg, #c41b1b, #45f542)",
     borderImageSlice: "1",
-    borderRadius: "25",
+    borderRadius: 10,
   },
 });
 
