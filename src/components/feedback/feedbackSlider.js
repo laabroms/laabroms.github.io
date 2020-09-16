@@ -1,26 +1,26 @@
 import React from "react";
-import "./discussionDial.css";
 import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 
-class DiscussionDial extends React.Component {
+class FeedbackSlider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      discussion: "50",
+      feedback: "50",
     };
   }
 
   handleChange = (newValue) => {
-
-    this.setState({
-        discussion: newValue
-    }, () => {
+    this.setState(
+      {
+        feedback: newValue,
+      },
+      () => {
         if (this.props.onChange) {
-            this.props.onChange(this.state);
+          this.props.onChange(this.state);
         }
-    })
-   
+      }
+    );
   };
 
   render() {
@@ -29,18 +29,14 @@ class DiscussionDial extends React.Component {
     return (
       <>
         <p className="title">
-          <span className="colorChangeDiscussion">DISCUSSION DIAL:</span> Do you
-          think that this book would{" "}
-          <span className="colorChangeDiscussion">
-            prompt meaningful discussions?
-          </span>
+          Thank you for your input! How much did you enjoy this survey?
         </p>
 
         <div className={classes.root}>
           <Slider
             onChange={(e, value) => this.handleChange(value)}
             defaultValue={50}
-            value={this.state.discussion}
+            value={this.state.feedback}
             // valueLabelDisplay="auto"
             // getAriaValueText={valuetext}
             aria-labelledby="discrete-slider-custom"
@@ -69,25 +65,20 @@ const styles = (theme) => ({
 const marks = [
   {
     value: 0,
-    label: "Not at all",
+    label: "Needs improvement",
   },
   {
     value: 50,
-    label: "Some discussion",
+    label: "It was satisfactory",
   },
   {
     value: 100,
-    label: "Definitely",
+    label: "Loved it",
   },
-  
 ];
 
 function valuetext(value) {
   return `${value}`;
 }
 
-// function valueLabelFormat(value) {
-//   return marks.findIndex((mark) => mark.value === value) + 1;
-// }
-
-export default withStyles(styles)(DiscussionDial);
+export default withStyles(styles)(FeedbackSlider);

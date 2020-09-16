@@ -1,26 +1,27 @@
 import React from "react";
-import "./feelingFactor.css";
+import "./masterpieceMeter.css";
 import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 
-class FeelingFactorTeacher extends React.Component {
+class MasterpieceMeterOlder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      feeling: "50",
+      masterpiece: "50",
     };
   }
 
   handleChange = (newValue) => {
-    this.setState({
-        feeling: newValue
-    }, () => {
+    this.setState(
+      {
+        masterpiece: newValue,
+      },
+      () => {
         if (this.props.onChange) {
-            this.props.onChange(this.state)
+          this.props.onChange(this.state);
         }
-    })
-    
-
+      }
+    );
   };
 
   render() {
@@ -29,20 +30,19 @@ class FeelingFactorTeacher extends React.Component {
     return (
       <>
         <p className="title">
-          <span className="colorChange5">FEELING FACTOR:</span> Did/would this
-          book effectively teach your students anything about{" "}
-          <span className="colorChange5">their own feelings?</span>
+          <span className="colorChange">MASTERPIECE METER:</span> Did you like this book's <span className="colorChange">graphic design and artistic style</span>?
         </p>
 
         <div className={classes.root}>
           <Slider
+            // value={data.masterpieceInt}
             onChange={(e, value) => this.handleChange(value)}
             defaultValue={50}
-            value={this.state.feeling}
-            valueLabelDisplay="auto"
-            getAriaValueText={valuetext}
+            value={this.state.masterpiece}
+            // valueLabelDisplay="auto"
+            // getAriaValueText={valuetext}
             aria-labelledby="discrete-slider-custom"
-            step={5}
+            step={1}
             marks={marks}
           />
         </div>
@@ -57,9 +57,11 @@ const styles = (theme) => ({
     paddingLeft: "10%",
     paddingRight: "9%",
     backgroundColor: "#e3e3e3",
+    paddingTop: 10,
     borderColor: "#d1d1d1",
     border: "5px solid",
-    paddingTop: 10,
+    // borderImageSource: "linear-gradient(to right, red, orange)",
+    borderImageSlice: "1",
     borderRadius: 10,
   },
 });
@@ -71,18 +73,16 @@ const marks = [
   },
   {
     value: 50,
-    label: "Sort of",
+    label: "They were okay",
   },
   {
     value: 100,
-    label: "Yes, very much so",
+    label: "Loved them",
   },
-  
 ];
 
 function valuetext(value) {
   return `${value}`;
 }
 
-
-export default withStyles(styles)(FeelingFactorTeacher);
+export default withStyles(styles)(MasterpieceMeterOlder);

@@ -1,11 +1,8 @@
 import React from 'react';
 import './parentSurvey.css';
 import PersonalInfo from '../../components/personalInfo/personalInfo';
-import ClearnessCalculator from '../../components//clearnessCalculator/clearnessCalculator';
-import MasterpieceMeter from '../../components/masterpieceMeter/masterpieceMeter';
-import EducationalElement from '../../components/educationalElement/educationalElement';
+import ClearnessCalculatorYounger from '../../components//clearnessCalculator/clearnessCalculatorYounger';
 import ChatterBar from '../../components/chatterBar/chatterBar';
-import HeartToHeart from '../../components/heartToHeart/heartToHeart';
 import FeelingFactor from '../../components/feelingFactor/feelingFactor';
 import AccessibilityScore from '../../components/accessibilityScore/accessibilityScore';
 import DiversityRep from '../../components/diversityRepresentation/diversityRep';
@@ -13,8 +10,11 @@ import FavLeastFav from '../../components/favLeastFav/favLeastFav';
 import {StarRating} from '../../components/starRating/starRating';
 import Keywords from '../../components/keywords/keywords';
 import ExtraInfo from '../../components/extraInfo/extraInfo';
-import Feedback from '../../components/feedback/feedback';
-
+import FeedbackSlider from '../../components/feedback/feedbackSlider';
+import FadeIn from "react-fade-in";
+import InspirationElement from '../../components/inspirationElement/inspirationElement';
+import GrippingGrade from '../../components/grippingGrade/grippingGrade';
+import PacingScore from '../../components/pacingScore/pacingScore';
 
 
 export default class ParentSurvey extends React.Component {
@@ -40,6 +40,7 @@ export default class ParentSurvey extends React.Component {
       keywords: "",
       extraInfo: '',
       feedback: '',
+      gripping: '',
     };
   }
 
@@ -122,14 +123,20 @@ export default class ParentSurvey extends React.Component {
             feeling: data.feeling
         })
     }
-    handleAccessibilty = data => {
+    handleAccessibility = data => {
         this.setState({
             accessibility: data.accessibility
         })
     }
+    handleGripping = data => {
+      this.setState({
+        gripping: data.grippingGrade
+      })
+    }
 
   submitHandler = (e) => {
     alert(
+      this.state.gripping +
       "Name: " +
         this.state.name +
         ";" +
@@ -200,34 +207,42 @@ export default class ParentSurvey extends React.Component {
 
     return (
       <form method="POST" action="">
-        <div style={container}>
-          <h2>Picture Book Survey for Parents/Guardians</h2>
-          <p style={bookInfo}>
-            <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
-          </p>
-          <PersonalInfo onChange={this.handlePersonalInfo} />
-          <ClearnessCalculator onChange={this.handleClearness} />
-          <MasterpieceMeter onChange={this.handleMasterpiece} />
-          <EducationalElement onChange={this.handleEducational} />
-          <ChatterBar onChange={this.handleChatter} />
-          <HeartToHeart onChange={this.handleHeart} />
-          <FeelingFactor onChange={this.handleFeeling} />
-          <AccessibilityScore onChange={this.handleAccessibilty} />
-          <DiversityRep onChange={this.handleDiversity} />
-          <FavLeastFav onChange={this.handleFav} />
-          <StarRating onChange={this.handleStars} />
-          <Keywords onChange={this.handleKeywords} />
-          <ExtraInfo onChange={this.handleExtraInfo} />
-          <Feedback onChange={this.handleFeedback}/>
-        </div>
+        <FadeIn>
+          <div style={container}>
+            <h2>Picture Book Survey for Parents/Guardians</h2>
+            <p style={bookInfo}>
+              <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
+            </p>
+            <PersonalInfo onChange={this.handlePersonalInfo} />
 
-        <button
-          type="submit"
-          className="submitButton"
-          onClick={this.submitHandler}
-        >
-          SUBMIT
-        </button>
+            {/* for younger */}
+            <ClearnessCalculatorYounger onChange={this.handleClearness} />
+
+            <ChatterBar onChange={this.handleChatter} />
+            <InspirationElement />
+            <FeelingFactor onChange={this.handleFeeling} />
+            <AccessibilityScore onChange={this.handleAccessibility} />
+            <GrippingGrade onChange={this.handleGripping} />
+
+            {/* for older */}
+            <PacingScore />
+
+            <DiversityRep onChange={this.handleDiversity} />
+            <FavLeastFav onChange={this.handleFav} />
+            <StarRating onChange={this.handleStars} />
+            <Keywords onChange={this.handleKeywords} />
+            <ExtraInfo onChange={this.handleExtraInfo} />
+            <FeedbackSlider onChange={this.handleFeedback} />
+          </div>
+
+          <button
+            type="submit"
+            className="submitButton"
+            onClick={this.submitHandler}
+          >
+            SUBMIT
+          </button>
+        </FadeIn>
       </form>
     );
   }

@@ -31,6 +31,7 @@ export default class DiversityRep extends React.Component {
         <textarea
           className="textarea"
           required
+          
           name="diversityAndRepresentation"
           //   value={this.state.diversityAndRepresentation}
           //   onChange={(e) => this.setState({ diversityAndRepresentation: e.target.value })}

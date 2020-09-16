@@ -86,10 +86,10 @@ class AccessibilityScore extends React.Component {
         //   defaultValue={50}
           value={this.state.accessibility}
           //   valueLabelFormat={valueLabelFormat}
-          valueLabelDisplay="auto"
-          getAriaValueText={valuetext}
+          // valueLabelDisplay="auto"
+          // getAriaValueText={valuetext}
           aria-labelledby="discrete-slider-custom"
-          step={5}
+          step={1}
           marks={marks}
         />
       </div>
@@ -128,9 +128,9 @@ const marks = [
   
 ];
 
-function valuetext(value) {
-  return `${value}`;
-}
+// function valuetext(value) {
+//   return `${value}`;
+// }
 
 // function valueLabelFormat(value) {
 //   return marks.findIndex((mark) => mark.value === value) + 1;

@@ -1,4 +1,32 @@
  .colorChange3 {
-     color: #81017E;
+     color: #c300ff;
      font-weight: bold;
  }
+
+
+ .moreInfo {
+     color: #6B6464;
+ }
+
+ .checkbox {
+     padding-left: 5%;
+ }
+
+ .otherInfoSection {
+     display: flex;
+     flex-direction: row;
+ }
+
+ .inputChatter {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #c300ff;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 14px;
+  font-size: 14px;
+  width: 150px;
+
+}
+.inputChatter:focus {
+  border-color: #dd7dfa
+}

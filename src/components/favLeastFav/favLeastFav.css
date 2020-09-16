@@ -56,6 +56,30 @@
     padding-top: 35px;
     color: #6B6464;
 }
+.favTopInfo2 {
+    padding-top: 35px;
+    color: #6B6464;
+}
 .inputNew1 {
     width: 250px;
+}
+
+
+.textarea {
+    flex: 60%;
+    border: none;
+    /* border-bottom: 2px solid red; */
+    background-color: #e3e3e3;
+    padding: 5px;
+    color: black;
+    /* outline: none; */
+    width: 75%;
+    margin-top: 5px;
+    height: 100px;
+    resize: none;
+    /* border-color: "#d1d1d1"; */
+    border: 5px solid #d1d1d1;
+    /* margin-left: 3%; */
+    font-family: Roboto, sans-serif;
+    
 }

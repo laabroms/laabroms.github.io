@@ -1,12 +1,12 @@
 import React from "react";
 
-import "./classroomCreativity.css";
+import "./contentWarning.css";
 
-export default class ClassroomCreativity extends React.Component {
+export default class ContentWarning extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      classroomCreativity: "",
+      contentWarning: "",
     };
   }
 
@@ -22,10 +22,10 @@ export default class ClassroomCreativity extends React.Component {
     return (
       <>
         <p style={{ paddingTop: 35 }} className="textTop">
-          {" "}
-          <span className="colorChangeClassroomCreativity">CLASSROOM CREATIVITY: </span>
-          Do you think this book<span className="colorChangeClassroomCreativity"> inspires/could inspire classroom activities? </span>
-          Feel free to give examples of what you have in mind!
+          {" "}Any 
+          <span className="colorContent"> CONTENT WARNINGS {" "}</span>
+          readers should know about?
+         
         </p>
 
         <textarea

@@ -1,29 +1,30 @@
 import React from "react";
-import "./chatterBar.css";
+import "../chatterBar/chatterBar.css";
+import './inspirationElement.css';
 import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
 import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
-
-
-class ChatterBar extends React.Component {
+class InspirationElement extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       chatter: "50",
-      character: false,
-      plot: false,
-      setting: false,
-      educational: false,
-      emotional: false,
+      resilience: false,
+      perseverance: false,
+      kindness: false,
+      bravery: false,
+      hope: false,
+      generosity: false,
+      empathy: false,
       other: false,
-      otherInfo: '',
-      none: false,
+      otherInfo: "",
     };
   }
 
@@ -36,14 +37,17 @@ class ChatterBar extends React.Component {
   };
 
   handleChangeOtherInfo = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(this.state);
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      },
+      () => {
+        if (this.props.onChange) {
+          this.props.onChange(this.state);
+        }
       }
-    })
-  }
+    );
+  };
 
   handleChange = (newValue) => {
     this.setState(
@@ -61,13 +65,12 @@ class ChatterBar extends React.Component {
   render() {
     const { classes } = this.props;
 
-
     return (
       <>
         <p className="title">
-          <span className="colorChange3">CHATTER BAR:</span> How much did you{" "}
-          <span className="colorChange3">talk or think</span> about this book
-          after you finished reading it?
+          <span className="inspirationTextColor">INSPIRATION ELEMENT:</span> How
+          much did this book{" "}
+          <span className="inspirationTextColor"> inspire</span> you?
         </p>
 
         <div className={classes.root}>
@@ -85,8 +88,9 @@ class ChatterBar extends React.Component {
           </ThemeProvider>
         </div>
         <p className="moreInfo">
-          Which element(s) of the book would you/your child most likely want to
-          <span className="colorChange3"> discuss</span> after reading?
+          What
+          <span className="inspirationTextColor"> kind of qualities</span> (if
+          any) does this book inspire in you? (select all that apply)
         </p>
         {/* <div className="checkbox"></div> */}
         <div className="checkbox">
@@ -96,65 +100,91 @@ class ChatterBar extends React.Component {
                 <Checkbox
                   checked={this.state.character}
                   onChange={this.handleChangeCheck}
-                  name="character"
+                  name="resilience"
                   style={{
-                    color: "#c300ff",
+                    color: "#eb34c6",
                   }}
                 />
               }
-              label="The characters"
+              label="Resilience"
             />
             <FormControlLabel
               control={
                 <Checkbox
                   checked={this.state.plot}
                   onChange={this.handleChangeCheck}
-                  name="plot"
+                  name="perseverance"
                   style={{
-                    color: "#c300ff",
+                    color: "#eb34c6",
                   }}
                 />
               }
-              label="The plot"
+              label="Perseverance"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.plot}
+                  onChange={this.handleChangeCheck}
+                  name="kindness"
+                  style={{
+                    color: "#eb34c6",
+                  }}
+                />
+              }
+              label="Kindness"
             />
             <FormControlLabel
               control={
                 <Checkbox
                   checked={this.state.setting}
                   onChange={this.handleChangeCheck}
-                  name="setting"
+                  name="bravery"
                   style={{
-                    color: "#c300ff",
+                    color: "#eb34c6",
                   }}
                 />
               }
-              label="The setting"
+              label="Bravery"
             />
             <FormControlLabel
               control={
                 <Checkbox
                   checked={this.state.educational}
                   onChange={this.handleChangeCheck}
-                  name="educational"
+                  name="hope"
                   style={{
-                    color: "#c300ff",
+                    color: "#eb34c6",
                   }}
                 />
               }
-              label="The educational elements"
+              label="Hope"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.educational}
+                  onChange={this.handleChangeCheck}
+                  name="generosity"
+                  style={{
+                    color: "#eb34c6",
+                  }}
+                />
+              }
+              label="Generosity"
             />
             <FormControlLabel
               control={
                 <Checkbox
                   checked={this.state.emotional}
                   onChange={this.handleChangeCheck}
-                  name="emotional"
+                  name="empathy"
                   style={{
-                    color: "#c300ff",
+                    color: "#eb34c6",
                   }}
                 />
               }
-              label="The emotional aspects"
+              label="Empathy"
             />
             <div className="otherInfoSection">
               <FormControlLabel
@@ -164,7 +194,7 @@ class ChatterBar extends React.Component {
                     onChange={this.handleChangeCheck}
                     name="other"
                     style={{
-                      color: "#c300ff",
+                      color: "#eb34c6",
                     }}
                   />
                 }
@@ -175,12 +205,11 @@ class ChatterBar extends React.Component {
                   <input
                     name="otherInfo"
                     onChange={this.handleChangeOtherInfo}
-                    className="inputChatter"
+                    className="inputInspo"
                   />
                 </FadeIn>
               ) : null}
             </div>
-            
           </FormGroup>
         </div>
       </>
@@ -201,17 +230,16 @@ const styles = (theme) => ({
     borderImageSlice: "1",
     borderRadius: 10,
   },
-  
 });
 
 const muiTheme = createMuiTheme({
   overrides: {
     MuiSlider: {
       thumb: {
-        color: "#666666",
+        color: "#4d4d4d",
       },
       track: {
-        color: "#8c8c8c",
+        color: "#2b2b2b",
       },
       rail: {
         color: "black",
@@ -223,17 +251,16 @@ const muiTheme = createMuiTheme({
 const marks = [
   {
     value: 0,
-    label: "A little bit",
+    label: "Not at all",
   },
   {
     value: 50,
-    label: "Some",
+    label: "A little",
   },
   {
     value: 100,
-    label: "Non-stop",
+    label: "Extremely inspired",
   },
-  
 ];
 
 function valuetext(value) {
@@ -244,7 +271,4 @@ function valuetext(value) {
 //   return marks.findIndex((mark) => mark.value === value) + 1;
 // }
 
-
-export default withStyles(styles)(ChatterBar);
-
-
+export default withStyles(styles)(InspirationElement);

@@ -43,10 +43,10 @@ class EducationalElement extends React.Component {
           onChange={(e, value) => this.handleChange(value)}
           defaultValue={50}
           value={this.state.educational}
-          valueLabelDisplay="auto"
-          getAriaValueText={valuetext}
+          // valueLabelDisplay="auto"
+          // getAriaValueText={valuetext}
           aria-labelledby="discrete-slider-custom"
-          step={5}
+          step={1}
           marks={marks}
         />
       </div>
@@ -65,7 +65,7 @@ const styles = (theme) => ({
     backgroundColor: "#e3e3e3",
     borderColor: "#d1d1d1",
     border: "5px solid",
-        borderRadius: 10,
+    borderRadius: 10,
 
     // borderImageSource: "linear-gradient(to right, #f87D1D, #5222E2)",
     borderImageSlice: "1",

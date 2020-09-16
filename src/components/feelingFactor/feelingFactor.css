@@ -2,3 +2,20 @@
      color: #EBB700;
      font-weight: bold;
  }
+
+
+
+
+ .feelingColor {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #ebb700;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 14px;
+  font-size: 14px;
+  width: 150px;
+
+}
+.feelingColor:focus {
+  border-color: #ffe380;
+}

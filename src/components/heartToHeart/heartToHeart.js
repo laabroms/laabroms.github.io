@@ -45,10 +45,10 @@ class HeartToHeart extends React.Component{
           onChange={(e, value) => this.handleChange(value)}
           defaultValue={50}
           value={this.state.heart}
-          valueLabelDisplay="auto"
-          getAriaValueText={valuetext}
+          // valueLabelDisplay="auto"
+          // getAriaValueText={valuetext}
           aria-labelledby="discrete-slider-custom"
-          step={5}
+          step={1}
           marks={marks}
         />
       </div>

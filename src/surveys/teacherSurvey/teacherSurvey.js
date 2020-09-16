@@ -2,9 +2,7 @@ import React from "react";
 import PersonalInfoAuthor from "../../components/personalInfo/personalInfoAuthor";
 import ClearnessCalculator from "../../components/clearnessCalculator/clearnessCalculator";
 import MasterpieceMeter from "../../components/masterpieceMeter/masterpieceMeter";
-import EducationalElement from "../../components/educationalElement/educationalElement";
-import HeartToHeart from "../../components/heartToHeart/heartToHeart";
-import FeelingFactorTeacher from "../../components/feelingFactor/feelingFactorTeacher";
+import FeelingFactor from "../../components/feelingFactor/feelingFactor";
 import AccessibilityScore from "../../components/accessibilityScore/accessibilityScore";
 import DiversityRep from "../../components/diversityRepresentation/diversityRep";
 import FavLeastFav from "../../components/favLeastFav/favLeastFav";
@@ -14,9 +12,15 @@ import ExtraInfo from "../../components/extraInfo/extraInfo";
 import Feedback from "../../components/feedback/feedback";
 import TeacherInfo from "../../components/teacherInfo/teacherInfo";
 import ChatterBarTeacher from "../../components/chatterBar/chatterBarTeacher";
-import DiscussionDialTeacher from "../../components/discussionDial/discussionDialTeacher";
 import LivelyLibraries from '../../components/livelyLibraries/livelyLibraries';
 import ClassroomCreativity from '../../components/classroomCreativity/classroomCreativity';
+import MasterpieceMeterOlder from '../../components/masterpieceMeter/masterpieceMeterOlder';
+import InspirationElement from "../../components/inspirationElement/inspirationElement";
+import GrippingGrade from "../../components/grippingGrade/grippingGrade";
+import PacingScore from "../../components/pacingScore/pacingScore";
+import ContentWarning from "../../components/contentWarning/contentWarning";
+import FadeIn from "react-fade-in";
+
 
 class TeacherSurvey extends React.Component {
   constructor(props) {
@@ -147,7 +151,7 @@ class TeacherSurvey extends React.Component {
       feeling: data.feeling,
     });
   };
-  handleAccessibilty = (data) => {
+  handleAccessibility = (data) => {
     this.setState({
       accessibility: data.accessibility,
     });
@@ -236,6 +240,7 @@ class TeacherSurvey extends React.Component {
 
     return (
       <form method="POST" action="">
+      <FadeIn>
         <div style={container}>
           <h2>Picture Book Survey for Teachers</h2>
           <p style={bookInfo}>
@@ -245,21 +250,34 @@ class TeacherSurvey extends React.Component {
           <PersonalInfoAuthor onChange={this.handlePersonalInfo} />
           <TeacherInfo onChange={this.handleTeacherInfo} />
           <ClearnessCalculator onChange={this.handleClearness} />
+
+          {/* for younger */}
           <MasterpieceMeter onChange={this.handleMasterpiece} />
-          <EducationalElement onChange={this.handleEducational} />
+          {/* for older */}
+          <MasterpieceMeterOlder />
+
+          <InspirationElement />
+          <FeelingFactor onChange={this.handleFeeling} />
           <ChatterBarTeacher onChange={this.handleChatter} />
-          <HeartToHeart onChange={this.handleHeart} />
-          <FeelingFactorTeacher onChange={this.handleFeeling} />
-          <DiscussionDialTeacher onChange={this.handleDiscussion} />
           <LivelyLibraries onChange={this.handleLively} />
-          <AccessibilityScore onChange={this.handleAccessibilty} />
+          <AccessibilityScore onChange={this.handleAccessibility} />
           <ClassroomCreativity onChange={this.handleClassroomCreativity} />
+          <GrippingGrade />
+
+          {/* for older */}
+          <PacingScore />
+
           <DiversityRep onChange={this.handleDiversity} />
           <FavLeastFav onChange={this.handleFav} />
+
+          {/* for older */}
+          <ContentWarning />
+
           <StarRating onChange={this.handleStars} />
           <Keywords onChange={this.handleKeywords} />
           <ExtraInfo onChange={this.handleExtraInfo} />
           <Feedback onChange={this.handleFeedback} />
+
         </div>
 
         <button
@@ -269,6 +287,7 @@ class TeacherSurvey extends React.Component {
         >
           SUBMIT
         </button>
+        </FadeIn>
       </form>
     );
   }

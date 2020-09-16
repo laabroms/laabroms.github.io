@@ -101,7 +101,7 @@ class PlatformInfo extends React.Component {
             </p>
           </div>
           <div className="column1">
-            <p>Typical of books you typically Review:</p>
+            <p>Type of books you typically review:</p>
           </div>
           <div className="column2">
             {/* <input

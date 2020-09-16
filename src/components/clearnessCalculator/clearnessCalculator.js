@@ -50,10 +50,10 @@ class ClearnessCalculator extends React.Component {
             onChange={(e, value) => this.handleChange(value)}
             defaultValue={50}
             value={this.state.clearness}
-            valueLabelDisplay="auto"
-            getAriaValueText={valuetext}
+            // valueLabelDisplay="auto"
+            // getAriaValueText={valuetext}
             aria-labelledby="discrete-slider-custom"
-            step={5}
+            step={1}
             marks={marks}
           />
         </div>
@@ -95,14 +95,14 @@ const marks = [
   },
   {
     value: 100,
-    label: "Yes, very clear",
+    label: "Very clear",
   },
   
 ];
 
-function valuetext(value) {
-  return `${value}`;
-}
+// function valuetext(value) {
+//   return `${value}`;
+// }
 
 // function valueLabelFormat(value) {
 //   return marks.findIndex((mark) => mark.value === value) + 1;

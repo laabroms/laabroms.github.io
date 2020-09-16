@@ -9,6 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
+
 import './personalInfo.css';
 
 
@@ -44,6 +45,7 @@ class PersonalInfo extends React.Component {
     const { classes } = this.props;
 
 
+    
 
     return (
       <>
@@ -555,6 +557,7 @@ const styles = (theme) => ({
       margin: theme.spacing(1),
       width: "25ch",
     },
+    
   },
   
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class Feedback extends React.Component {
   constructor(props) {
@@ -21,17 +21,16 @@ class Feedback extends React.Component {
       <div>
         <div>
           <p className="titleText1" style={{ paddingTop: 25 }}>
-            Thank you for your input! What did you like or not like about our
-            survey? We appreciate any and all feedback.
+            Thank you for your input!  What did you like or not like about our survey?  We appreciate any and all feedback.
           </p>
 
           <textarea
             className="textarea"
             required
             name="feedback"
-            // value={this.state.surveyAdvice}
+            // value={this.state.extraInfo}
             // onChange={(e) =>
-            //   this.setState({ surveyAdvice: e.target.value })
+            //   this.setState({ extraInfo: e.target.value })
             // }
             onChange={this.handleChange}
           ></textarea>

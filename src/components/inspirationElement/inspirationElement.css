@@ -1,0 +1,19 @@
+.inspirationTextColor {
+    color: #eb34c6;
+    font-weight: bold;
+}
+
+
+ .inputInspo {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #eb34c6;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 14px;
+  font-size: 14px;
+  width: 150px;
+
+}
+.inputInspo:focus {
+  border-color: #ff8ce8;
+}

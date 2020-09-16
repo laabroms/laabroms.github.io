@@ -1,26 +1,28 @@
 import React from "react";
-import "./discussionDial.css";
+import "./clearnessCalculator.css";
 import { withStyles } from "@material-ui/core/styles";
+
 import Slider from "@material-ui/core/Slider";
 
-class DiscussionDial extends React.Component {
+class ClearnessCalculatorYounger extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      discussion: "50",
+      clearness: "50",
     };
   }
 
   handleChange = (newValue) => {
-
-    this.setState({
-        discussion: newValue
-    }, () => {
+    this.setState(
+      {
+        clearness: newValue,
+      },
+      () => {
         if (this.props.onChange) {
-            this.props.onChange(this.state);
+          this.props.onChange(this.state);
         }
-    })
-   
+      }
+    );
   };
 
   render() {
@@ -28,19 +30,18 @@ class DiscussionDial extends React.Component {
 
     return (
       <>
-        <p className="title">
-          <span className="colorChangeDiscussion">DISCUSSION DIAL:</span> Do you
-          think that this book would{" "}
-          <span className="colorChangeDiscussion">
-            prompt meaningful discussions?
-          </span>
+        <p className="title1">
+          {" "}
+          <span className="colorChange1">CLEARNESS CALCULATOR:</span> How{" "}
+          <span className="colorChange1"> clear</span> and <span className="colorChange1">readable</span> are the words on each page?
         </p>
 
         <div className={classes.root}>
           <Slider
+            // value={data.clearnessInt}
             onChange={(e, value) => this.handleChange(value)}
             defaultValue={50}
-            value={this.state.discussion}
+            value={this.state.clearness}
             // valueLabelDisplay="auto"
             // getAriaValueText={valuetext}
             aria-labelledby="discrete-slider-custom"
@@ -59,9 +60,14 @@ const styles = (theme) => ({
     paddingLeft: "10%",
     paddingRight: "9%",
     backgroundColor: "#e3e3e3",
-    borderColor: "#d1d1d1",
-    border: "5px solid",
+    // background: 'linear-gradient(to right, red, green)',
+    // backgroundOpacity: '50%',
     paddingTop: 10,
+
+    border: "5px solid",
+    borderColor: "#d1d1d1",
+    // borderImageSource: "linear-gradient(45deg, #c41b1b, #45f542)",
+    borderImageSlice: "1",
     borderRadius: 10,
   },
 });
@@ -69,25 +75,25 @@ const styles = (theme) => ({
 const marks = [
   {
     value: 0,
-    label: "Not at all",
+    label: "Very unclear",
   },
   {
     value: 50,
-    label: "Some discussion",
+    label: "Sometimes clear",
   },
   {
     value: 100,
-    label: "Definitely",
+    label: "Very clear",
   },
-  
 ];
 
 function valuetext(value) {
   return `${value}`;
 }
 
+
 // function valueLabelFormat(value) {
 //   return marks.findIndex((mark) => mark.value === value) + 1;
 // }
 
-export default withStyles(styles)(DiscussionDial);
+export default withStyles(styles)(ClearnessCalculatorYounger);

@@ -41,10 +41,10 @@ class DiscussionDialTeacher extends React.Component {
             onChange={(e, value) => this.handleChange(value)}
             defaultValue={50}
             value={this.state.discussion}
-            valueLabelDisplay="auto"
-            getAriaValueText={valuetext}
+            // valueLabelDisplay="auto"
+            // getAriaValueText={valuetext}
             aria-labelledby="discrete-slider-custom"
-            step={5}
+            step={1}
             marks={marks}
           />
         </div>
@@ -62,8 +62,7 @@ const styles = (theme) => ({
     borderColor: "#d1d1d1",
     border: "5px solid",
     paddingTop: 10,
-        borderRadius: 10,
-
+    borderRadius: 10,
   },
 });
 
