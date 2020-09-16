@@ -23,7 +23,6 @@ class ChatterBar extends React.Component {
       emotional: false,
       other: false,
       otherInfo: '',
-      none: false,
     };
   }
 
@@ -236,9 +235,9 @@ const marks = [
   
 ];
 
-function valuetext(value) {
-  return `${value}`;
-}
+// function valuetext(value) {
+//   return `${value}`;
+// }
 
 // function valueLabelFormat(value) {
 //   return marks.findIndex((mark) => mark.value === value) + 1;

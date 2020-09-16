@@ -2,13 +2,18 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSchool, faChild } from "@fortawesome/free-solid-svg-icons";
 import "./teacherInfo.css";
-import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import { withStyles } from "@material-ui/core/styles";
+import Select from "react-select";
 
+
+
+const options = [
+  { value: "Preschool", label: "Preschool" },
+  { value: "Kindergarten", label: "Kindergarten" },
+  { value: "Elementary", label: "Elementary" },
+  { value: "Middle School", label: "Middle School" },
+  { value: "High School", label: "High School" },
+  
+];
 
 class TeacherInfo extends React.Component {
   constructor(props) {
@@ -26,14 +31,24 @@ class TeacherInfo extends React.Component {
       }
     });
   };
+  handleChangeGrade = (e) => {
+    this.setState(
+      {
+        gradeLevel: e.value,
+      },
+      () => {
+        if (this.props.onChange) {
+          this.props.onChange(this.state);
+        }
+      }
+    );
+  };
 
   render() {
     const title = {
       paddingTop: 20,
       color: "#797D7F",
     };
-
-    const { classes } = this.props;
 
 
     return (
@@ -50,25 +65,14 @@ class TeacherInfo extends React.Component {
             <p>Grade Level:</p>
           </div>
           <div className="column2">
-            
-            <FormControl className={classes.formControl}>
-              <InputLabel id="demo-simple-select-label">Grade Level</InputLabel>
+            <div className="selectTab">
               <Select
-                labelId="demo-simple-select-label"
-                className="inputNew"
                 name="gradeLevel"
-                required
-                id="demo-simple-select"
-                // value={this.state.age}
-                onChange={this.handleChange}
-              >
-                <MenuItem value={'Preschool'}>Preschool</MenuItem>
-                <MenuItem value={'Kindergarten'}>Kindergarten</MenuItem>
-                <MenuItem value={'Elementary'}>Elementary School</MenuItem>
-                <MenuItem value={'Middle School'}>Middle School</MenuItem>
-                <MenuItem value={'High School'}>High School</MenuItem>
-              </Select>
-            </FormControl>
+                onChange={this.handleChangeGrade}
+                options={options}
+                placeholder="Grade Level"
+              />
+            </div>
           </div>
         </div>
 
@@ -82,14 +86,14 @@ class TeacherInfo extends React.Component {
             <p>School:</p>
           </div>
           <div className="column2">
-            <div className={classes.root}>
-              <TextField
-                id="standard-basic"
+            <div className="selectTabPlatform">
+              <input
+                className="inputField"
                 name="school"
-                label="School"
+                placeholder="School"
                 required
-                className="inputNewTeacher"
                 onChange={this.handleChange}
+                autoCapitalize
               />
             </div>
           </div>
@@ -100,21 +104,4 @@ class TeacherInfo extends React.Component {
 }
 
 
-
-const styles = (theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
-});
-
-export default withStyles(styles)(TeacherInfo);
+export default TeacherInfo;

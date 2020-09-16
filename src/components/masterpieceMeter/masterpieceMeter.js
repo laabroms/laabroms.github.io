@@ -33,8 +33,7 @@ class MasterpieceMeter extends React.Component {
   return (
     <>
       <p className="title">
-        <span className="colorChange">MASTERPIECE METER:</span> Are the pictures
-        in this book <span className="colorChange">enjoyable?</span>
+        <span className="colorChange">MASTERPIECE METER:</span> Do the illustrations enhance this book's <span className="colorChange">quality and message?</span>
       </p>
 
       <div className={classes.root}>
@@ -86,10 +85,6 @@ const marks = [
   },
   
 ];
-
-function valuetext(value) {
-  return `${value}`;
-}
 
 
 

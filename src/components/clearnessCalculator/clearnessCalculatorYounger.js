@@ -87,13 +87,6 @@ const marks = [
   },
 ];
 
-function valuetext(value) {
-  return `${value}`;
-}
 
-
-// function valueLabelFormat(value) {
-//   return marks.findIndex((mark) => mark.value === value) + 1;
-// }
 
 export default withStyles(styles)(ClearnessCalculatorYounger);

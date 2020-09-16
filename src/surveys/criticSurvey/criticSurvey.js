@@ -2,9 +2,6 @@ import React from "react";
 import PersonalInfoAuthor from "../../components/personalInfo/personalInfoAuthor";
 import ClearnessCalculator from "../../components/clearnessCalculator/clearnessCalculator";
 import MasterpieceMeter from "../../components/masterpieceMeter/masterpieceMeter";
-import EducationalElement from "../../components/educationalElement/educationalElement";
-import DiscussionDial from "../../components/discussionDial/discussionDial";
-import HeartToHeart from "../../components/heartToHeart/heartToHeart";
 import FeelingFactor from "../../components/feelingFactor/feelingFactor";
 import AccessibilityScore from "../../components/accessibilityScore/accessibilityScore";
 import DiversityRep from "../../components/diversityRepresentation/diversityRep";
@@ -14,6 +11,14 @@ import Keywords from "../../components/keywords/keywords";
 import ExtraInfo from "../../components/extraInfo/extraInfo";
 import Feedback from "../../components/feedback/feedback";
 import PlatformInfo from "../../components/platformInfo/platformInfo";
+import FadeIn from "react-fade-in";
+import ChatterBar from "../../components/chatterBar/chatterBar";
+import InspirationElement from "../../components/inspirationElement/inspirationElement";
+import GrippingGrade from "../../components/grippingGrade/grippingGrade";
+import PacingScore from "../../components/pacingScore/pacingScore";
+import ContentWarning from "../../components/contentWarning/contentWarning";
+
+
 
 class CriticSurvey extends React.Component {
   constructor(props) {
@@ -214,36 +219,46 @@ class CriticSurvey extends React.Component {
 
     return (
       <form method="POST" action="">
-        <div style={container}>
-          <h2>Picture Book Survey for Critics</h2>
-          <p style={bookInfo}>
-            <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
-          </p>
+        <FadeIn>
+          <div style={container}>
+            <h2>Picture Book Survey for Critics</h2>
+            <p style={bookInfo}>
+              <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
+            </p>
 
-          <PersonalInfoAuthor onChange={this.handlePersonalInfo} />
-          <PlatformInfo onChange={this.handlePlatformInfo} />
-          <ClearnessCalculator onChange={this.handleClearness} />
-          <MasterpieceMeter onChange={this.handleMasterpiece} />
-          <EducationalElement onChange={this.handleEducational} />
-          <DiscussionDial onChange={this.handleDiscussion} />
-          <HeartToHeart onChange={this.handleHeart} />
-          <FeelingFactor onChange={this.handleFeeling} />
-          <AccessibilityScore onChange={this.handleAccessibilty} />
-          <DiversityRep onChange={this.handleDiversity} />
-          <FavLeastFav onChange={this.handleFav} />
-          <StarRating onChange={this.handleStars} />
-          <Keywords onChange={this.handleKeywords} />
-          <ExtraInfo onChange={this.handleExtraInfo} />
-          <Feedback onChange={this.handleFeedback} />
-        </div>
+            <PersonalInfoAuthor onChange={this.handlePersonalInfo} />
+            <PlatformInfo onChange={this.handlePlatformInfo} />
 
-        <button
-          type="submit"
-          className="submitButton"
-          onClick={this.submitHandler}
-        >
-          SUBMIT
-        </button>
+            {/* for younger */}
+            <ClearnessCalculator onChange={this.handleClearness} />
+            <MasterpieceMeter onChange={this.handleMasterpiece} />
+
+            <ChatterBar />
+            <InspirationElement />
+            <FeelingFactor onChange={this.handleFeeling} />
+            <AccessibilityScore onChange={this.handleAccessibilty} />
+            <GrippingGrade />
+            <PacingScore />
+            <DiversityRep onChange={this.handleDiversity} />
+            <FavLeastFav onChange={this.handleFav} />
+            <ContentWarning />
+            <StarRating onChange={this.handleStars} />
+            <Keywords onChange={this.handleKeywords} />
+            <ExtraInfo onChange={this.handleExtraInfo} />
+            <Feedback onChange={this.handleFeedback} />
+
+            
+            
+          </div>
+
+          <button
+            type="submit"
+            className="submitButton"
+            onClick={this.submitHandler}
+          >
+            SUBMIT
+          </button>
+        </FadeIn>
       </form>
     );
   }

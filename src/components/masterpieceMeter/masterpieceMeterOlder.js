@@ -81,8 +81,6 @@ const marks = [
   },
 ];
 
-function valuetext(value) {
-  return `${value}`;
-}
+
 
 export default withStyles(styles)(MasterpieceMeterOlder);

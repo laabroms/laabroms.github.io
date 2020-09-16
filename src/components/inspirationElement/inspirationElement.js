@@ -5,7 +5,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
 import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -15,7 +14,7 @@ class InspirationElement extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatter: "50",
+      inspiration: "50",
       resilience: false,
       perseverance: false,
       kindness: false,
@@ -78,7 +77,7 @@ class InspirationElement extends React.Component {
             <Slider
               onChange={(e, value) => this.handleChange(value)}
               defaultValue={50}
-              value={this.state.chatter}
+              value={this.state.inspiration}
               // valueLabelDisplay="auto"
               // getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-custom"
@@ -263,12 +262,6 @@ const marks = [
   },
 ];
 
-function valuetext(value) {
-  return `${value}`;
-}
 
-// function valueLabelFormat(value) {
-//   return marks.findIndex((mark) => mark.value === value) + 1;
-// }
 
 export default withStyles(styles)(InspirationElement);

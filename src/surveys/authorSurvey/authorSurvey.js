@@ -3,9 +3,6 @@ import PersonalInfoAuthor from '../../components/personalInfo/personalInfoAuthor
 import AuthorInfo from '../../components/authorInfo/authorInfo';
 import ClearnessCalculator from '../../components/clearnessCalculator/clearnessCalculator';
 import MasterpieceMeter from '../../components/masterpieceMeter/masterpieceMeter';
-import EducationalElement from '../../components/educationalElement/educationalElement';
-import DiscussionDial from '../../components/discussionDial/discussionDial';
-import HeartToHeart from '../../components/heartToHeart/heartToHeart';
 import FeelingFactor from '../../components/feelingFactor/feelingFactor';
 import AccessibilityScore from '../../components/accessibilityScore/accessibilityScore';
 import DiversityRep from '../../components/diversityRepresentation/diversityRep';
@@ -14,8 +11,13 @@ import { StarRating } from '../../components/starRating/starRating';
 import Keywords from '../../components/keywords/keywords';
 import ExtraInfo from '../../components/extraInfo/extraInfo';
 import Feedback from '../../components/feedback/feedback';
-
 import './authorSurvey.css';
+import ChatterBar from '../../components/chatterBar/chatterBar';
+import InspirationElement from '../../components/inspirationElement/inspirationElement';
+import GrippingGrade from '../../components/grippingGrade/grippingGrade';
+import PacingScore from '../../components/pacingScore/pacingScore';
+import ContentWarning from '../../components/contentWarning/contentWarning';
+
 
 class AuthorSurvey extends React.Component {
   constructor(props) {
@@ -40,6 +42,7 @@ class AuthorSurvey extends React.Component {
       keywords: "",
       extraInfo: "",
       feedback: "",
+      bookType: ''
     };
   }
 
@@ -53,8 +56,8 @@ class AuthorSurvey extends React.Component {
 
   handleAuthorInfo = (data) => {
     this.setState({
+      bookType: data.book,
       genre: data.genre,
-      ageGroup: data.ageGroup,
     });
   };
 
@@ -141,6 +144,9 @@ class AuthorSurvey extends React.Component {
 
   submitHandler = (e) => {
     alert(
+      'Genre: ' + this.state.genre + ';' +
+      'Book type: ' +
+      this.state.bookType +
       "Name: " +
         this.state.name +
         ";" +
@@ -221,19 +227,25 @@ class AuthorSurvey extends React.Component {
 
           <PersonalInfoAuthor onChange={this.handlePersonalInfo} />
           <AuthorInfo onChange={this.handleAuthorInfo} />
+
+          {/* for younger */}
           <ClearnessCalculator onChange={this.handleClearness} />
           <MasterpieceMeter onChange={this.handleMasterpiece} />
-          <EducationalElement onChange={this.handleEducational} />
-          <DiscussionDial onChange={this.handleDiscussion} />
-          <HeartToHeart onChange={this.handleHeart} />
+
+          <ChatterBar />
+          <InspirationElement />
           <FeelingFactor onChange={this.handleFeeling} />
           <AccessibilityScore onChange={this.handleAccessibilty} />
+          <GrippingGrade />
+          <PacingScore />
           <DiversityRep onChange={this.handleDiversity} />
           <FavLeastFav onChange={this.handleFav} />
+          <ContentWarning />
           <StarRating onChange={this.handleStars} />
           <Keywords onChange={this.handleKeywords} />
           <ExtraInfo onChange={this.handleExtraInfo} />
           <Feedback onChange={this.handleFeedback} />
+
         </div>
 
         <button

@@ -2,15 +2,25 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faUserCircle, faImage } from "@fortawesome/free-solid-svg-icons";
 import "../personalInfo/personalInfo.css";
-import { withStyles } from "@material-ui/core/styles";
 
-import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MultipleSelectTypeOfBook from '../../parts/multipleSelectTypeOfBook';
 
+
+import Select from "react-select";
+
+const options = [
+  { value: "Baby Books", label: "Baby Books" },
+  { value: "Picture Books", label: "Picture Books" },
+  { value: "Readers", label: "Readers" },
+  { value: "Chapter Books", label: "Chapter Books" },
+  { value: "Middle Grade Novels", label: "Middle Grade Novels" },
+  { value: "Young Adult", label: "Young Adult" },
+];
+const platform = [
+  { value: "YouTube", label: "YouTube" },
+  { value: "Blog", label: "Blog" },
+  { value: "Other", label: "Other" },
+  
+];
 
 class PlatformInfo extends React.Component {
   constructor(props) {
@@ -18,7 +28,8 @@ class PlatformInfo extends React.Component {
     this.state = {
       platform: "",
       accountName: "",
-      ageRange: '',
+      bookType: null,
+      book: "",
     };
   }
 
@@ -30,13 +41,47 @@ class PlatformInfo extends React.Component {
     });
   };
 
+  handleChangeBookType = (bookType) => {
+    var type;
+
+    if (bookType == null) {
+      this.setState({
+        bookType,
+      });
+    } else {
+      for (var i = 0, l = bookType.length; i < l; i++) {
+        type += bookType[i].value + ", ";
+      }
+      var sliced = type.substring(9);
+      // console.log(sliced);
+      this.setState({ bookType });
+
+      this.setState({ book: sliced }, () => {
+        if (this.props.onChange) {
+          this.props.onChange(this.state);
+        }
+      });
+    }
+  };
+
+  handleChangePlatform = (e) => {
+    this.setState(
+      {
+        platform: e.value,
+      },
+      () => {
+        if (this.props.onChange) {
+          this.props.onChange(this.state);
+        }
+      }
+    );
+  };
+
   render() {
     const title = {
       paddingTop: 20,
       color: "#797D7F",
     };
-    const { classes } = this.props;
-
 
     return (
       <>
@@ -52,24 +97,14 @@ class PlatformInfo extends React.Component {
             <p>Platform Type (Youtube, Blog, etc.):</p>
           </div>
           <div className="column2">
-            
-            <FormControl className={classes.formControl}>
-              <InputLabel id="demo-simple-select-label">Platform Type</InputLabel>
+            <div className="selectTab">
               <Select
-                labelId="demo-simple-select-label"
-                className="inputNew"
-                name="platform"
-                required
-                id="demo-simple-select"
-                // value={this.state.age}
-                onChange={this.handleChange}
-              >
-                <MenuItem value={'YouTube'}>YouTube</MenuItem>
-                <MenuItem value={'Blog'}>Blog</MenuItem>
-                <MenuItem value={'?'}>?</MenuItem>
-                
-              </Select>
-            </FormControl>
+                onChange={this.handleChangePlatform}
+                options={platform}
+                isSearchable={false}
+                placeholder="Platform Type"
+              />{" "}
+            </div>
           </div>
         </div>
 
@@ -83,14 +118,14 @@ class PlatformInfo extends React.Component {
             <p>Account Name:</p>
           </div>
           <div className="column2">
-          <div className={classes.root}>
-            <TextField
-              id="standard-basic"
-              name="accountName"
-              label="Account Name"
-              className="inputNew"
-              onChange={this.handleChange}
-            />
+            <div className="selectTabPlatform">
+              <input
+                className="inputField"
+                name="accountName"
+                placeholder="Account Name"
+                required
+                onChange={this.handleChange}
+              />
             </div>
           </div>
         </div>
@@ -104,17 +139,17 @@ class PlatformInfo extends React.Component {
             <p>Type of books you typically review:</p>
           </div>
           <div className="column2">
-            {/* <input
-              name="ageRange"
-              className="input"
-              type="number"
-              min="0"
-              required
-              // value={this.state.age}
-              // onChange={(e) => this.setState({ age: e.target.value })}
-              onChange={this.handleChange}
-            ></input> */}
-            <MultipleSelectTypeOfBook />
+            <div className="selectTab">
+              <Select
+                value={this.state.bookType}
+                isMulti
+                onChange={this.handleChangeBookType}
+                options={options}
+                isClearable={false}
+                isSearchable={false}
+                placeholder="Type of book(s)"
+              />{" "}
+            </div>
           </div>
         </div>
       </>
@@ -123,20 +158,5 @@ class PlatformInfo extends React.Component {
 }
 
 
-const styles = (theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
-});
 
-export default withStyles(styles)(PlatformInfo);
+export default PlatformInfo;

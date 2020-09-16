@@ -30,17 +30,22 @@ export default class ParentSurvey extends React.Component {
       masterpiece: "50",
       educational: "50",
       chatter: "50",
+      chatterElements: '',
+      inspiration: '50',
+      inspirationElements: '',
       heart: "50",
       feeling: "50",
+      feelingElements: '',
       accessibility: "50",
       diversity: "",
       favorite: "",
-      leastFav: "",
+      critique: "",
       stars: "",
       keywords: "",
       extraInfo: '',
       feedback: '',
       gripping: '',
+      pacing: ''
     };
   }
 
@@ -62,7 +67,7 @@ export default class ParentSurvey extends React.Component {
     handleFav = data => {
         this.setState({
             favorite: data.favorite,
-            leastFav: data.leastFav,
+            critique: data.leastFav,
         })
     }
 
@@ -108,10 +113,68 @@ export default class ParentSurvey extends React.Component {
     }
 
     handleChatter = data => {
+      var chatterElements = '';
+      if (data.character === true) {
+          chatterElements += 'the characters, ';
+      }
+      if (data.plot === true) {
+        chatterElements += 'the plot, ';
+      }
+      if (data.setting === true) {
+        chatterElements += 'the setting, ';
+      }
+      if (data.educational === true) {
+        chatterElements += 'the educational elements, ';
+      }
+      if (data.emotional === true) {
+        chatterElements += 'the emotional aspects, ';
+      }
+      if (data.other === true ) {
+        chatterElements += data.otherInfo;
+      }
+
         this.setState({
-            chatter: data.chatter
+            chatter: data.chatter,
+            chatterElements: chatterElements,
         })
     }
+
+    handleInspiration = data => {
+      var inspoElements= '';
+      if (data.resilience === true) {
+        inspoElements += 'resilience, ';
+      }
+      if (data.perseverance === true) {
+        inspoElements += 'perseverance, ';
+      }
+      if (data.kindness === true) {
+        inspoElements += 'kindness, ';
+      }
+      if (data.bravery === true) {
+        inspoElements += 'bravery, ';
+      }
+      if (data.hope === true) {
+        inspoElements += 'hope, ';
+      }
+      if (data.generosity === true) {
+        inspoElements += 'generosity, ';
+      }
+      if (data.empathy === true) {
+        inspoElements += 'empathy, ';
+      }
+      if (data.other === true) {
+        inspoElements += data.otherInfo;
+      }
+
+      this.setState({
+        inspiration: data.inspiration,
+        inspirationInfo: inspoElements,
+      })
+
+    }
+
+
+
     handleHeart = data => {
         this.setState({
             heart: data.heart
@@ -119,8 +182,26 @@ export default class ParentSurvey extends React.Component {
     }
 
     handleFeeling = data => {
+      var feelingElements = "";
+      if (data.happiness === true) {
+        feelingElements += "happiness, ";
+      }
+      if (data.sadness === true) {
+        feelingElements += "sadness, ";
+      }
+      if (data.fear === true) {
+        feelingElements += "fear, ";
+      }
+      if (data.anger === true) {
+        feelingElements += "anger, ";
+      }
+      if (data.other === true) {
+        feelingElements += data.otherInfo;
+      }
+
         this.setState({
-            feeling: data.feeling
+            feeling: data.feeling,
+            feelingElements: feelingElements
         })
     }
     handleAccessibility = data => {
@@ -133,9 +214,16 @@ export default class ParentSurvey extends React.Component {
         gripping: data.grippingGrade
       })
     }
+    handlePacing = data => {
+      this.setState({
+        pacing: data.pacing
+      })
+    }
 
   submitHandler = (e) => {
     alert(
+      this.state.pacing + 
+      this.state.chatterElements +
       this.state.gripping +
       "Name: " +
         this.state.name +
@@ -167,6 +255,7 @@ export default class ParentSurvey extends React.Component {
         " Feeling Factor: " +
         this.state.feeling +
         ";" +
+        'Feeling Elements: ' + this.state.feelingElements + ';' +
         " Accessibility Score: " +
         this.state.accessibility +
         ";" +
@@ -219,13 +308,13 @@ export default class ParentSurvey extends React.Component {
             <ClearnessCalculatorYounger onChange={this.handleClearness} />
 
             <ChatterBar onChange={this.handleChatter} />
-            <InspirationElement />
+            <InspirationElement onChange={this.handleInspiration} />
             <FeelingFactor onChange={this.handleFeeling} />
             <AccessibilityScore onChange={this.handleAccessibility} />
             <GrippingGrade onChange={this.handleGripping} />
 
             {/* for older */}
-            <PacingScore />
+            <PacingScore onChange={this.handlePacing} />
 
             <DiversityRep onChange={this.handleDiversity} />
             <FavLeastFav onChange={this.handleFav} />

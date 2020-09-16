@@ -5,20 +5,42 @@ import {
   faBook,
 } from "@fortawesome/free-solid-svg-icons";
 import { withStyles } from "@material-ui/core/styles";
-
-
-
 import "../personalInfo/personalInfo.css";
-import MultipleSelectTypeOfBook from "../../parts/multipleSelectTypeOfBook";
-import MultipleSelectGenres from "../../parts/multipleSelectGenres";
+import Select from "react-select";
+
+const options = [
+  { value: "Baby Books", label: "Baby Books" },
+  { value: "Picture Books", label: "Picture Books" },
+  { value: "Readers", label: "Readers" },
+  { value: "Chapter Books", label: "Chapter Books" },
+  { value: "Middle Grade Novels", label: "Middle Grade Novels" },
+  { value: "Young Adult", label: "Young Adult" },
+];
+
+const genres = [
+  { value: "Realistic Fiction", label: "Realistic Fiction" },
+  { value: "Historical Fiction", label: "Historical Fiction" },
+  { value: "Traditional Literature", label: "Traditional Literature" },
+  { value: "Science Fiction", label: "Science Fiction" },
+  { value: "Fantasy", label: "Fantasy" },
+  { value: "Mystery", label: "Mystery" },
+  { value: "Informational", label: "Informational" },
+  { value: "Biography", label: "Biography" },
+  { value: "Autobiography", label: "Autobiography" },
+  { value: "Poetry", label: "Poetry" },
+];
+
+
 
 class AuthorInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      genres: [],
       readingLevels: "",
-      bookType: [],
+      bookType: null,
+      book: "",
+      genreType: null,
+      genre: "",
     };
   }
 
@@ -30,12 +52,56 @@ class AuthorInfo extends React.Component {
     });
   };
 
-  handleChangeGenre = (data) => {
-    this.setState({ genres: data.genres }, () => {
+  
+
+  handleChangeBookType = (bookType) => {
+    var type;
+
+    if (bookType == null) {
+      this.setState({
+        bookType,
+      });
+    }
+    else {
+    for (var i = 0, l = bookType.length; i < l; i++) {
+      type += bookType[i].value + ", ";
+    }
+    var sliced = type.substring(9);
+    // console.log(sliced);
+    this.setState({ bookType });
+
+    this.setState({ book: sliced }, () => {
       if (this.props.onChange) {
         this.props.onChange(this.state);
       }
     });
+  }
+  };
+
+  
+  handleChangeGenre = (genreType) => {
+    var type;
+    if (genreType == null) {
+      this.setState({
+        genreType
+      })
+    }
+
+    else {
+    for (var i = 0, l = genreType.length; i < l; i++) {
+      type += genreType[i].value + ", ";
+    }
+    var sliced = type.substring(9);
+  
+    // console.log(sliced);
+    this.setState({ genreType });
+
+    this.setState({ genre: sliced }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(this.state);
+      }
+    });
+  }
   };
 
   render() {
@@ -60,31 +126,17 @@ class AuthorInfo extends React.Component {
             <p>Genre(s) of your books:</p>
           </div>
           <div className="column2">
-            {/* <FormControl className={classes.formControl}>
-              <InputLabel id="demo-simple-select-label">Genres</InputLabel>
+            <div className="selectTab">
               <Select
-                labelId="demo-simple-select-label"
-                className="inputNew"
-                name="genres"
-                // multiple
-                required
-                id="demo-simple-select"
-                onChange={this.handleChange}
-              >
-                <MenuItem value={"Baby Books"}>Baby Books</MenuItem>
-                <MenuItem value={"Picture Books"}>Picture Books</MenuItem>
-                <MenuItem value={"Readers"}>Readers</MenuItem>
-                <MenuItem value={"Chapter Books"}>Chapter Books</MenuItem>
-                <MenuItem value={"Middle Grade Novels"}>
-                  Middle Grade Novels
-                </MenuItem>
-                <MenuItem value={"YA"}>YA</MenuItem>
-              </Select>
-            </FormControl> */}
-            <MultipleSelectGenres
-              name="genres"
-              onChange={this.handleChangeGenre}
-            />
+                value={this.state.genreType}
+                isMulti
+                onChange={this.handleChangeGenre}
+                options={genres}
+                isSearchable={false}
+                isClearable={false}
+                placeholder="Genre(s)"
+              />{" "}
+            </div>
           </div>
         </div>
         <div className="row">
@@ -94,34 +146,20 @@ class AuthorInfo extends React.Component {
             </p>
           </div>
           <div className="column1">
-            <p>Type of book you typically work on:</p>
+            <p>Type of book(s) you typically work on:</p>
           </div>
           <div className="column2">
-            {/* <FormControl className={classes.formControl}>
-              <InputLabel id="demo-simple-select-label">Genres</InputLabel>
+            <div className="selectTab">
               <Select
-                labelId="demo-simple-select-label"
-                className="inputNew"
-                name="genres"
-                // multiple
-                required
-                id="demo-simple-select"
-                onChange={this.handleChange}
-              >
-                <MenuItem value={"Baby Books"}>Baby Books</MenuItem>
-                <MenuItem value={"Picture Books"}>Picture Books</MenuItem>
-                <MenuItem value={"Readers"}>Readers</MenuItem>
-                <MenuItem value={"Chapter Books"}>Chapter Books</MenuItem>
-                <MenuItem value={"Middle Grade Novels"}>
-                  Middle Grade Novels
-                </MenuItem>
-                <MenuItem value={"YA"}>YA</MenuItem>
-              </Select>
-            </FormControl> */}
-            <MultipleSelectTypeOfBook
-              name="bookType"
-              onChange={this.handleChangeGenre}
-            />
+                value={this.state.bookType}
+                isMulti
+                onChange={this.handleChangeBookType}
+                options={options}
+                isClearable={false}
+                isSearchable={false}
+                placeholder="Type of book(s)"
+              />{" "}
+            </div>
           </div>
         </div>
       </>

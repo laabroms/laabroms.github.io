@@ -40,3 +40,40 @@
 .column2 {
     flex: 70%;
 }
+
+.selectTab {
+    width: 250px;
+    padding-left: 10px;
+    padding-top: 23px
+}
+.inputField{
+    width:100%;
+    border:1px solid #CCCCCC;
+    border-radius:4px;
+    margin:8px 0;
+    height: 40px;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    /* transition:.1s; */
+    font-size: 16px;
+  }
+  .inputField:hover {
+      border-color: #999999;
+  }
+  
+  .inputField:focus{
+    border-color:#2584ff;
+    border: 2px solid #2584ff;
+  }
+
+  ::placeholder {
+      color: #808080
+  }
+
+
+  .selectTabPlatform {
+    width: 250px;
+    padding-left: 10px;
+    padding-top: 15px
+}

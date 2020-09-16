@@ -29,7 +29,7 @@ class GrippingGrade extends React.Component {
         <span className="boldText">Snooze-Fest:</span> It was hard to get through the book.
       </div>
     );
-    
+
     const curiosity = (<div><span className='boldText'>Piqued My Curiosity:</span> This book lost my attention at times, but generally kept me curious and interested.</div>);
 
     const putDown = (
@@ -68,6 +68,7 @@ class GrippingGrade extends React.Component {
             <RadioGroup
               name="grippingGrade"
               onChange={this.handleChange}
+              required
             >
               <FormControlLabel
                 value="Snooze-Fest"

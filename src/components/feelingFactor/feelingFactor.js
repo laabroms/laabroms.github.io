@@ -6,7 +6,6 @@ import Slider from "@material-ui/core/Slider";
 import "../chatterBar/chatterBar.css";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
 import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -220,9 +219,6 @@ const marks = [
   },
 ];
 
-function valuetext(value) {
-  return `${value}`;
-}
 
 
 

@@ -4,7 +4,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import './pacingScore.css';
-import { ThemeProvider, createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 class PacingScore extends React.Component {
   constructor(props) {
@@ -56,7 +56,7 @@ class PacingScore extends React.Component {
         <div className="radios">
             <MuiThemeProvider theme={theme}>
                 <FormControl component="fieldset">
-                <RadioGroup name="pacing" onChange={this.handleChange}>
+                <RadioGroup name="pacing" onChange={this.handleChange} required>
                     <FormControlLabel
                     value="slow-paced"
                     control={<Radio />}
