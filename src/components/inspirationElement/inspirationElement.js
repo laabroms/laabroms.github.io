@@ -51,7 +51,7 @@ class InspirationElement extends React.Component {
   handleChange = (newValue) => {
     this.setState(
       {
-        chatter: newValue,
+        inspiration: newValue,
       },
       () => {
         if (this.props.onChange) {

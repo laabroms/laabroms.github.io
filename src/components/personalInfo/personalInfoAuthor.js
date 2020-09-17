@@ -167,7 +167,7 @@ class PersonalInfoAuthor extends React.Component {
                 className="inputField"
                 name="name"
                 placeholder="Name"
-                required
+                
                 onChange={this.handleChange}
               />
             </div>

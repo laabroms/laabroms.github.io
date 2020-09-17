@@ -122,6 +122,8 @@ class PersonalInfo extends React.Component {
         this.props.onChange(this.state);
       }
     });
+
+
   };
 
   handleChangeAge = (e) => {
@@ -148,6 +150,8 @@ class PersonalInfo extends React.Component {
       }
     );
   };
+
+
   handleChangeCountry = (e) => {
     this.setState(
       {

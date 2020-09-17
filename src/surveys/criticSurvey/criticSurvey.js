@@ -27,15 +27,16 @@ class CriticSurvey extends React.Component {
       name: "",
       location: "",
       country: "",
-      platform: '',
-      accountName: '',
-      ageRange: '',
-      clearness: '50',
+      platform: "",
+      accountName: "",
+      bookType: "",
+      clearness: "50",
       masterpiece: "50",
       educational: "50",
       discussion: "50",
       heart: "50",
       feeling: "50",
+      feelingElements: '',
       accessibility: "50",
       diversity: "",
       favorite: "",
@@ -44,6 +45,13 @@ class CriticSurvey extends React.Component {
       keywords: "",
       extraInfo: "",
       feedback: "",
+      chatter: '50',
+      chatterElements: '',
+      inspiration: '50',
+      inspirationElements: '',
+      pacing: '',
+      gripping: '',
+      contentWarning: '',
     };
   }
 
@@ -56,12 +64,12 @@ class CriticSurvey extends React.Component {
   };
 
   handlePlatformInfo = (data) => {
-      this.setState({
-          platform: data.platform,
-          accountName: data.accountName,
-          ageRange: data.ageRange,
-      })
-  }
+    this.setState({
+      platform: data.platform,
+      accountName: data.accountName,
+      bookType: data.book,
+    });
+  };
   handleDiversity = (data) => {
     this.setState({
       diversity: data.diversityAndRepresentation,
@@ -122,24 +130,109 @@ class CriticSurvey extends React.Component {
   };
 
   handleChatter = (data) => {
+    var chatterElements = "";
+    if (data.character === true) {
+      chatterElements += "the characters, ";
+    }
+    if (data.plot === true) {
+      chatterElements += "the plot, ";
+    }
+    if (data.setting === true) {
+      chatterElements += "the setting, ";
+    }
+    if (data.educational === true) {
+      chatterElements += "the educational elements, ";
+    }
+    if (data.emotional === true) {
+      chatterElements += "the emotional aspects, ";
+    }
+    if (data.other === true) {
+      chatterElements += data.otherInfo;
+    }
+
     this.setState({
       chatter: data.chatter,
+      chatterElements: chatterElements,
     });
   };
-  handleHeart = (data) => {
+
+  handleInspiration = (data) => {
+    var inspoElements = "";
+    if (data.resilience === true) {
+      inspoElements += "resilience, ";
+    }
+    if (data.perseverance === true) {
+      inspoElements += "perseverance, ";
+    }
+    if (data.kindness === true) {
+      inspoElements += "kindness, ";
+    }
+    if (data.bravery === true) {
+      inspoElements += "bravery, ";
+    }
+    if (data.hope === true) {
+      inspoElements += "hope, ";
+    }
+    if (data.generosity === true) {
+      inspoElements += "generosity, ";
+    }
+    if (data.empathy === true) {
+      inspoElements += "empathy, ";
+    }
+    if (data.other === true) {
+      inspoElements += data.otherInfo;
+    }
+
     this.setState({
-      heart: data.heart,
+      inspiration: data.inspiration,
+      inspirationElements: inspoElements,
     });
   };
 
   handleFeeling = (data) => {
+    var feelingElements = "";
+    if (data.happiness === true) {
+      feelingElements += "happiness, ";
+    }
+    if (data.sadness === true) {
+      feelingElements += "sadness, ";
+    }
+    if (data.fear === true) {
+      feelingElements += "fear, ";
+    }
+    if (data.anger === true) {
+      feelingElements += "anger, ";
+    }
+    if (data.other === true) {
+      feelingElements += data.otherInfo;
+    }
+
     this.setState({
       feeling: data.feeling,
+      feelingElements: feelingElements,
     });
   };
-  handleAccessibilty = (data) => {
+  
+
+  handleAccessibility = (data) => {
     this.setState({
       accessibility: data.accessibility,
+    });
+  };
+  handleGripping = (data) => {
+    this.setState({
+      gripping: data.grippingGrade,
+    });
+  };
+  handlePacing = (data) => {
+    this.setState({
+      pacing: data.pacing,
+    });
+  };
+
+  handleWarning = (data) => {
+    this.setState({
+      contentWarning: data.contentWarning,
     });
   };
 
@@ -154,12 +247,15 @@ class CriticSurvey extends React.Component {
         " Country: " +
         this.state.country +
         ";" +
-        " Platform Type: " + 
-        this.state.platform + ';'+
-        " Account Name: " + 
-        this.state.accountName + ';' + 
-        "Typical age r50 books: " + 
-        this.state.ageRange + ';' +
+        " Platform Type: " +
+        this.state.platform +
+        ";" +
+        " Account Name: " +
+        this.state.accountName +
+        ";" +
+        "Book Type: " +
+        this.state.bookType +
+        ";" +
         " Clearness Calculator: " +
         this.state.clearness +
         ";" +
@@ -233,22 +329,19 @@ class CriticSurvey extends React.Component {
             <ClearnessCalculator onChange={this.handleClearness} />
             <MasterpieceMeter onChange={this.handleMasterpiece} />
 
-            <ChatterBar />
-            <InspirationElement />
+            <ChatterBar onChange={this.handleChatter} />
+            <InspirationElement onChange={this.handleInspiration} />
             <FeelingFactor onChange={this.handleFeeling} />
-            <AccessibilityScore onChange={this.handleAccessibilty} />
-            <GrippingGrade />
-            <PacingScore />
+            <AccessibilityScore onChange={this.handleAccessibility} />
+            <GrippingGrade onChange={this.handleGripping} />
+            <PacingScore onChange={this.handlePacing} />
             <DiversityRep onChange={this.handleDiversity} />
             <FavLeastFav onChange={this.handleFav} />
-            <ContentWarning />
+            <ContentWarning onChange={this.handleWarning} />
             <StarRating onChange={this.handleStars} />
             <Keywords onChange={this.handleKeywords} />
             <ExtraInfo onChange={this.handleExtraInfo} />
             <Feedback onChange={this.handleFeedback} />
-
-            
-            
           </div>
 
           <button

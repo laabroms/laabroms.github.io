@@ -168,7 +168,7 @@ export default class ParentSurvey extends React.Component {
 
       this.setState({
         inspiration: data.inspiration,
-        inspirationInfo: inspoElements,
+        inspirationElements: inspoElements,
       })
 
     }
@@ -265,8 +265,8 @@ export default class ParentSurvey extends React.Component {
         " Favorite Part: " +
         this.state.favorite +
         ";" +
-        " Least Favorite Part: " +
-        this.state.leastFav +
+        " Critique: " +
+        this.state.critique +
         ";" +
         " Stars: " +
         this.state.stars +
