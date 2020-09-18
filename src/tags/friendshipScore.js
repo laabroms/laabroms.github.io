@@ -1,5 +1,5 @@
 import React from "react";
-import "./chatterBar.css";
+import "./younger.css";
 import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -9,19 +9,24 @@ import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
-class ChatterBarTeacher extends React.Component {
+class FriendshipScore extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatter: "50",
-      character: false,
-      plot: false,
-      setting: false,
-      educational: false,
-      emotional: false,
+      friendship: "50",
+      bestFriends: false,
+      onlyAtSchool: false,
+      outOfConvenience: false,
+      fake: false,
+      new: false,
+      frenemies: false,
+      lifelong: false,
+      partners: false,
+      thickAndThin: false,
+      unhealthy: false,
+      secretCrush: false,
       other: false,
       otherInfo: "",
-      none: false,
     };
   }
 
@@ -49,7 +54,7 @@ class ChatterBarTeacher extends React.Component {
   handleChange = (newValue) => {
     this.setState(
       {
-        chatter: newValue,
+        friendship: newValue,
       },
       () => {
         if (this.props.onChange) {
@@ -65,9 +70,9 @@ class ChatterBarTeacher extends React.Component {
     return (
       <>
         <p className="title">
-          <span className="colorChange3">CHATTER BAR:</span> How much did you{" "}
-          <span className="colorChange3">talk or think</span> about this book
-          after you finished reading it?
+          <span className="colorChangeFriendship">FRIENDSHIP SCORE:</span> Does
+          this book feature friendships that are{" "}
+          <span className="colorChangeFriendship">central to the story?</span>
         </p>
 
         <div className={classes.root}>
@@ -75,7 +80,7 @@ class ChatterBarTeacher extends React.Component {
             <Slider
               onChange={(e, value) => this.handleChange(value)}
               defaultValue={50}
-              value={this.state.chatter}
+              value={this.state.friendship}
               // valueLabelDisplay="auto"
               // getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-custom"
@@ -85,8 +90,12 @@ class ChatterBarTeacher extends React.Component {
           </ThemeProvider>
         </div>
         <p className="moreInfo">
-          Which element(s) of the book would you/your students most likely want to
-          <span className="colorChange3"> discuss</span> after reading?
+          How would you describe these
+          <span className="colorChangeFriendship">
+            {" "}
+            friendship storylines?
+          </span>{" "}
+          (select all that apply)
         </p>
         {/* <div className="checkbox"></div> */}
         <div className="checkbox">
@@ -96,66 +105,145 @@ class ChatterBarTeacher extends React.Component {
                 <Checkbox
                   checked={this.state.character}
                   onChange={this.handleChangeCheck}
-                  name="character"
+                  name="bestFriends"
                   style={{
-                    color: "#c300ff",
+                    color: "#00c427",
                   }}
                 />
               }
-              label="The characters"
+              label="Best Friends"
             />
             <FormControlLabel
               control={
                 <Checkbox
                   checked={this.state.plot}
                   onChange={this.handleChangeCheck}
-                  name="plot"
+                  name="onlyAtSchool"
                   style={{
-                    color: "#c300ff",
+                    color: "#00c427",
                   }}
                 />
               }
-              label="The plot"
+              label="Only-at-school Friends"
             />
             <FormControlLabel
               control={
                 <Checkbox
                   checked={this.state.setting}
                   onChange={this.handleChangeCheck}
-                  name="setting"
+                  name="outOfConvenience"
                   style={{
-                    color: "#c300ff",
+                    color: "#00c427",
                   }}
                 />
               }
-              label="The setting"
+              label="Friends out of convenience"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.educational}
+                  checked={this.state.setting}
                   onChange={this.handleChangeCheck}
-                  name="educational"
+                  name="fake"
                   style={{
-                    color: "#c300ff",
+                    color: "#00c427",
                   }}
                 />
               }
-              label="The educational elements"
+              label="Fake Friends"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.emotional}
+                  checked={this.state.setting}
                   onChange={this.handleChangeCheck}
-                  name="emotional"
+                  name="new"
                   style={{
-                    color: "#c300ff",
+                    color: "#00c427",
                   }}
                 />
               }
-              label="The emotional aspects"
+              label="New Friends"
             />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.setting}
+                  onChange={this.handleChangeCheck}
+                  name="frenemies"
+                  style={{
+                    color: "#00c427",
+                  }}
+                />
+              }
+              label="Frenemies"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.setting}
+                  onChange={this.handleChangeCheck}
+                  name="lifelong"
+                  style={{
+                    color: "#00c427",
+                  }}
+                />
+              }
+              label="Lifelong Friends"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.setting}
+                  onChange={this.handleChangeCheck}
+                  name="partners"
+                  style={{
+                    color: "#00c427",
+                  }}
+                />
+              }
+              label="Partners-in-Crime"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.setting}
+                  onChange={this.handleChangeCheck}
+                  name="thickAndThin"
+                  style={{
+                    color: "#00c427",
+                  }}
+                />
+              }
+              label="Through Thick-and-Thin Friendships"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.setting}
+                  onChange={this.handleChangeCheck}
+                  name="unhealthy"
+                  style={{
+                    color: "#00c427",
+                  }}
+                />
+              }
+              label="Unhealthy friendships: mean-spirited"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.setting}
+                  onChange={this.handleChangeCheck}
+                  name="secretCrush"
+                  style={{
+                    color: "#00c427",
+                  }}
+                />
+              }
+              label="Secret-Crush Friendships: they like each other but won't express it"
+            />
+
             <div className="otherInfoSection">
               <FormControlLabel
                 control={
@@ -164,7 +252,7 @@ class ChatterBarTeacher extends React.Component {
                     onChange={this.handleChangeCheck}
                     name="other"
                     style={{
-                      color: "#c300ff",
+                      color: "#00c427",
                     }}
                   />
                 }
@@ -175,7 +263,7 @@ class ChatterBarTeacher extends React.Component {
                   <input
                     name="otherInfo"
                     onChange={this.handleChangeOtherInfo}
-                    className="inputChatter"
+                    className="inputFriendship"
                   />
                 </FadeIn>
               ) : null}
@@ -196,7 +284,6 @@ const styles = (theme) => ({
     backgroundColor: "#e3e3e3",
     border: "4px solid",
     borderColor: "#d1d1d1",
-    // borderImageSource: "linear-gradient(to right, #f87D1D, #5222E2)",
     borderImageSlice: "1",
     borderRadius: 10,
   },
@@ -209,7 +296,7 @@ const muiTheme = createMuiTheme({
         color: "#666666",
       },
       track: {
-        color: "#2b2b2b",
+        color: "#8c8c8c",
       },
       rail: {
         color: "black",
@@ -221,24 +308,16 @@ const muiTheme = createMuiTheme({
 const marks = [
   {
     value: 0,
-    label: "A little bit",
+    label: "Not very important",
   },
   {
     value: 50,
-    label: "Some",
+    label: "Somewhat important",
   },
   {
     value: 100,
-    label: "Non-stop",
+    label: "Very central to the story",
   },
 ];
 
-// function valuetext(value) {
-//   return `${value}`;
-// }
-
-// function valueLabelFormat(value) {
-//   return marks.findIndex((mark) => mark.value === value) + 1;
-// }
-
-export default withStyles(styles)(ChatterBarTeacher);
+export default withStyles(styles)(FriendshipScore);

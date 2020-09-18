@@ -106,7 +106,7 @@ const styles = (theme) => ({
     paddingTop: 10,
     backgroundColor: "#e3e3e3",
     borderColor: "#d1d1d1",
-    border: "5px solid",
+    border: "4px solid",
     borderRadius: 10,
   },
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import "./chatterBar.css";
+import "./younger.css";
 import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -9,20 +9,18 @@ import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
-
-
-class ChatterBar extends React.Component {
+class ActionAverage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatter: "50",
-      character: false,
-      plot: false,
-      setting: false,
-      educational: false,
-      emotional: false,
+      action: "50",
+      gradualAdventure: false,
+      bursts: false,
+      goodVsEvil: false,
+      roadTrip: false,
+      findSomething: false,
       other: false,
-      otherInfo: '',
+      otherInfo: "",
     };
   }
 
@@ -35,19 +33,22 @@ class ChatterBar extends React.Component {
   };
 
   handleChangeOtherInfo = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(this.state);
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      },
+      () => {
+        if (this.props.onChange) {
+          this.props.onChange(this.state);
+        }
       }
-    })
-  }
+    );
+  };
 
   handleChange = (newValue) => {
     this.setState(
       {
-        chatter: newValue,
+        action: newValue,
       },
       () => {
         if (this.props.onChange) {
@@ -60,13 +61,12 @@ class ChatterBar extends React.Component {
   render() {
     const { classes } = this.props;
 
-
     return (
       <>
         <p className="title">
-          <span className="colorChange3">CHATTER BAR:</span> How much did you{" "}
-          <span className="colorChange3">talk or think</span> about this book
-          after you finished reading it?
+          <span className="colorChangeAction">ACTION AVERAGE:</span> What was
+          the <span className="colorChangeAction"> action and adventure </span>{" "}
+          like in this book?
         </p>
 
         <div className={classes.root}>
@@ -74,7 +74,7 @@ class ChatterBar extends React.Component {
             <Slider
               onChange={(e, value) => this.handleChange(value)}
               defaultValue={50}
-              value={this.state.chatter}
+              value={this.state.action}
               // valueLabelDisplay="auto"
               // getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-custom"
@@ -84,8 +84,9 @@ class ChatterBar extends React.Component {
           </ThemeProvider>
         </div>
         <p className="moreInfo">
-          Which element(s) of the book would you/your child most likely want to
-          <span className="colorChange3"> discuss</span> after reading?
+          What type of
+          <span className="colorChangeAction"> action and adventure </span> was
+          in this book? (select all that apply)
         </p>
         {/* <div className="checkbox"></div> */}
         <div className="checkbox">
@@ -93,68 +94,69 @@ class ChatterBar extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.character}
+                  checked={this.state.gradualAdventure}
                   onChange={this.handleChangeCheck}
-                  name="character"
+                  name="gradualAdventure"
                   style={{
-                    color: "#c300ff",
+                    color: "#003e9c",
                   }}
                 />
               }
-              label="The characters"
+              label="Gradually building adventure"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.plot}
+                  checked={this.state.bursts}
                   onChange={this.handleChangeCheck}
-                  name="plot"
+                  name="bursts"
                   style={{
-                    color: "#c300ff",
+                    color: "#003e9c",
                   }}
                 />
               }
-              label="The plot"
+              label="Quick bursts of action"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.goodVsEvil}
                   onChange={this.handleChangeCheck}
-                  name="setting"
+                  name="goodVsEvil"
                   style={{
-                    color: "#c300ff",
+                    color: "#003e9c",
                   }}
                 />
               }
-              label="The setting"
+              label="Good vs. evil battles"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.educational}
+                  checked={this.state.roadTrip}
                   onChange={this.handleChangeCheck}
-                  name="educational"
+                  name="roadTrip"
                   style={{
-                    color: "#c300ff",
+                    color: "#003e9c",
                   }}
                 />
               }
-              label="The educational elements"
+              label="Road trip adventure"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.emotional}
+                  checked={this.state.findSomething}
                   onChange={this.handleChangeCheck}
-                  name="emotional"
+                  name="findSomething"
                   style={{
-                    color: "#c300ff",
+                    color: "#003e9c",
                   }}
                 />
               }
-              label="The emotional aspects"
+              label="Adventure to find something"
             />
+
             <div className="otherInfoSection">
               <FormControlLabel
                 control={
@@ -163,7 +165,7 @@ class ChatterBar extends React.Component {
                     onChange={this.handleChangeCheck}
                     name="other"
                     style={{
-                      color: "#c300ff",
+                      color: "#003e9c",
                     }}
                   />
                 }
@@ -174,12 +176,11 @@ class ChatterBar extends React.Component {
                   <input
                     name="otherInfo"
                     onChange={this.handleChangeOtherInfo}
-                    className="inputChatter"
+                    className="inputAction"
                   />
                 </FadeIn>
               ) : null}
             </div>
-            
           </FormGroup>
         </div>
       </>
@@ -196,11 +197,9 @@ const styles = (theme) => ({
     backgroundColor: "#e3e3e3",
     border: "4px solid",
     borderColor: "#d1d1d1",
-    // borderImageSource: "linear-gradient(to right, #f87D1D, #5222E2)",
     borderImageSlice: "1",
     borderRadius: 10,
   },
-  
 });
 
 const muiTheme = createMuiTheme({
@@ -222,28 +221,18 @@ const muiTheme = createMuiTheme({
 const marks = [
   {
     value: 0,
-    label: "A little bit",
+    label: "Slow",
   },
   {
     value: 50,
-    label: "Some",
+    label: "Some action",
   },
   {
     value: 100,
-    label: "Non-stop",
+    label: "Edge-of-my-seat exciting",
   },
-  
 ];
 
-// function valuetext(value) {
-//   return `${value}`;
-// }
-
-// function valueLabelFormat(value) {
-//   return marks.findIndex((mark) => mark.value === value) + 1;
-// }
 
 
-export default withStyles(styles)(ChatterBar);
-
-
+export default withStyles(styles)(ActionAverage);

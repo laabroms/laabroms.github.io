@@ -1,5 +1,5 @@
 import React from "react";
-import "./chatterBar.css";
+import "./younger.css";
 import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -9,20 +9,22 @@ import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
-
-
-class ChatterBar extends React.Component {
+class AwesomeAnimals extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatter: "50",
-      character: false,
-      plot: false,
-      setting: false,
-      educational: false,
-      emotional: false,
+      animals: "50",
+      cuteAnimals: false,
+      scaryAnimals: false,
+      photographedAnimals: false,
+      illustratedAnimals: false,
+      fantasyAnimals: false,
+      wildAnimals: false,
+      zooAnimals: false,
+      talkingAnimals: false,
+      petAnimals: false,
       other: false,
-      otherInfo: '',
+      otherInfo: "",
     };
   }
 
@@ -35,19 +37,22 @@ class ChatterBar extends React.Component {
   };
 
   handleChangeOtherInfo = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(this.state);
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      },
+      () => {
+        if (this.props.onChange) {
+          this.props.onChange(this.state);
+        }
       }
-    })
-  }
+    );
+  };
 
   handleChange = (newValue) => {
     this.setState(
       {
-        chatter: newValue,
+        animals: newValue,
       },
       () => {
         if (this.props.onChange) {
@@ -60,13 +65,12 @@ class ChatterBar extends React.Component {
   render() {
     const { classes } = this.props;
 
-
     return (
       <>
         <p className="title">
-          <span className="colorChange3">CHATTER BAR:</span> How much did you{" "}
-          <span className="colorChange3">talk or think</span> about this book
-          after you finished reading it?
+          <span className="colorChangeAwesome">AWESOME ANIMALS:</span> Does this
+          book feature friendships animals that are{" "}
+          <span className="colorChangeAwesome">central to the story?</span>
         </p>
 
         <div className={classes.root}>
@@ -74,7 +78,7 @@ class ChatterBar extends React.Component {
             <Slider
               onChange={(e, value) => this.handleChange(value)}
               defaultValue={50}
-              value={this.state.chatter}
+              value={this.state.animals}
               // valueLabelDisplay="auto"
               // getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-custom"
@@ -84,8 +88,9 @@ class ChatterBar extends React.Component {
           </ThemeProvider>
         </div>
         <p className="moreInfo">
-          Which element(s) of the book would you/your child most likely want to
-          <span className="colorChange3"> discuss</span> after reading?
+          What
+          <span className="colorChangeAwesome"> kinds of animals</span> are
+          included in this book? (select all that apply)
         </p>
         {/* <div className="checkbox"></div> */}
         <div className="checkbox">
@@ -93,68 +98,122 @@ class ChatterBar extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.character}
+                  checked={this.state.cuteAnimals}
                   onChange={this.handleChangeCheck}
-                  name="character"
+                  name="cuteAnimals"
                   style={{
-                    color: "#c300ff",
+                    color: "#aa00ff",
                   }}
                 />
               }
-              label="The characters"
+              label="Cute Animals"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.plot}
+                  checked={this.state.scaryAnimals}
                   onChange={this.handleChangeCheck}
-                  name="plot"
+                  name="scaryAnimals"
                   style={{
-                    color: "#c300ff",
+                    color: "#aa00ff",
                   }}
                 />
               }
-              label="The plot"
+              label="Scary Animals"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.photographedAnimals}
                   onChange={this.handleChangeCheck}
-                  name="setting"
+                  name="photographedAnimals"
                   style={{
-                    color: "#c300ff",
+                    color: "#aa00ff",
                   }}
                 />
               }
-              label="The setting"
+              label="Photographed Animals"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.educational}
+                  checked={this.state.illustratedAnimals}
                   onChange={this.handleChangeCheck}
-                  name="educational"
+                  name="illustratedAnimals"
                   style={{
-                    color: "#c300ff",
+                    color: "#aa00ff",
                   }}
                 />
               }
-              label="The educational elements"
+              label="Illustrated Animals"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.emotional}
+                  checked={this.state.fantasyAnimals}
                   onChange={this.handleChangeCheck}
-                  name="emotional"
+                  name="fantasyAnimals"
                   style={{
-                    color: "#c300ff",
+                    color: "#aa00ff",
                   }}
                 />
               }
-              label="The emotional aspects"
+              label="Fantasy Animals"
             />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.wildAnimals}
+                  onChange={this.handleChangeCheck}
+                  name="wildAnimals"
+                  style={{
+                    color: "#aa00ff",
+                  }}
+                />
+              }
+              label="Wild Animals"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.zooAnimals}
+                  onChange={this.handleChangeCheck}
+                  name="zooAnimals"
+                  style={{
+                    color: "#aa00ff",
+                  }}
+                />
+              }
+              label="Zoo Animals "
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.talkingAnimals}
+                  onChange={this.handleChangeCheck}
+                  name="talkingAnimals"
+                  style={{
+                    color: "#aa00ff",
+                  }}
+                />
+              }
+              label="Talking Animals"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.petAnimals}
+                  onChange={this.handleChangeCheck}
+                  name="petAnimals"
+                  style={{
+                    color: "#aa00ff",
+                  }}
+                />
+              }
+              label="Pet Animals"
+            />
+            
+            
             <div className="otherInfoSection">
               <FormControlLabel
                 control={
@@ -163,7 +222,7 @@ class ChatterBar extends React.Component {
                     onChange={this.handleChangeCheck}
                     name="other"
                     style={{
-                      color: "#c300ff",
+                      color: "#aa00ff",
                     }}
                   />
                 }
@@ -174,12 +233,11 @@ class ChatterBar extends React.Component {
                   <input
                     name="otherInfo"
                     onChange={this.handleChangeOtherInfo}
-                    className="inputChatter"
+                    className="inputAwesome"
                   />
                 </FadeIn>
               ) : null}
             </div>
-            
           </FormGroup>
         </div>
       </>
@@ -196,11 +254,9 @@ const styles = (theme) => ({
     backgroundColor: "#e3e3e3",
     border: "4px solid",
     borderColor: "#d1d1d1",
-    // borderImageSource: "linear-gradient(to right, #f87D1D, #5222E2)",
     borderImageSlice: "1",
     borderRadius: 10,
   },
-  
 });
 
 const muiTheme = createMuiTheme({
@@ -222,28 +278,16 @@ const muiTheme = createMuiTheme({
 const marks = [
   {
     value: 0,
-    label: "A little bit",
+    label: "Not very important",
   },
   {
     value: 50,
-    label: "Some",
+    label: "Somewhat important",
   },
   {
     value: 100,
-    label: "Non-stop",
+    label: "Very central to the story",
   },
-  
 ];
 
-// function valuetext(value) {
-//   return `${value}`;
-// }
-
-// function valueLabelFormat(value) {
-//   return marks.findIndex((mark) => mark.value === value) + 1;
-// }
-
-
-export default withStyles(styles)(ChatterBar);
-
-
+export default withStyles(styles)(AwesomeAnimals);

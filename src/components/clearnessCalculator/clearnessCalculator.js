@@ -76,7 +76,7 @@ const styles = (theme) => ({
     // backgroundOpacity: '50%',
     paddingTop: 10,
 
-    border: "5px solid",
+    border: "4px solid",
     borderColor: "#d1d1d1",
     // borderImageSource: "linear-gradient(45deg, #c41b1b, #45f542)",
     borderImageSlice: "1",

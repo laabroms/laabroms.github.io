@@ -223,7 +223,7 @@ const styles = (theme) => ({
     paddingTop: 10,
     paddingRight: "9%",
     backgroundColor: "#e3e3e3",
-    border: "5px solid",
+    border: "4px solid",
     borderColor: "#d1d1d1",
     // borderImageSource: "linear-gradient(to right, #f87D1D, #5222E2)",
     borderImageSlice: "1",

@@ -1,5 +1,5 @@
 import React from "react";
-import "./chatterBar.css";
+import "./younger.css";
 import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -9,20 +9,17 @@ import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
-
-
-class ChatterBar extends React.Component {
+class SuspenseScale extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatter: "50",
-      character: false,
-      plot: false,
+      suspense: "50",
+      characters: false,
+      pacing: false,
+      conflict: false,
       setting: false,
-      educational: false,
-      emotional: false,
       other: false,
-      otherInfo: '',
+      otherInfo: "",
     };
   }
 
@@ -35,19 +32,22 @@ class ChatterBar extends React.Component {
   };
 
   handleChangeOtherInfo = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(this.state);
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      },
+      () => {
+        if (this.props.onChange) {
+          this.props.onChange(this.state);
+        }
       }
-    })
-  }
+    );
+  };
 
   handleChange = (newValue) => {
     this.setState(
       {
-        chatter: newValue,
+        suspense: newValue,
       },
       () => {
         if (this.props.onChange) {
@@ -60,13 +60,11 @@ class ChatterBar extends React.Component {
   render() {
     const { classes } = this.props;
 
-
     return (
       <>
         <p className="title">
-          <span className="colorChange3">CHATTER BAR:</span> How much did you{" "}
-          <span className="colorChange3">talk or think</span> about this book
-          after you finished reading it?
+          <span className="colorChangeSuspense">SUSPENSE SCALE:</span> How{" "}
+          <span className="colorChangeSuspense"> suspenseful </span>is this book?
         </p>
 
         <div className={classes.root}>
@@ -74,7 +72,7 @@ class ChatterBar extends React.Component {
             <Slider
               onChange={(e, value) => this.handleChange(value)}
               defaultValue={50}
-              value={this.state.chatter}
+              value={this.state.suspense}
               // valueLabelDisplay="auto"
               // getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-custom"
@@ -84,8 +82,7 @@ class ChatterBar extends React.Component {
           </ThemeProvider>
         </div>
         <p className="moreInfo">
-          Which element(s) of the book would you/your child most likely want to
-          <span className="colorChange3"> discuss</span> after reading?
+          What elements of the book did you find <span className='colorChangeSuspense'> suspenseful and intriguing </span>? (select all that apply)
         </p>
         {/* <div className="checkbox"></div> */}
         <div className="checkbox">
@@ -93,28 +90,41 @@ class ChatterBar extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.character}
+                  checked={this.state.characters}
                   onChange={this.handleChangeCheck}
-                  name="character"
+                  name="characters"
                   style={{
-                    color: "#c300ff",
+                    color: "#00659c",
                   }}
                 />
               }
-              label="The characters"
+              label="The characters/their identities (who's the 'good guy' and who's the 'bad guy'?)"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.plot}
+                  checked={this.state.pacing}
                   onChange={this.handleChangeCheck}
-                  name="plot"
+                  name="pacing"
                   style={{
-                    color: "#c300ff",
+                    color: "#00659c",
                   }}
                 />
               }
-              label="The plot"
+              label="The pacing"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.conflict}
+                  onChange={this.handleChangeCheck}
+                  name="conflict"
+                  style={{
+                    color: "#00659c",
+                  }}
+                />
+              }
+              label="The conflict"
             />
             <FormControlLabel
               control={
@@ -123,38 +133,13 @@ class ChatterBar extends React.Component {
                   onChange={this.handleChangeCheck}
                   name="setting"
                   style={{
-                    color: "#c300ff",
+                    color: "#00659c",
                   }}
                 />
               }
-              label="The setting"
+              label="The setting/atmosphere"
             />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={this.state.educational}
-                  onChange={this.handleChangeCheck}
-                  name="educational"
-                  style={{
-                    color: "#c300ff",
-                  }}
-                />
-              }
-              label="The educational elements"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={this.state.emotional}
-                  onChange={this.handleChangeCheck}
-                  name="emotional"
-                  style={{
-                    color: "#c300ff",
-                  }}
-                />
-              }
-              label="The emotional aspects"
-            />
+           
             <div className="otherInfoSection">
               <FormControlLabel
                 control={
@@ -163,7 +148,7 @@ class ChatterBar extends React.Component {
                     onChange={this.handleChangeCheck}
                     name="other"
                     style={{
-                      color: "#c300ff",
+                      color: "#00659c",
                     }}
                   />
                 }
@@ -174,7 +159,7 @@ class ChatterBar extends React.Component {
                   <input
                     name="otherInfo"
                     onChange={this.handleChangeOtherInfo}
-                    className="inputChatter"
+                    className="inputSuspense"
                   />
                 </FadeIn>
               ) : null}
@@ -196,11 +181,9 @@ const styles = (theme) => ({
     backgroundColor: "#e3e3e3",
     border: "4px solid",
     borderColor: "#d1d1d1",
-    // borderImageSource: "linear-gradient(to right, #f87D1D, #5222E2)",
     borderImageSlice: "1",
     borderRadius: 10,
   },
-  
 });
 
 const muiTheme = createMuiTheme({
@@ -222,28 +205,16 @@ const muiTheme = createMuiTheme({
 const marks = [
   {
     value: 0,
-    label: "A little bit",
+    label: "Boring and not suspenseful",
   },
   {
     value: 50,
-    label: "Some",
+    label: "Somewhat suspenseful",
   },
   {
     value: 100,
-    label: "Non-stop",
+    label: "Very suspenseful",
   },
-  
 ];
 
-// function valuetext(value) {
-//   return `${value}`;
-// }
-
-// function valueLabelFormat(value) {
-//   return marks.findIndex((mark) => mark.value === value) + 1;
-// }
-
-
-export default withStyles(styles)(ChatterBar);
-
-
+export default withStyles(styles)(SuspenseScale);

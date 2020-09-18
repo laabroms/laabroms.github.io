@@ -1,5 +1,5 @@
 import React from "react";
-import "./chatterBar.css";
+import "./younger.css";
 import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -9,20 +9,17 @@ import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
-
-
-class ChatterBar extends React.Component {
+class SillyScore extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatter: "50",
-      character: false,
-      plot: false,
-      setting: false,
-      educational: false,
+      spooky: "50",
+      fun: false,
+      spookiness: false,
+      humorous: false,
       emotional: false,
       other: false,
-      otherInfo: '',
+      otherInfo: "",
     };
   }
 
@@ -35,19 +32,22 @@ class ChatterBar extends React.Component {
   };
 
   handleChangeOtherInfo = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(this.state);
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      },
+      () => {
+        if (this.props.onChange) {
+          this.props.onChange(this.state);
+        }
       }
-    })
-  }
+    );
+  };
 
   handleChange = (newValue) => {
     this.setState(
       {
-        chatter: newValue,
+        spooky: newValue,
       },
       () => {
         if (this.props.onChange) {
@@ -60,13 +60,12 @@ class ChatterBar extends React.Component {
   render() {
     const { classes } = this.props;
 
-
     return (
       <>
         <p className="title">
-          <span className="colorChange3">CHATTER BAR:</span> How much did you{" "}
-          <span className="colorChange3">talk or think</span> about this book
-          after you finished reading it?
+          <span className="colorChangeSpooky">SPOOKY SCORE:</span> Was this book
+          filled with{" "}
+          <span className="colorChangeSpooky">Halloween spirit?</span>
         </p>
 
         <div className={classes.root}>
@@ -74,7 +73,7 @@ class ChatterBar extends React.Component {
             <Slider
               onChange={(e, value) => this.handleChange(value)}
               defaultValue={50}
-              value={this.state.chatter}
+              value={this.state.spooky}
               // valueLabelDisplay="auto"
               // getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-custom"
@@ -84,8 +83,8 @@ class ChatterBar extends React.Component {
           </ThemeProvider>
         </div>
         <p className="moreInfo">
-          Which element(s) of the book would you/your child most likely want to
-          <span className="colorChange3"> discuss</span> after reading?
+          What was the 
+          <span className="colorChangeSpooky"> tone</span> of this spooky book? (select all that apply)
         </p>
         {/* <div className="checkbox"></div> */}
         <div className="checkbox">
@@ -93,54 +92,41 @@ class ChatterBar extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.character}
+                  checked={this.state.fun}
                   onChange={this.handleChangeCheck}
-                  name="character"
+                  name="fun"
                   style={{
-                    color: "#c300ff",
+                    color: "#3b0087",
                   }}
                 />
               }
-              label="The characters"
+              label="Fun"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.plot}
+                  checked={this.state.spookiness}
                   onChange={this.handleChangeCheck}
-                  name="plot"
+                  name="spookiness"
                   style={{
-                    color: "#c300ff",
+                    color: "#3b0087",
                   }}
                 />
               }
-              label="The plot"
+              label="Spooky"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.humorous}
                   onChange={this.handleChangeCheck}
-                  name="setting"
+                  name="humorous"
                   style={{
-                    color: "#c300ff",
+                    color: "#3b0087",
                   }}
                 />
               }
-              label="The setting"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={this.state.educational}
-                  onChange={this.handleChangeCheck}
-                  name="educational"
-                  style={{
-                    color: "#c300ff",
-                  }}
-                />
-              }
-              label="The educational elements"
+              label="Humorous"
             />
             <FormControlLabel
               control={
@@ -149,12 +135,13 @@ class ChatterBar extends React.Component {
                   onChange={this.handleChangeCheck}
                   name="emotional"
                   style={{
-                    color: "#c300ff",
+                    color: "#3b0087",
                   }}
                 />
               }
-              label="The emotional aspects"
+              label="Emotional"
             />
+
             <div className="otherInfoSection">
               <FormControlLabel
                 control={
@@ -163,7 +150,7 @@ class ChatterBar extends React.Component {
                     onChange={this.handleChangeCheck}
                     name="other"
                     style={{
-                      color: "#c300ff",
+                      color: "#3b0087",
                     }}
                   />
                 }
@@ -174,12 +161,11 @@ class ChatterBar extends React.Component {
                   <input
                     name="otherInfo"
                     onChange={this.handleChangeOtherInfo}
-                    className="inputChatter"
+                    className="inputSpooky"
                   />
                 </FadeIn>
               ) : null}
             </div>
-            
           </FormGroup>
         </div>
       </>
@@ -200,7 +186,6 @@ const styles = (theme) => ({
     borderImageSlice: "1",
     borderRadius: 10,
   },
-  
 });
 
 const muiTheme = createMuiTheme({
@@ -222,17 +207,16 @@ const muiTheme = createMuiTheme({
 const marks = [
   {
     value: 0,
-    label: "A little bit",
+    label: "No, pretty bland",
   },
   {
     value: 50,
-    label: "Some",
+    label: "Somewhat",
   },
   {
     value: 100,
-    label: "Non-stop",
+    label: "Yes, brimming with spirit",
   },
-  
 ];
 
 // function valuetext(value) {
@@ -243,7 +227,4 @@ const marks = [
 //   return marks.findIndex((mark) => mark.value === value) + 1;
 // }
 
-
-export default withStyles(styles)(ChatterBar);
-
-
+export default withStyles(styles)(SillyScore);

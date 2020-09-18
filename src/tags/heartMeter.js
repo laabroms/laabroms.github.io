@@ -1,5 +1,5 @@
 import React from "react";
-import "./chatterBar.css";
+import "./younger.css";
 import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -9,20 +9,19 @@ import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
-
-
-class ChatterBar extends React.Component {
+class HeartMeter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatter: "50",
-      character: false,
-      plot: false,
-      setting: false,
-      educational: false,
-      emotional: false,
+      heart: "50",
+      historical: false,
+      willThey: false,
+      bestFriends: false,
+      dystopian: false,
+      enemies: false,
+      firstLove: false,
       other: false,
-      otherInfo: '',
+      otherInfo: "",
     };
   }
 
@@ -35,19 +34,22 @@ class ChatterBar extends React.Component {
   };
 
   handleChangeOtherInfo = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(this.state);
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      },
+      () => {
+        if (this.props.onChange) {
+          this.props.onChange(this.state);
+        }
       }
-    })
-  }
+    );
+  };
 
   handleChange = (newValue) => {
     this.setState(
       {
-        chatter: newValue,
+        heart: newValue,
       },
       () => {
         if (this.props.onChange) {
@@ -60,13 +62,11 @@ class ChatterBar extends React.Component {
   render() {
     const { classes } = this.props;
 
-
     return (
       <>
         <p className="title">
-          <span className="colorChange3">CHATTER BAR:</span> How much did you{" "}
-          <span className="colorChange3">talk or think</span> about this book
-          after you finished reading it?
+          <span className="colorChangeHeart">HEART METER:</span> How central to the plot is the {" "}
+          <span className="colorChangeHeart">romantic arc</span> in this book?
         </p>
 
         <div className={classes.root}>
@@ -74,7 +74,7 @@ class ChatterBar extends React.Component {
             <Slider
               onChange={(e, value) => this.handleChange(value)}
               defaultValue={50}
-              value={this.state.chatter}
+              value={this.state.heart}
               // valueLabelDisplay="auto"
               // getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-custom"
@@ -84,8 +84,8 @@ class ChatterBar extends React.Component {
           </ThemeProvider>
         </div>
         <p className="moreInfo">
-          Which element(s) of the book would you/your child most likely want to
-          <span className="colorChange3"> discuss</span> after reading?
+          What kind of 
+          <span className="colorChangeHeart"> romantic arc</span> does this book display? (select all that apply)
         </p>
         {/* <div className="checkbox"></div> */}
         <div className="checkbox">
@@ -93,68 +93,82 @@ class ChatterBar extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.character}
+                  checked={this.state.historical}
                   onChange={this.handleChangeCheck}
-                  name="character"
+                  name="historical"
                   style={{
-                    color: "#c300ff",
+                    color: "#e600b4",
                   }}
                 />
               }
-              label="The characters"
+              label="Historical romance"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.plot}
+                  checked={this.state.willThey}
                   onChange={this.handleChangeCheck}
-                  name="plot"
+                  name="willThey"
                   style={{
-                    color: "#c300ff",
+                    color: "#e600b4",
                   }}
                 />
               }
-              label="The plot"
+              label="Will-they/won't-they romance"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.bestFriends}
                   onChange={this.handleChangeCheck}
-                  name="setting"
+                  name="bestFriends"
                   style={{
-                    color: "#c300ff",
+                    color: "#e600b4",
                   }}
                 />
               }
-              label="The setting"
+              label="Best friends-turned-romantic partners romance"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.educational}
+                  checked={this.state.dystopian}
                   onChange={this.handleChangeCheck}
-                  name="educational"
+                  name="dystopian"
                   style={{
-                    color: "#c300ff",
+                    color: "#e600b4",
                   }}
                 />
               }
-              label="The educational elements"
+              label="Dystopian or paranormal romance"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.emotional}
+                  checked={this.state.enemies}
                   onChange={this.handleChangeCheck}
-                  name="emotional"
+                  name="enemies"
                   style={{
-                    color: "#c300ff",
+                    color: "#e600b4",
                   }}
                 />
               }
-              label="The emotional aspects"
+              label="Enemies-turned-romantic partners romance"
             />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={this.state.firstLove}
+                  onChange={this.handleChangeCheck}
+                  name="firstLove"
+                  style={{
+                    color: "#e600b4",
+                  }}
+                />
+              }
+              label="First loves"
+            />
+           
             <div className="otherInfoSection">
               <FormControlLabel
                 control={
@@ -163,7 +177,7 @@ class ChatterBar extends React.Component {
                     onChange={this.handleChangeCheck}
                     name="other"
                     style={{
-                      color: "#c300ff",
+                      color: "#e600b4",
                     }}
                   />
                 }
@@ -174,12 +188,11 @@ class ChatterBar extends React.Component {
                   <input
                     name="otherInfo"
                     onChange={this.handleChangeOtherInfo}
-                    className="inputChatter"
+                    className="inputHeart"
                   />
                 </FadeIn>
               ) : null}
             </div>
-            
           </FormGroup>
         </div>
       </>
@@ -196,11 +209,9 @@ const styles = (theme) => ({
     backgroundColor: "#e3e3e3",
     border: "4px solid",
     borderColor: "#d1d1d1",
-    // borderImageSource: "linear-gradient(to right, #f87D1D, #5222E2)",
     borderImageSlice: "1",
     borderRadius: 10,
   },
-  
 });
 
 const muiTheme = createMuiTheme({
@@ -222,28 +233,16 @@ const muiTheme = createMuiTheme({
 const marks = [
   {
     value: 0,
-    label: "A little bit",
+    label: "Not very relevant",
   },
   {
     value: 50,
-    label: "Some",
+    label: "Somewhat important",
   },
   {
     value: 100,
-    label: "Non-stop",
+    label: "Very central to the story",
   },
-  
 ];
 
-// function valuetext(value) {
-//   return `${value}`;
-// }
-
-// function valueLabelFormat(value) {
-//   return marks.findIndex((mark) => mark.value === value) + 1;
-// }
-
-
-export default withStyles(styles)(ChatterBar);
-
-
+export default withStyles(styles)(HeartMeter);

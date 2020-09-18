@@ -1,27 +1,22 @@
 import React from "react";
-import "./feelingFactor.css";
+import "./younger.css";
 import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
-
-import "../chatterBar/chatterBar.css";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormGroup from "@material-ui/core/FormGroup";
-import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
-class FeelingFactor extends React.Component {
+class MysteryMeter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      feeling: "50",
-      happiness: false,
-      sadness: false,
-      fear: false,
-      anger: false,
-      other: false,
-      otherInfo: "",
+      mystery: "50",
+      funExciting: false,
+      intense: false,
+      mix: false,
+      
     };
   }
 
@@ -49,7 +44,7 @@ class FeelingFactor extends React.Component {
   handleChange = (newValue) => {
     this.setState(
       {
-        chatter: newValue,
+        mystery: newValue,
       },
       () => {
         if (this.props.onChange) {
@@ -65,9 +60,8 @@ class FeelingFactor extends React.Component {
     return (
       <>
         <p className="title">
-          <span className="colorChange5">FEELING FACTOR:</span> How{" "}
-          <span className="colorChange5"> emotionally charged</span> is this
-          book?
+          <span className="colorChangeMystery">MYSTERY METER:</span> How{" "}
+          <span className="colorChangeMystery"> mysterious </span>is this book?
         </p>
 
         <div className={classes.root}>
@@ -75,7 +69,7 @@ class FeelingFactor extends React.Component {
             <Slider
               onChange={(e, value) => this.handleChange(value)}
               defaultValue={50}
-              value={this.state.chatter}
+              value={this.state.mystery}
               // valueLabelDisplay="auto"
               // getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-custom"
@@ -85,8 +79,8 @@ class FeelingFactor extends React.Component {
           </ThemeProvider>
         </div>
         <p className="moreInfo">
-          What emotion(s) did this book make you
-          <span className="colorChange5"> feel</span>? (select all that apply)
+          What kind of 
+          <span className="colorChangeMystery"> mystery</span> does this book explore?
         </p>
         {/* <div className="checkbox"></div> */}
         <div className="checkbox">
@@ -94,80 +88,43 @@ class FeelingFactor extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.character}
+                  checked={this.state.funExciting}
                   onChange={this.handleChangeCheck}
-                  name="happiness"
+                  name="funExciting"
                   style={{
-                    color: "#EBB700",
+                    color: "#00588f",
                   }}
                 />
               }
-              label="Happiness"
+              label="Fun and Exciting"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.plot}
+                  checked={this.state.intense}
                   onChange={this.handleChangeCheck}
-                  name="sadness"
+                  name="intense"
                   style={{
-                    color: "#EBB700",
+                    color: "#00588f",
                   }}
                 />
               }
-              label="Sadness"
+              label="Intense and Nerve-Wrecking"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.mix}
                   onChange={this.handleChangeCheck}
-                  name="fear"
+                  name="mix"
                   style={{
-                    color: "#EBB700",
+                    color: "#00588f",
                   }}
                 />
               }
-              label="Fear"
+              label="Mix of both"
             />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={this.state.educational}
-                  onChange={this.handleChangeCheck}
-                  name="anger"
-                  style={{
-                    color: "#EBB700",
-                  }}
-                />
-              }
-              label="Anger"
-            />
-            <div className="otherInfoSection">
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={this.state.other}
-                    onChange={this.handleChangeCheck}
-                    name="other"
-                    style={{
-                      color: "#EBB700",
-                    }}
-                  />
-                }
-                label="Other"
-              />
-              {this.state.other ? (
-                <FadeIn>
-                  <input
-                    name="otherInfo"
-                    onChange={this.handleChangeOtherInfo}
-                    className="feelingColor"
-                  />
-                </FadeIn>
-              ) : null}
-            </div>
-          </FormGroup>
+            </FormGroup>
         </div>
       </>
     );
@@ -192,10 +149,10 @@ const muiTheme = createMuiTheme({
   overrides: {
     MuiSlider: {
       thumb: {
-        color: "#4d4d4d",
+        color: "#666666",
       },
       track: {
-        color: "#2b2b2b",
+        color: "#8c8c8c",
       },
       rail: {
         color: "black",
@@ -207,19 +164,16 @@ const muiTheme = createMuiTheme({
 const marks = [
   {
     value: 0,
-    label: "Totally unemotional",
+    label: "Not much",
   },
   {
     value: 50,
-    label: "Slightly emotional",
+    label: "A good amount",
   },
   {
     value: 100,
-    label: "Extremely emotional",
+    label: "Packed with twists and turns",
   },
 ];
 
-
-
-
-export default withStyles(styles)(FeelingFactor);
+export default withStyles(styles)(MysteryMeter);

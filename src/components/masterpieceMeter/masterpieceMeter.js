@@ -62,7 +62,7 @@ const styles = (theme) => ({
     backgroundColor: "#e3e3e3",
     paddingTop: 10,
     borderColor: "#d1d1d1",
-    border: "5px solid",
+    border: "4px solid",
     // borderImageSource: "linear-gradient(to right, red, orange)",
     borderImageSlice: "1",
     borderRadius: 10,

@@ -18,6 +18,11 @@ const options = [
 const platform = [
   { value: "YouTube", label: "YouTube" },
   { value: "Blog", label: "Blog" },
+  { value: "Twitter", label: "Twitter" },
+  { value: "Instagram", label: "Instagram" },
+  { value: "Magazine", label: "Magazine" },
+  { value: "Newspaper", label: "Newspaper" },
+  { value: "Journal", label: "Journal" },
   { value: "Other", label: "Other" },
   
 ];

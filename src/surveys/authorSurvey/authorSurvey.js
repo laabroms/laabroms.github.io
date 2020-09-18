@@ -17,6 +17,7 @@ import InspirationElement from '../../components/inspirationElement/inspirationE
 import GrippingGrade from '../../components/grippingGrade/grippingGrade';
 import PacingScore from '../../components/pacingScore/pacingScore';
 import ContentWarning from '../../components/contentWarning/contentWarning';
+import FadeIn from "react-fade-in";
 
 
 class AuthorSurvey extends React.Component {
@@ -318,6 +319,7 @@ class AuthorSurvey extends React.Component {
 
     return (
       <form method="POST" action="" className="form">
+      <FadeIn>
         <div style={container}>
           <h2>Picture Book Survey for Authors/Illustrators</h2>
           <p style={bookInfo}>
@@ -353,6 +355,7 @@ class AuthorSurvey extends React.Component {
         >
           SUBMIT
         </button>
+        </FadeIn>
       </form>
     );
   }

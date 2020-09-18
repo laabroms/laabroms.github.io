@@ -1,0 +1,253 @@
+ .colorChangeSilly {
+     color: #42e0f5;
+     font-weight: bold;
+ }
+
+
+ .moreInfo {
+     color: #6B6464;
+ }
+
+ .checkbox {
+     padding-left: 5%;
+ }
+
+ .otherInfoSection {
+     display: flex;
+     flex-direction: row;
+ }
+
+ .inputSilly {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #42e0f5;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 11px;
+  font-size: 16px;
+  width: 150px;
+  color: #6B6464;
+
+}
+.inputSilly:focus {
+  border-color: #aff1fa
+}
+
+.inputSpooky {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #3b0087;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 11px;
+  font-size: 16px;
+  width: 150px;
+  color: #6B6464;
+
+}
+.inputSpooky:focus {
+  border-color: #8143d1
+}
+
+.colorChangeSpooky {
+     color: #3b0087;
+     font-weight: bold;
+}
+
+
+.inputFestivity {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #c4000d;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 11px;
+  font-size: 16px;
+  width: 150px;
+  color: #6B6464;
+
+}
+.inputFestivity:focus {
+  border-color: #d66c67
+}
+
+
+.colorChangeFestivity {
+    color: #c4000d;
+     font-weight: bold;
+}
+
+
+.inputAction {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #003e9c;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 11px;
+  font-size: 16px;
+  width: 150px;
+  color: #6B6464;
+
+}
+.inputAction:focus {
+  border-color: #447bcf
+}
+
+
+.colorChangeAction {
+    color: #003e9c;
+     font-weight: bold;
+}
+
+.inputFriendship {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #00c427;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 11px;
+  font-size: 16px;
+  width: 150px;
+  color: #6B6464;
+
+}
+.inputFriendship:focus {
+  border-color: #69db80
+}
+
+
+.colorChangeFriendship {
+    color: #00c427;
+     font-weight: bold;
+}
+.inputAwesome {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #aa00ff;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 11px;
+  font-size: 16px;
+  width: 150px;
+  color: #6B6464;
+
+}
+.inputAwesome:focus {
+  border-color: #d68efa
+}
+
+
+.colorChangeAwesome {
+    color: #aa00ff;
+     font-weight: bold;
+}
+
+
+
+.colorChangeMystery {
+    color: #00588f;
+     font-weight: bold;
+}
+
+
+.inputFantasy {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #ff00a6;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 11px;
+  font-size: 16px;
+  width: 150px;
+  color: #6B6464;
+
+}
+.inputFantasy:focus {
+  border-color: #f569c4
+}
+
+
+.colorChangeFantasy {
+    color: #ff00a6;
+     font-weight: bold;
+}
+
+
+.inputRealness {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #556b2f;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 11px;
+  font-size: 16px;
+  width: 150px;
+  color: #6B6464;
+
+}
+.inputRealness:focus {
+  border-color: #97b562
+}
+
+
+.colorChangeRealness {
+    color: #556b2f;
+     font-weight: bold;
+}
+
+
+.inputHeart {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #e600b4;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 11px;
+  font-size: 16px;
+  width: 150px;
+  color: #6B6464;
+
+}
+.inputHeart:focus {
+  border-color: #c94bbd
+}
+
+
+.colorChangeHeart {
+    color: #e600b4;
+     font-weight: bold;
+}
+
+.inputThrill {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #8b008b;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 11px;
+  font-size: 16px;
+  width: 150px;
+  color: #6B6464;
+
+}
+.inputThrill:focus {
+  border-color: #bf34bf
+}
+
+
+.colorChangeThrill {
+    color: #8b008b;
+     font-weight: bold;
+}
+
+.inputSuspense {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #00659c;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 11px;
+  font-size: 16px;
+  width: 150px;
+  color: #6B6464;
+
+}
+.inputSuspense:focus {
+  border-color: #4594bf
+}
+
+
+.colorChangeSuspense {
+    color: #00659c;
+     font-weight: bold;
+}

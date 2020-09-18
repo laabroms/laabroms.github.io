@@ -5,7 +5,7 @@ import ParentSurvey from "./surveys/parentSurvey/parentSurvey.js";
 import AuthorSurvey from "./surveys/authorSurvey/authorSurvey";
 import CriticSurvey from "./surveys/criticSurvey/criticSurvey";
 import TeacherSurvey from "./surveys/teacherSurvey/teacherSurvey";
-
+import Tags from './surveys/tags';
 
 
 function App() {
@@ -34,6 +34,9 @@ function App() {
 
       
         <Switch>
+          <Route path='/' exact>
+            <Tags />
+          </Route>
           <Route path="/parent-survey">
             <ParentSurvey />
           </Route>
