@@ -298,7 +298,7 @@ export default class ParentSurvey extends React.Component {
       <form method="POST" action="">
         <FadeIn>
           <div style={container}>
-            <h2>Picture Book Survey for Parents/Guardians</h2>
+            <h2>Book Level and Target Review</h2>
             <p style={bookInfo}>
               <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
             </p>
@@ -322,15 +322,15 @@ export default class ParentSurvey extends React.Component {
             <Keywords onChange={this.handleKeywords} />
             <ExtraInfo onChange={this.handleExtraInfo} />
             <FeedbackSlider onChange={this.handleFeedback} />
-          </div>
 
-          <button
-            type="submit"
-            className="submitButton"
-            onClick={this.submitHandler}
-          >
-            SUBMIT
-          </button>
+            <button
+              type="submit"
+              className="submitButton"
+              onClick={this.submitHandler}
+            >
+              SUBMIT
+            </button>
+          </div>
         </FadeIn>
       </form>
     );

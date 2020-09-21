@@ -4,16 +4,16 @@
 }
 
 .textarea {
-    flex: 60%;
+    /* flex: 60%; */
     border: none;
     /* border-bottom: 2px solid red; */
     background-color: #e3e3e3;
     padding: 5px;
     color: black;
     outline: none;
-    width: 75%;
+    width: 100%;
     margin-top: 5px;
-    height: 100px;
+    height: 120px;
     resize: none;
     border-radius: 10px;
     border: 5px solid #d1d1d1;

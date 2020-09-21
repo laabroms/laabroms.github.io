@@ -35,6 +35,7 @@ class ClearnessCalculatorYounger extends React.Component {
           <span className="colorChange1">CLEARNESS CALCULATOR:</span> How{" "}
           <span className="colorChange1"> clear</span> and <span className="colorChange1">readable</span> are the words on each page?
         </p>
+        
 
         <div className={classes.root}>
           <Slider
@@ -56,9 +57,9 @@ class ClearnessCalculatorYounger extends React.Component {
 
 const styles = (theme) => ({
   root: {
-    width: "80%",
+    width: "100%",
     paddingLeft: "10%",
-    paddingRight: "9%",
+    paddingRight: "10%",
     backgroundColor: "#e3e3e3",
     // background: 'linear-gradient(to right, red, green)',
     // backgroundOpacity: '50%',

@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faUserCircle, faImage } from "@fortawesome/free-solid-svg-icons";
 import "../personalInfo/personalInfo.css";
+import { Container, Row, Col } from "react-bootstrap";
 
 
 
@@ -92,71 +93,81 @@ class PlatformInfo extends React.Component {
       <>
         <p style={title}>Platform Information</p>
 
-        <div className="row">
-          <div className="col" id="name">
-            <p>
-              <FontAwesomeIcon icon={faImage} />
-            </p>
-          </div>
-          <div className="column1" id="name">
-            <p>Platform Type (Youtube, Blog, etc.):</p>
-          </div>
-          <div className="column2">
-            <div className="selectTab">
-              <Select
-                onChange={this.handleChangePlatform}
-                options={platform}
-                isSearchable={false}
-                placeholder="Platform Type"
-              />{" "}
-            </div>
-          </div>
-        </div>
+        <Container>
+          <Row>
+            <Col sm={6} className="redColor">
+              <Row>
+                <FontAwesomeIcon
+                  icon={faImage}
+                  style={{ marginTop: 4, marginRight: 10 }}
+                />
+                <p>Platform Type:</p>
+              </Row>
+            </Col>
+            <Col sm={6}>
+              <div className="selectTab">
+                <Select
+                  onChange={this.handleChangePlatform}
+                  options={platform}
+                  isSearchable={false}
+                  placeholder="Platform Type"
+                />{" "}
+              </div>
+            </Col>
+          </Row>
 
-        <div className="row">
-          <div className="col">
-            <p>
-              <FontAwesomeIcon icon={faUserCircle} />
-            </p>
-          </div>
-          <div className="column1">
-            <p>Account Name:</p>
-          </div>
-          <div className="column2">
-            <div className="selectTabPlatform">
-              <input
-                className="inputField"
-                name="accountName"
-                placeholder="Account Name"
-                required
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <p>
-              <FontAwesomeIcon icon={faBook} />
-            </p>
-          </div>
-          <div className="column1">
-            <p>Type of books you typically review:</p>
-          </div>
-          <div className="column2">
-            <div className="selectTab">
-              <Select
-                value={this.state.bookType}
-                isMulti
-                onChange={this.handleChangeBookType}
-                options={options}
-                isClearable={false}
-                isSearchable={false}
-                placeholder="Type of book(s)"
-              />{" "}
-            </div>
-          </div>
-        </div>
+          <Row>
+            <Col sm={6} className="redColor">
+              <Row>
+                <FontAwesomeIcon
+                  icon={faUserCircle}
+                  style={{ marginTop: 4, marginRight: 10 }}
+                />
+                <p>Account Name:</p>
+              </Row>
+            </Col>
+            <Col sm={6}>
+              <div className="selectTab">
+                <input
+                  className="inputField"
+                  name="accountName"
+                  placeholder="Account Name"
+                  required
+                  onBlur={this.handleChange}
+                />
+              </div>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col sm={6} className="redColor">
+              <Row>
+                <FontAwesomeIcon
+                  icon={faBook}
+                  style={{ marginTop: 4, marginRight: 10 }}
+                />
+                <p>Type(s) of books you typically review:</p>
+              </Row>
+            </Col>
+            <Col sm={6}>
+              <div className="selectTab">
+                <Select
+                  value={this.state.bookType}
+                  isMulti
+                  onChange={this.handleChangeBookType}
+                  options={options}
+                  isClearable={false}
+                  isSearchable={false}
+                  placeholder="Type of book(s)"
+                />{" "}
+              </div>
+            </Col>
+          </Row>
+
+          
+        </Container>
+
+       
       </>
     );
   }

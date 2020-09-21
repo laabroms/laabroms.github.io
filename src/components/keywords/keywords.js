@@ -31,7 +31,7 @@ class Keywords extends React.Component {
           name="keywords"
           // value={this.state.keywords}
           // onChange={(e) => this.setState({ keywords: e.target.value })}
-          onChange={this.handleChange}
+          onBlur={this.handleChange}
         />
       </div>
     );

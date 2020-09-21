@@ -1,12 +1,16 @@
 .submitButton {
     padding: 20px;
-    background-color: blue;
+    /* background-color: green; */
     /* border-radius: 25px; */
     color: white;
     font-weight: bold;
-    margin-left: 3%;
     margin-bottom: 30px;
     border: none;
+    border-radius: 10px;
+    margin-top: 35px;
     outline: none;
-    width: 300px
+    width: 100%;
+    background-image: linear-gradient(#2584ff, #5fa2fa);
+
 }
+

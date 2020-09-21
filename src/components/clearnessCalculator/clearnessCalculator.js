@@ -68,9 +68,9 @@ class ClearnessCalculator extends React.Component {
 
 const styles = (theme) => ({
   root: {
-    width: "80%",
+    width: "100%",
     paddingLeft: "10%",
-    paddingRight: "9%",
+    paddingRight: "10%",
     backgroundColor: "#e3e3e3",
     // background: 'linear-gradient(to right, red, green)',
     // backgroundOpacity: '50%',

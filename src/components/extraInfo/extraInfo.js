@@ -33,7 +33,7 @@ class ExtraInfo extends React.Component {
             // onChange={(e) =>
             //   this.setState({ extraInfo: e.target.value })
             // }
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
           ></textarea>
         </div>
       </div>

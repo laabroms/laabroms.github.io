@@ -55,9 +55,9 @@ class LivelyLibraries extends React.Component {
 
 const styles = (theme) => ({
   root: {
-    width: "80%",
+    width: "100%",
     paddingLeft: "10%",
-    paddingRight: "9%",
+    paddingRight: "10%",
     backgroundColor: "#e3e3e3",
     borderColor: "#d1d1d1",
     border: "5px solid",

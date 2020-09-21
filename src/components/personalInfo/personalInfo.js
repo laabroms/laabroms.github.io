@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faBirthdayCake, faMapMarkerAlt, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
 
+import { Container, Row, Col } from "react-bootstrap";
+
 
 
 import './personalInfo.css';
@@ -175,94 +177,101 @@ class PersonalInfo extends React.Component {
     return (
       <>
         <p style={title}>Personal Information</p>
+        <Container>
+          <Row>
+            <Col sm={6} className="redColor">
+              <Row>
+                <FontAwesomeIcon
+                  icon={faUser}
+                  style={{ marginTop: 4, marginRight: 10 }}
+                />
+                <p>Your Name:</p>
+              </Row>
+            </Col>
+            <Col sm={6}>
+              <div className="selectTab">
+                <input
+                  className="inputField"
+                  name="name"
+                  placeholder="Name"
+                  required
+                  onBlur={this.handleChange}
+                />
+              </div>
+            </Col>
+          </Row>
 
-        <div className="row">
-          <div className="col" id="name">
-            <p>
-              <FontAwesomeIcon icon={faUser} />
-            </p>
-          </div>
-          <div className="column1" id="name">
-            <p>Your Name:</p>
-          </div>
-          <div className="column2">
-            <div className="selectTab">
-              <input
-                className="inputField"
-                name="name"
-                placeholder="Name"
-                required
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-        </div>
+          <Row>
+            <Col sm={6} className="redColor">
+              <Row>
+                <p>
+                  <FontAwesomeIcon
+                    icon={faBirthdayCake}
+                    style={{ marginTop: 4, marginRight: 10 }}
+                  />
+                  How old is the child with whom you read this book?:
+                </p>
+              </Row>
+            </Col>
+            <Col sm={6}>
+              <div className="selectTab">
+                <Select
+                  name="age"
+                  onChange={this.handleChangeAge}
+                  options={options}
+                  placeholder="Age"
+                  isSearchable={false}
+                />
+              </div>
+            </Col>
+          </Row>
 
-        <div className="row">
-          <div className="col">
-            <p>
-              <FontAwesomeIcon icon={faBirthdayCake} />
-            </p>
-          </div>
-          <div className="column1">
-            <p>How old is the child with whom you read this book?:</p>
-          </div>
-          <div className="column2">
-            <div className="selectTab">
-              <Select
-                name="age"
-                onChange={this.handleChangeAge}
-                options={options}
-                placeholder="Age"
-                isSearchable={false}
-              />
-            </div>
-          </div>
-        </div>
+          <Row>
+            <Col sm={6} className="redColor">
+              <Row>
+                <FontAwesomeIcon
+                  icon={faMapMarkerAlt}
+                  style={{ marginTop: 4, marginRight: 10 }}
+                />
+                <p>State/Province:</p>
+              </Row>
+            </Col>
+            <Col sm={6}>
+              <div className="selectTab">
+                <Select
+                  name="location"
+                  onChange={this.handleChangeLocation}
+                  options={optionsLocation}
+                  placeholder="State/Province"
+                  isSearchable={false}
+                />
+              </div>
+            </Col>
+          </Row>
 
-        <div className="row">
-          <div className="col">
-            <p>
-              <FontAwesomeIcon icon={faMapMarkerAlt} />
-            </p>
-          </div>
-          <div className="column1">
-            <p>State/Province:</p>
-          </div>
-          <div className="column2">
-            <div className="selectTab">
-              <Select
-                name="location"
-                onChange={this.handleChangeLocation}
-                options={optionsLocation}
-                placeholder="State/Province"
-                isSearchable={false}
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col">
-            <p>
-              <FontAwesomeIcon icon={faGlobe} />
-            </p>
-          </div>
-          <div className="column1">
-            <p>Country:</p>
-          </div>
-          <div className="column2">
-            <div className="selectTab">
-              <Select
-                name="country"
-                onChange={this.handleChangeCountry}
-                options={optionsCountry}
-                placeholder="Country"
-                isSearchable={false}
-              />
-            </div>
-          </div>
-        </div>
+          <Row>
+            <Col sm={6} className="redColor">
+              <Row>
+                <FontAwesomeIcon
+                  icon={faGlobe}
+                  style={{ marginTop: 4, marginRight: 10 }}
+                />
+                <p>Country:</p>
+              </Row>
+            </Col>
+            <Col sm={6}>
+              <div className="selectTab">
+                <Select
+                  name="country"
+                  onChange={this.handleChangeCountry}
+                  options={optionsCountry}
+                  placeholder="Country"
+                  isSearchable={false}
+                />
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </>
     );
   }

@@ -353,7 +353,7 @@ class TeacherSurvey extends React.Component {
       <form method="POST" action="">
         <FadeIn>
           <div style={container}>
-            <h2>Picture Book Survey for Teachers</h2>
+            <h2>Book Level and Target Review</h2>
             <p style={bookInfo}>
               <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
             </p>
@@ -388,15 +388,15 @@ class TeacherSurvey extends React.Component {
             <Keywords onChange={this.handleKeywords} />
             <ExtraInfo onChange={this.handleExtraInfo} />
             <Feedback onChange={this.handleFeedback} />
-          </div>
 
-          <button
-            type="submit"
-            className="submitButton"
-            onClick={this.submitHandler}
-          >
-            SUBMIT
-          </button>
+            <button
+              type="submit"
+              className="submitButton"
+              onClick={this.submitHandler}
+            >
+              SUBMIT
+            </button>
+          </div>
         </FadeIn>
       </form>
     );

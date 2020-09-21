@@ -23,6 +23,7 @@
     margin-bottom: 10px;
 
 }
+
 .col {
     flex: 2%;
     margin-top: 15px;
@@ -41,16 +42,19 @@
     flex: 70%;
 }
 
+
+
 .selectTab {
     width: 250px;
     padding-left: 10px;
-    padding-top: 23px
+    padding-bottom: 20px;
+    /* padding-top: 23px */
 }
 .inputField{
     width:100%;
     border:1px solid #CCCCCC;
     border-radius:4px;
-    margin:8px 0;
+    /* margin:8px 0; */
     height: 40px;
     outline:none;
     padding:8px;
@@ -76,4 +80,10 @@
     width: 250px;
     padding-left: 10px;
     padding-top: 15px
+}
+
+.redColor {
+    color: #FF4248;
+    font-weight: bolder;
+    padding-top: 5px;
 }

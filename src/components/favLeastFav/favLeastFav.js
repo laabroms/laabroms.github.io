@@ -33,7 +33,7 @@ class FavLeastFav extends React.Component {
         <textarea
           className="textarea"
           name="favorite"
-          onChange={this.handleChange}
+          onBlur={this.handleChange}
         />
         <p className="favTopInfo2">
           What would you <span className="colorChange9">CRITIQUE </span>
@@ -42,7 +42,7 @@ class FavLeastFav extends React.Component {
         <textarea
           className="textarea"
           name="leastFav"
-          onChange={this.handleChange}
+          onBlur={this.handleChange}
         />
       </>
     );

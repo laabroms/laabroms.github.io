@@ -32,7 +32,7 @@ export default class ClassroomCreativity extends React.Component {
           className="textarea"
           required
           name="classroomCreativity"
-          onChange={this.handleChange}
+          onBlur={this.handleChange}
         ></textarea>
       </>
     );

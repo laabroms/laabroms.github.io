@@ -1,12 +1,16 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  
+  faBookmark,
   faBook,
 } from "@fortawesome/free-solid-svg-icons";
 import { withStyles } from "@material-ui/core/styles";
 import "../personalInfo/personalInfo.css";
 import Select from "react-select";
+import { Container, Row, Col } from "react-bootstrap";
+
+
+
 
 const options = [
   { value: "Baby Books", label: "Baby Books" },
@@ -116,52 +120,61 @@ class AuthorInfo extends React.Component {
       <>
         <p style={title}>Author/Illustrator Information</p>
 
-        <div className="row">
-          <div className="col">
-            <p>
-              <FontAwesomeIcon icon={faBook} />
-            </p>
-          </div>
-          <div className="column1">
-            <p>Genre(s) of your books:</p>
-          </div>
-          <div className="column2">
-            <div className="selectTab">
-              <Select
-                value={this.state.genreType}
-                isMulti
-                onChange={this.handleChangeGenre}
-                options={genres}
-                isSearchable={false}
-                isClearable={false}
-                placeholder="Genre(s)"
-              />{" "}
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <p>
-              <FontAwesomeIcon icon={faBook} />
-            </p>
-          </div>
-          <div className="column1">
-            <p>Type of book(s) you typically work on:</p>
-          </div>
-          <div className="column2">
-            <div className="selectTab">
-              <Select
-                value={this.state.bookType}
-                isMulti
-                onChange={this.handleChangeBookType}
-                options={options}
-                isClearable={false}
-                isSearchable={false}
-                placeholder="Type of book(s)"
-              />{" "}
-            </div>
-          </div>
-        </div>
+        <Container>
+          <Row>
+            <Col sm={6} className="redColor">
+              <Row>
+                <FontAwesomeIcon
+                  icon={faBookmark}
+                  style={{ marginTop: 4, marginRight: 10 }}
+                />
+                <p>Genre(s) of your books:</p>
+              </Row>
+            </Col>
+            <Col sm={6}>
+              <div className="selectTab">
+                <Select
+                  value={this.state.genreType}
+                  isMulti
+                  onChange={this.handleChangeGenre}
+                  options={genres}
+                  isSearchable={false}
+                  isClearable={false}
+                  placeholder="Genre(s)"
+                />{" "}
+              </div>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col sm={6} className="redColor">
+              <Row>
+                <FontAwesomeIcon
+                  icon={faBook}
+                  style={{ marginTop: 4, marginRight: 10 }}
+                />
+                <p>Type of book(s) you typically work on:</p>
+              </Row>
+            </Col>
+            <Col sm={6}>
+              <div className="selectTab">
+                <Select
+                  value={this.state.bookType}
+                  isMulti
+                  onChange={this.handleChangeBookType}
+                  options={options}
+                  isClearable={false}
+                  isSearchable={false}
+                  placeholder="Type of book(s)"
+                />{" "}
+              </div>
+            </Col>
+          </Row>
+
+         
+        </Container>
+
+      
       </>
     );
   }

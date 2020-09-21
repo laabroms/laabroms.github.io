@@ -35,7 +35,7 @@ export default class DiversityRep extends React.Component {
           name="diversityAndRepresentation"
           //   value={this.state.diversityAndRepresentation}
           //   onChange={(e) => this.setState({ diversityAndRepresentation: e.target.value })}
-          onChange={this.handleChange}
+          onBlur={this.handleChange}
         ></textarea>
       </>
     );

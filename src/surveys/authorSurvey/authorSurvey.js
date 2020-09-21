@@ -319,42 +319,42 @@ class AuthorSurvey extends React.Component {
 
     return (
       <form method="POST" action="" className="form">
-      <FadeIn>
-        <div style={container}>
-          <h2>Picture Book Survey for Authors/Illustrators</h2>
-          <p style={bookInfo}>
-            <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
-          </p>
+        <FadeIn>
+          <div style={container}>
+            <h2>Book Level and Target Review</h2>
+            <p style={bookInfo}>
+              <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
+            </p>
 
-          <PersonalInfoAuthor onChange={this.handlePersonalInfo} />
-          <AuthorInfo onChange={this.handleAuthorInfo} />
+            <PersonalInfoAuthor onChange={this.handlePersonalInfo} />
+            <AuthorInfo onChange={this.handleAuthorInfo} />
 
-          {/* for younger */}
-          <ClearnessCalculator onChange={this.handleClearness} />
-          <MasterpieceMeter onChange={this.handleMasterpiece} />
+            {/* for younger */}
+            <ClearnessCalculator onChange={this.handleClearness} />
+            <MasterpieceMeter onChange={this.handleMasterpiece} />
 
-          <ChatterBar onChange={this.handleChatter}/>
-          <InspirationElement onChange={this.handleInspiration} />
-          <FeelingFactor onChange={this.handleFeeling} />
-          <AccessibilityScore onChange={this.handleAccessibility} />
-          <GrippingGrade onChange={this.handleGripping} />
-          <PacingScore onChange={this.handlePacing} />
-          <DiversityRep onChange={this.handleDiversity} />
-          <FavLeastFav onChange={this.handleFav} />
-          <ContentWarning onChange={this.handleWarning} />
-          <StarRating onChange={this.handleStars} />
-          <Keywords onChange={this.handleKeywords} />
-          <ExtraInfo onChange={this.handleExtraInfo} />
-          <Feedback onChange={this.handleFeedback} />
-        </div>
+            <ChatterBar onChange={this.handleChatter} />
+            <InspirationElement onChange={this.handleInspiration} />
+            <FeelingFactor onChange={this.handleFeeling} />
+            <AccessibilityScore onChange={this.handleAccessibility} />
+            <GrippingGrade onChange={this.handleGripping} />
+            <PacingScore onChange={this.handlePacing} />
+            <DiversityRep onChange={this.handleDiversity} />
+            <FavLeastFav onChange={this.handleFav} />
+            <ContentWarning onChange={this.handleWarning} />
+            <StarRating onChange={this.handleStars} />
+            <Keywords onChange={this.handleKeywords} />
+            <ExtraInfo onChange={this.handleExtraInfo} />
+            <Feedback onChange={this.handleFeedback} />
 
-        <button
-          type="submit"
-          className="submitButton"
-          onClick={this.submitHandler}
-        >
-          SUBMIT
-        </button>
+            <button
+              type="submit"
+              className="submitButton"
+              onClick={this.submitHandler}
+            >
+              SUBMIT
+            </button>
+          </div>
         </FadeIn>
       </form>
     );

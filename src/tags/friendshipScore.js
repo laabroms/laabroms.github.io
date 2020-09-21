@@ -103,7 +103,7 @@ class FriendshipScore extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.character}
+                  checked={this.state.bestFriends}
                   onChange={this.handleChangeCheck}
                   name="bestFriends"
                   style={{
@@ -116,7 +116,7 @@ class FriendshipScore extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.plot}
+                  checked={this.state.onlyAtSchool}
                   onChange={this.handleChangeCheck}
                   name="onlyAtSchool"
                   style={{
@@ -129,7 +129,7 @@ class FriendshipScore extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.outOfConvenience}
                   onChange={this.handleChangeCheck}
                   name="outOfConvenience"
                   style={{
@@ -142,7 +142,7 @@ class FriendshipScore extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.fake}
                   onChange={this.handleChangeCheck}
                   name="fake"
                   style={{
@@ -155,7 +155,7 @@ class FriendshipScore extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.new}
                   onChange={this.handleChangeCheck}
                   name="new"
                   style={{
@@ -168,7 +168,7 @@ class FriendshipScore extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.frenemies}
                   onChange={this.handleChangeCheck}
                   name="frenemies"
                   style={{
@@ -181,7 +181,7 @@ class FriendshipScore extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.lifelong}
                   onChange={this.handleChangeCheck}
                   name="lifelong"
                   style={{
@@ -194,7 +194,7 @@ class FriendshipScore extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.partners}
                   onChange={this.handleChangeCheck}
                   name="partners"
                   style={{
@@ -207,7 +207,7 @@ class FriendshipScore extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.thickAndThin}
                   onChange={this.handleChangeCheck}
                   name="thickAndThin"
                   style={{
@@ -220,7 +220,7 @@ class FriendshipScore extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.unhealthy}
                   onChange={this.handleChangeCheck}
                   name="unhealthy"
                   style={{
@@ -233,7 +233,7 @@ class FriendshipScore extends React.Component {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={this.state.setting}
+                  checked={this.state.secretCrushs}
                   onChange={this.handleChangeCheck}
                   name="secretCrush"
                   style={{
@@ -262,7 +262,7 @@ class FriendshipScore extends React.Component {
                 <FadeIn>
                   <input
                     name="otherInfo"
-                    onChange={this.handleChangeOtherInfo}
+                    onBlur={this.handleChangeOtherInfo}
                     className="inputFriendship"
                   />
                 </FadeIn>
@@ -277,10 +277,10 @@ class FriendshipScore extends React.Component {
 
 const styles = (theme) => ({
   root: {
-    width: "80%",
+    width: "100%",
     paddingLeft: "10%",
     paddingTop: 10,
-    paddingRight: "9%",
+    paddingRight: "10%",
     backgroundColor: "#e3e3e3",
     border: "4px solid",
     borderColor: "#d1d1d1",

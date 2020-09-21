@@ -30,7 +30,7 @@ export class StarRating extends React.Component {
     render() {
 
     const stars = {
-      size: 40,
+      size: 33,
       count: 10,
       isHalf: false,
     //   value: data.rating,

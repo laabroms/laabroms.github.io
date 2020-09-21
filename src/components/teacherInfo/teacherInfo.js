@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSchool, faChild } from "@fortawesome/free-solid-svg-icons";
 import "./teacherInfo.css";
 import Select from "react-select";
+import { Container, Row, Col } from "react-bootstrap";
 
 
 
@@ -55,49 +56,55 @@ class TeacherInfo extends React.Component {
       <>
         <p style={title}>Teacher Information</p>
 
-        <div className="row">
-          <div className="col" id="name">
-            <p>
-              <FontAwesomeIcon icon={faChild} />
-            </p>
-          </div>
-          <div className="column1" id="name">
-            <p>Grade Level:</p>
-          </div>
-          <div className="column2">
-            <div className="selectTab">
-              <Select
-                name="gradeLevel"
-                onChange={this.handleChangeGrade}
-                options={options}
-                placeholder="Grade Level"
-              />
-            </div>
-          </div>
-        </div>
+        <Container>
+          <Row>
+            <Col sm={6} className="redColor">
+              <Row>
+                <FontAwesomeIcon
+                  icon={faChild}
+                  style={{ marginTop: 4, marginRight: 10 }}
+                />
+                <p>Grade Level:</p>
+              </Row>
+            </Col>
+            <Col sm={6}>
+              <div className="selectTab">
+                <Select
+                  name="gradeLevel"
+                  onChange={this.handleChangeGrade}
+                  options={options}
+                  placeholder="Grade Level"
+                />
+              </div>
+            </Col>
+          </Row>
 
-        <div className="row">
-          <div className="col">
-            <p>
-              <FontAwesomeIcon icon={faSchool} />
-            </p>
-          </div>
-          <div className="column1">
-            <p>School:</p>
-          </div>
-          <div className="column2">
-            <div className="selectTabPlatform">
-              <input
-                className="inputField"
-                name="school"
-                placeholder="School"
-                required
-                onChange={this.handleChange}
-                autoCapitalize
-              />
-            </div>
-          </div>
-        </div>
+          <Row>
+            <Col sm={6} className="redColor">
+              <Row>
+                <FontAwesomeIcon
+                  icon={faSchool}
+                  style={{ marginTop: 4, marginRight: 10 }}
+                />
+                <p>School:</p>
+              </Row>
+            </Col>
+            <Col sm={6}>
+              <div className="selectTab">
+                <input
+                  className="inputField"
+                  name="school"
+                  placeholder="School"
+                  required
+                  onBlur={this.handleChange}
+                  autoCapitalize
+                />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+
+       
       </>
     );
   }
