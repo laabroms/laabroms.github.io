@@ -8,6 +8,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import Hidden from "@material-ui/core/Hidden";
 
 class SillyScore extends React.Component {
   constructor(props) {
@@ -83,7 +84,8 @@ class SillyScore extends React.Component {
         </div>
         <p className="moreInfo">
           What
-          <span className="colorChangeSilly"> type of humor</span> did this book include? (select all that apply)
+          <span className="colorChangeSilly"> type of humor</span> did this book
+          include? (select all that apply)
         </p>
         {/* <div className="checkbox"></div> */}
         <div className="checkbox">
@@ -140,7 +142,7 @@ class SillyScore extends React.Component {
               }
               label="Loving"
             />
-            
+
             <div className="otherInfoSection">
               <FormControlLabel
                 control={
@@ -200,21 +202,23 @@ const muiTheme = createMuiTheme({
         color: "black",
       },
     },
+    
   },
 });
+
 
 const marks = [
   {
     value: 0,
-    label: "Not a chuckle",
+    label: <Hidden xsDown>Not a chuckle</Hidden>,
   },
   {
     value: 50,
-    label: "Some giggles",
+    label: 'Some giggles',
   },
   {
     value: 100,
-    label: "Laugh-out-loud funny",
+    label: <Hidden xsDown>Laugh-out-loud funny</Hidden>,
   },
 ];
 

@@ -13,6 +13,7 @@ import RealnessRating from "../tags/realnessRating";
 import HeartMeter from "../tags/heartMeter";
 import ThrillFactor from "../tags/thrillFactor";
 import SuspenseScale from '../tags/suspenseScale';
+import ComplexCharacter from '../tags/complexCharacter';
 
 class Tags extends React.Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class Tags extends React.Component {
       <form method="POST" action="">
         <FadeIn>
           <div style={container}>
+          <ComplexCharacter />
             <div style={{ fontSize: "30px", fontWeight: "bold" }}>
               YOUNGER BOOK TAGS:
             </div>

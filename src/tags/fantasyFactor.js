@@ -8,6 +8,8 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import Hidden from "@material-ui/core/Hidden";
+
 
 class FantasyFactor extends React.Component {
   constructor(props) {
@@ -191,7 +193,7 @@ const muiTheme = createMuiTheme({
 const marks = [
   {
     value: 0,
-    label: "Somewhat immersive",
+    label: <Hidden xsDown>Somewhat immersive</Hidden>,
   },
   {
     value: 50,
@@ -199,7 +201,7 @@ const marks = [
   },
   {
     value: 100,
-    label: "Completely captivating",
+    label: <Hidden xsDown>Completely captivating</Hidden>,
   },
 ];
 

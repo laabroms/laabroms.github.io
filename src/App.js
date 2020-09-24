@@ -7,10 +7,15 @@ import CriticSurvey from "./surveys/criticSurvey/criticSurvey";
 import TeacherSurvey from "./surveys/teacherSurvey/teacherSurvey";
 import Tags from './surveys/tags';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Books from './surveys/books';
+import BookInfo from './components/bookInfo';
+import BookInfoNew from './components/bookInfoNew';
 
 
+function App({books}) {
 
-function App() {
+  
+
   return (
     <Router>
       <div>
@@ -18,6 +23,9 @@ function App() {
           <ul>
             <li>
               <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/books">Books</Link>
             </li>
             <li>
               <Link to="/parent-survey">Parent Survey</Link>
@@ -34,22 +42,27 @@ function App() {
           </ul>
         </nav>
 
-      
         <Switch>
-          <Route path='/' exact>
+          <Route path="/" exact>
             <Tags />
           </Route>
-          <Route path="/parent-survey">
-            <ParentSurvey />
+          <Route path={"/books/:books/parent-survey"}>
+            <ParentSurvey books={books} />
           </Route>
-          <Route path="/author-survey">
-            <AuthorSurvey />
+          <Route path={"/books/:books/author-survey"}>
+            <AuthorSurvey books={books} />
           </Route>
-          <Route path="/critic-survey">
-            <CriticSurvey />
+          <Route path={"/books/:books/critic-survey"}>
+            <CriticSurvey books={books} />
           </Route>
-          <Route path="/teacher-survey">
-            <TeacherSurvey />
+          <Route path={"/books/:books/teacher-survey"}>
+            <TeacherSurvey books={books} />
+          </Route>
+          <Route path="/books" exact>
+            <Books />
+          </Route>
+          <Route path={"/books/:books"} exact>
+            <BookInfo books={books} />
           </Route>
         </Switch>
       </div>

@@ -8,6 +8,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import Hidden from "@material-ui/core/Hidden";
 
 class SuspenseScale extends React.Component {
   constructor(props) {
@@ -205,7 +206,7 @@ const muiTheme = createMuiTheme({
 const marks = [
   {
     value: 0,
-    label: "Boring and not suspenseful",
+    label: <Hidden xsDown>Boring and not suspenseful</Hidden>,
   },
   {
     value: 50,
@@ -213,7 +214,7 @@ const marks = [
   },
   {
     value: 100,
-    label: "Very suspenseful",
+    label: <Hidden xsDown>Very suspenseful</Hidden>,
   },
 ];
 

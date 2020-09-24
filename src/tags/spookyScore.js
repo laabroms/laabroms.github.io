@@ -8,6 +8,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import Hidden from "@material-ui/core/Hidden";
 
 class SillyScore extends React.Component {
   constructor(props) {
@@ -207,7 +208,7 @@ const muiTheme = createMuiTheme({
 const marks = [
   {
     value: 0,
-    label: "No, pretty bland",
+    label: <Hidden xsDown>No, pretty bland</Hidden>,
   },
   {
     value: 50,
@@ -215,7 +216,7 @@ const marks = [
   },
   {
     value: 100,
-    label: "Yes, brimming with spirit",
+    label: <Hidden xsDown>Yes, brimming with spirit</Hidden>,
   },
 ];
 

@@ -8,6 +8,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import Hidden from "@material-ui/core/Hidden";
 
 class HeartMeter extends React.Component {
   constructor(props) {
@@ -233,7 +234,7 @@ const muiTheme = createMuiTheme({
 const marks = [
   {
     value: 0,
-    label: "Not very relevant",
+    label: <Hidden xsDown>Not very relevant</Hidden>,
   },
   {
     value: 50,
@@ -241,7 +242,7 @@ const marks = [
   },
   {
     value: 100,
-    label: "Very central to the story",
+    label: <Hidden xsDown>Very central to the story</Hidden>,
   },
 ];
 

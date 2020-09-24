@@ -10,7 +10,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FadeIn from "react-fade-in";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-
+import Hidden from '@material-ui/core/Hidden';
 class FeelingFactor extends React.Component {
   constructor(props) {
     super(props);
@@ -185,6 +185,7 @@ const styles = (theme) => ({
     borderColor: "#d1d1d1",
     borderImageSlice: "1",
     borderRadius: 10,
+    
   },
 });
 
@@ -201,13 +202,14 @@ const muiTheme = createMuiTheme({
         color: "black",
       },
     },
+    
   },
 });
 
 const marks = [
   {
     value: 0,
-    label: "Totally unemotional",
+    label: <Hidden xsDown>Totally unemotional</Hidden>,
   },
   {
     value: 50,
@@ -215,7 +217,7 @@ const marks = [
   },
   {
     value: 100,
-    label: "Extremely emotional",
+    label: <Hidden xsDown>Extremely emotional</Hidden>,
   },
 ];
 

@@ -87,7 +87,7 @@ const styles = (theme) => ({
 const marks = [
   {
     value: 0,
-    label: "No, very unclear",
+    label: "Very unclear",
   },
   {
     value: 50,
