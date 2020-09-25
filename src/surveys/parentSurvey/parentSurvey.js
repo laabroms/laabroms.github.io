@@ -15,7 +15,7 @@ import FadeIn from "react-fade-in";
 import InspirationElement from '../../components/inspirationElement/inspirationElement';
 import GrippingGrade from '../../components/grippingGrade/grippingGrade';
 import PacingScore from '../../components/pacingScore/pacingScore';
-
+import axios from 'axios';
 
 export default class ParentSurvey extends React.Component {
   constructor(props) {
@@ -30,202 +30,200 @@ export default class ParentSurvey extends React.Component {
       masterpiece: "50",
       educational: "50",
       chatter: "50",
-      chatterElements: '',
-      inspiration: '50',
-      inspirationElements: '',
+      chatterElements: "",
+      inspiration: "50",
+      inspirationElements: "",
       heart: "50",
       feeling: "50",
-      feelingElements: '',
+      feelingElements: "",
       accessibility: "50",
       diversity: "",
       favorite: "",
       critique: "",
       stars: "",
       keywords: "",
-      extraInfo: '',
-      feedback: '',
-      gripping: '',
-      pacing: ''
+      extraInfo: "",
+      feedback: "",
+      gripping: "",
+      pacing: "",
     };
   }
 
-  handlePersonalInfo = data => {
+  
+
+  handlePersonalInfo = (data) => {
     this.setState({
       name: data.name,
       age: data.age,
       location: data.location,
       country: data.country,
     });
-  }
+  };
 
+  handleDiversity = (data) => {
+    this.setState({
+      diversity: data.diversityAndRepresentation,
+    });
+  };
+  handleFav = (data) => {
+    this.setState({
+      favorite: data.favorite,
+      critique: data.leastFav,
+    });
+  };
 
-    handleDiversity = data => {
-        this.setState({
-        diversity: data.diversityAndRepresentation,
-        });
+  handleKeywords = (data) => {
+    this.setState({
+      keywords: data.keywords,
+    });
+  };
+  handleFeedback = (data) => {
+    this.setState({
+      feedback: data.feedback,
+    });
+  };
+
+  handleExtraInfo = (data) => {
+    this.setState({
+      extraInfo: data.extraInfo,
+    });
+  };
+
+  handleStars = (data) => {
+    this.setState({
+      stars: data.rating,
+    });
+  };
+
+  handleClearness = (data) => {
+    this.setState({
+      clearness: data.clearness,
+    });
+  };
+
+  handleMasterpiece = (data) => {
+    this.setState({
+      masterpiece: data.masterpiece,
+    });
+  };
+
+  handleEducational = (data) => {
+    this.setState({
+      educational: data.educational,
+    });
+  };
+
+  handleChatter = (data) => {
+    var chatterElements = "";
+    if (data.character === true) {
+      chatterElements += "the characters, ";
     }
-    handleFav = data => {
-        this.setState({
-            favorite: data.favorite,
-            critique: data.leastFav,
-        })
+    if (data.plot === true) {
+      chatterElements += "the plot, ";
     }
-
-    handleKeywords = data => {
-        this.setState({
-            keywords: data.keywords
-        })
+    if (data.setting === true) {
+      chatterElements += "the setting, ";
     }
-    handleFeedback = data => {
-        this.setState({
-            feedback: data.feedback,
-        })
+    if (data.educational === true) {
+      chatterElements += "the educational elements, ";
     }
-
-    handleExtraInfo = data => {
-        this.setState({
-            extraInfo: data.extraInfo,
-        })
+    if (data.emotional === true) {
+      chatterElements += "the emotional aspects, ";
     }
-
-    handleStars = data => {
-        this.setState({
-            stars: data.rating
-        })
-    }
-
-    handleClearness = data => {
-        this.setState({
-            clearness: data.clearness
-        })
-    }
-
-    handleMasterpiece = data => {
-        this.setState({
-            masterpiece: data.masterpiece
-        })
-    }
-
-    handleEducational = data => {
-        this.setState({
-            educational: data.educational
-        })
-    }
-
-    handleChatter = data => {
-      var chatterElements = '';
-      if (data.character === true) {
-          chatterElements += 'the characters, ';
-      }
-      if (data.plot === true) {
-        chatterElements += 'the plot, ';
-      }
-      if (data.setting === true) {
-        chatterElements += 'the setting, ';
-      }
-      if (data.educational === true) {
-        chatterElements += 'the educational elements, ';
-      }
-      if (data.emotional === true) {
-        chatterElements += 'the emotional aspects, ';
-      }
-      if (data.other === true ) {
-        chatterElements += data.otherInfo;
-      }
-
-        this.setState({
-            chatter: data.chatter,
-            chatterElements: chatterElements,
-        })
+    if (data.other === true) {
+      chatterElements += data.otherInfo;
     }
 
-    handleInspiration = data => {
-      var inspoElements= '';
-      if (data.resilience === true) {
-        inspoElements += 'resilience, ';
-      }
-      if (data.perseverance === true) {
-        inspoElements += 'perseverance, ';
-      }
-      if (data.kindness === true) {
-        inspoElements += 'kindness, ';
-      }
-      if (data.bravery === true) {
-        inspoElements += 'bravery, ';
-      }
-      if (data.hope === true) {
-        inspoElements += 'hope, ';
-      }
-      if (data.generosity === true) {
-        inspoElements += 'generosity, ';
-      }
-      if (data.empathy === true) {
-        inspoElements += 'empathy, ';
-      }
-      if (data.other === true) {
-        inspoElements += data.otherInfo;
-      }
+    this.setState({
+      chatter: data.chatter,
+      chatterElements: chatterElements,
+    });
+  };
 
-      this.setState({
-        inspiration: data.inspiration,
-        inspirationElements: inspoElements,
-      })
-
+  handleInspiration = (data) => {
+    var inspoElements = "";
+    if (data.resilience === true) {
+      inspoElements += "resilience, ";
+    }
+    if (data.perseverance === true) {
+      inspoElements += "perseverance, ";
+    }
+    if (data.kindness === true) {
+      inspoElements += "kindness, ";
+    }
+    if (data.bravery === true) {
+      inspoElements += "bravery, ";
+    }
+    if (data.hope === true) {
+      inspoElements += "hope, ";
+    }
+    if (data.generosity === true) {
+      inspoElements += "generosity, ";
+    }
+    if (data.empathy === true) {
+      inspoElements += "empathy, ";
+    }
+    if (data.other === true) {
+      inspoElements += data.otherInfo;
     }
 
+    this.setState({
+      inspiration: data.inspiration,
+      inspirationElements: inspoElements,
+    });
+  };
 
+  handleHeart = (data) => {
+    this.setState({
+      heart: data.heart,
+    });
+  };
 
-    handleHeart = data => {
-        this.setState({
-            heart: data.heart
-        })
+  handleFeeling = (data) => {
+    var feelingElements = "";
+    if (data.happiness === true) {
+      feelingElements += "happiness, ";
+    }
+    if (data.sadness === true) {
+      feelingElements += "sadness, ";
+    }
+    if (data.fear === true) {
+      feelingElements += "fear, ";
+    }
+    if (data.anger === true) {
+      feelingElements += "anger, ";
+    }
+    if (data.other === true) {
+      feelingElements += data.otherInfo;
     }
 
-    handleFeeling = data => {
-      var feelingElements = "";
-      if (data.happiness === true) {
-        feelingElements += "happiness, ";
-      }
-      if (data.sadness === true) {
-        feelingElements += "sadness, ";
-      }
-      if (data.fear === true) {
-        feelingElements += "fear, ";
-      }
-      if (data.anger === true) {
-        feelingElements += "anger, ";
-      }
-      if (data.other === true) {
-        feelingElements += data.otherInfo;
-      }
-
-        this.setState({
-            feeling: data.feeling,
-            feelingElements: feelingElements
-        })
-    }
-    handleAccessibility = data => {
-        this.setState({
-            accessibility: data.accessibility
-        })
-    }
-    handleGripping = data => {
-      this.setState({
-        gripping: data.grippingGrade
-      })
-    }
-    handlePacing = data => {
-      this.setState({
-        pacing: data.pacing
-      })
-    }
+    this.setState({
+      feeling: data.feeling,
+      feelingElements: feelingElements,
+    });
+  };
+  handleAccessibility = (data) => {
+    this.setState({
+      accessibility: data.accessibility,
+    });
+  };
+  handleGripping = (data) => {
+    this.setState({
+      gripping: data.grippingGrade,
+    });
+  };
+  handlePacing = (data) => {
+    this.setState({
+      pacing: data.pacing,
+    });
+  };
 
   submitHandler = (e) => {
     alert(
-      this.state.pacing + 
-      this.state.chatterElements +
-      this.state.gripping +
-      "Name: " +
+      this.state.pacing +
+        this.state.chatterElements +
+        this.state.gripping +
+        "Name: " +
         this.state.name +
         ";" +
         " Age: " +
@@ -255,7 +253,9 @@ export default class ParentSurvey extends React.Component {
         " Feeling Factor: " +
         this.state.feeling +
         ";" +
-        'Feeling Elements: ' + this.state.feelingElements + ';' +
+        "Feeling Elements: " +
+        this.state.feelingElements +
+        ";" +
         " Accessibility Score: " +
         this.state.accessibility +
         ";" +
@@ -278,11 +278,14 @@ export default class ParentSurvey extends React.Component {
         this.state.extraInfo +
         ";" +
         " Feedback: " +
-        this.state.feedback + ';'
+        this.state.feedback +
+        ";"
     );
   };
 
   render() {
+    const { title } = this.props.match.params;
+
     const container = {
       margin: "3%",
     };
@@ -300,7 +303,7 @@ export default class ParentSurvey extends React.Component {
           <div style={container}>
             <h2>Book Level and Target Review</h2>
             <p style={bookInfo}>
-              <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
+              <i style={bookTitle}>{title}</i> by AUTHOR
             </p>
             <PersonalInfo onChange={this.handlePersonalInfo} />
 

@@ -9,10 +9,10 @@ import Tags from './surveys/tags';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Books from './surveys/books';
 import BookInfo from './components/bookInfo';
-import BookInfoNew from './components/bookInfoNew';
 
 
 function App({books}) {
+
 
   
 
@@ -46,23 +46,18 @@ function App({books}) {
           <Route path="/" exact>
             <Tags />
           </Route>
-          <Route path={"/books/:books/parent-survey"}>
-            <ParentSurvey books={books} />
+          <Route path={"/books/:title/parent-survey"} component={ParentSurvey}>
           </Route>
-          <Route path={"/books/:books/author-survey"}>
-            <AuthorSurvey books={books} />
+          <Route path={"/books/:title/author-survey"} component={AuthorSurvey}>
           </Route>
-          <Route path={"/books/:books/critic-survey"}>
-            <CriticSurvey books={books} />
+          <Route path={"/books/:title/critic-survey"} component={CriticSurvey}>
           </Route>
-          <Route path={"/books/:books/teacher-survey"}>
-            <TeacherSurvey books={books} />
+          <Route path={"/books/:title/teacher-survey"} component={TeacherSurvey}>
           </Route>
           <Route path="/books" exact>
             <Books />
           </Route>
-          <Route path={"/books/:books"} exact>
-            <BookInfo books={books} />
+          <Route path={"/books/:title"} component={BookInfo} exact>
           </Route>
         </Switch>
       </div>

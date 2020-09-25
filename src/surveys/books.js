@@ -1,7 +1,6 @@
 import React from 'react';
 import Table from '../components/table';
 import axios from "axios";
-import TableNew from '../components/tableNew';
 
 class Books extends React.Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class Books extends React.Component {
         const response = await axios.get(url)
 
         this.setState({books: response.data}) 
-        // console.log(this.state.books)
+        console.log(this.state.books)
     }
 
 //   componentDidMount() {
@@ -68,7 +67,7 @@ class Books extends React.Component {
         </div>
         {this.componentDidMount ? (
 
-        <TableNew books={this.state.books} />
+        <Table books={this.state.books} />
 
         ): null }
         
