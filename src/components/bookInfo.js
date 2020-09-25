@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Route, Link } from "react-router-dom";
-import ParentSurvey from '../surveys/parentSurvey/parentSurvey';
 import axios from 'axios';
+import FadeIn from "react-fade-in";
+
 
 class BookInfo extends React.Component {
   constructor(props) {
@@ -10,6 +11,9 @@ class BookInfo extends React.Component {
       books: null,
       title: Object.values(this.props.match.params).toString(),
       author: '',
+      publisher: '',
+      pub_year: '',
+      isbn: '',
     };
   }
   
@@ -17,63 +21,84 @@ class BookInfo extends React.Component {
   
   
   componentDidMount = async() => {
-    const { title } = this.props.match.params;
+    
 
-
-    // console.log(Object.values(this.state.title));
-
-
-    console.log(this.state.title)
 
      var url =
           "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/get_all_books";
         const response = await axios.get(url)
 
         this.setState({books: response.data}) 
-        console.log(this.state.books)
 
         var index = findWithAttr(this.state.books, 'title', this.state.title.toString());
 
-        var author = this.state.books[0].fields['author'];
+        var author = this.state.books[index].fields['author'];
         this.setState({
           author: author
+        })
+        var publisher = this.state.books[index].fields['publisher'];
+        this.setState({
+          publisher: publisher
+        })
+        var pub_year = this.state.books[index].fields['pub_year'];
+        this.setState({
+          pub_year: pub_year
+        })
+        var isbn = this.state.books[index].fields['isbn'];
+        this.setState({
+          isbn: isbn
         })
 
 
     
   }
 
+ 
+
+
   
 
   render() {
-        const { title } = this.props.match.params;
+    const { title } = this.props.match.params;
 
-    
+    if (this.state.author !== '') {
+      return (
+        <FadeIn>
+          <div style={{ paddingLeft: 30 }}>
+            <p style={{ fontSize: 20, fontWeight: "bold" }}>
+              {this.state.title} by {this.state.author}
+            </p>
 
-    return (
-      <div style={{ paddingLeft: 30 }}>
-        <span style={{ fontSize: 20, fontWeight:'bold', marginBottom: 40 }}>{title} by {this.state.author}</span>
+            <p>Publisher: {this.state.publisher}</p>
+            <p>Publishing Year: {this.state.pub_year}</p>
+            <p>ISBN: {this.state.isbn}</p>
 
-        <nav>
-          <p>
-            <Link to={`/books/${title}/parent-survey`}>Parent Survey</Link>
-          </p>
-          <p>
-            <Link to={"/books/" + title + "/critic-survey"}>Critic Survey</Link>
-          </p>
-          <p>
-            <Link to={"/books/" + title + "/author-survey"}>
-              Author/Illustrator Survey
-            </Link>
-          </p>
-          <p>
-            <Link to={"/books/" + title + "/teacher-survey"}>
-              Teacher Survey
-            </Link>
-          </p>
-        </nav>
-      </div>
-    );
+            <nav>
+              <p>
+                <Link to={`/books/${title}/parent-survey`}>Parent Survey</Link>
+              </p>
+              <p>
+                <Link to={`/books/${title}/critic-survey`}>Critic Survey</Link>
+              </p>
+              <p>
+                <Link to={`/books/${title}/author-survey`}>
+                  Author/Illustrator Survey
+                </Link>
+              </p>
+              <p>
+                <Link to={`/books/${title}/teacher-survey`}>
+                  Teacher Survey
+                </Link>
+              </p>
+            </nav>
+          </div>
+        </FadeIn>
+      );
+    } else {
+        return ( 
+        <div style={{paddingLeft: 30}}>Loading...</div>
+        )
+      }
   }
 }
 

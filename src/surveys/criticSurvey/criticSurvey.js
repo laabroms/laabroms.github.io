@@ -17,6 +17,7 @@ import InspirationElement from "../../components/inspirationElement/inspirationE
 import GrippingGrade from "../../components/grippingGrade/grippingGrade";
 import PacingScore from "../../components/pacingScore/pacingScore";
 import ContentWarning from "../../components/contentWarning/contentWarning";
+import axios from "axios";
 
 
 
@@ -24,6 +25,11 @@ class CriticSurvey extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      title: Object.values(this.props.match.params).toString(),
+      author: "",
+      tags: "",
+      age_range: "",
+
       name: "",
       location: "",
       country: "",
@@ -36,7 +42,7 @@ class CriticSurvey extends React.Component {
       discussion: "50",
       heart: "50",
       feeling: "50",
-      feelingElements: '',
+      feelingElements: "",
       accessibility: "50",
       diversity: "",
       favorite: "",
@@ -45,15 +51,54 @@ class CriticSurvey extends React.Component {
       keywords: "",
       extraInfo: "",
       feedback: "",
-      chatter: '50',
-      chatterElements: '',
-      inspiration: '50',
-      inspirationElements: '',
-      pacing: '',
-      gripping: '',
-      contentWarning: '',
+      chatter: "50",
+      chatterElements: "",
+      inspiration: "50",
+      inspirationElements: "",
+      pacing: "",
+      gripping: "",
+      contentWarning: "",
     };
   }
+
+  componentDidMount = async () => {
+    const { title } = this.props.match.params;
+
+    // console.log(Object.values(this.state.title));
+
+    console.log(this.state.title);
+
+    var url =
+      "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/get_all_books";
+    const response = await axios.get(url);
+
+    this.setState({ books: response.data });
+    console.log(this.state.books);
+
+    var index = findWithAttr(
+      this.state.books,
+      "title",
+      this.state.title.toString()
+    );
+
+    var author = this.state.books[index].fields["author"];
+    this.setState({
+      author: author,
+    });
+    var tags = this.state.books[index].fields["tags"];
+    this.setState({
+      tags: tags,
+    });
+    var age_range = this.state.books[index].fields["age_range"];
+    this.setState({
+      age_range: age_range,
+    });
+    console.log(tags);
+
+    var eachTag = this.state.tags.split(",");
+    var numTags = eachTag.length;
+    console.log(numTags);
+  };
 
   handlePersonalInfo = (data) => {
     this.setState({
@@ -212,7 +257,6 @@ class CriticSurvey extends React.Component {
       feelingElements: feelingElements,
     });
   };
-  
 
   handleAccessibility = (data) => {
     this.setState({
@@ -313,13 +357,14 @@ class CriticSurvey extends React.Component {
       fontSize: 20,
     };
 
+ if (this.state.author !== "") {
     return (
       <form method="POST" action="">
         <FadeIn>
           <div style={container}>
             <h2>Book Level and Target Review</h2>
             <p style={bookInfo}>
-              <i style={bookTitle}>BOOK TITLE</i> by AUTHOR
+              <i style={bookTitle}>{this.state.title}</i> by {this.state.author}
             </p>
 
             <PersonalInfoAuthor onChange={this.handlePersonalInfo} />
@@ -354,7 +399,22 @@ class CriticSurvey extends React.Component {
         </FadeIn>
       </form>
     );
+    } else {
+       return <div style={{ paddingLeft: 30 }}>Loading...</div>;
+    }
   }
 }
+
+
+
+function findWithAttr(array, attr, value) {
+  for (var i = 0; i < array.length; i += 1) {
+    if (array[i].fields[attr] === value) {
+      return i;
+    }
+  }
+  return -1;
+}
+
 
 export default CriticSurvey;

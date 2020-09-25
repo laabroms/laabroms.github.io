@@ -59,12 +59,7 @@ class Books extends React.Component {
 
     return (
       <>
-        {/* <pre></pre> */}
-        <div>
-          {/* <button className="fetch-button" onClick={this.fetchData}>
-            Fetch Data
-          </button> */}
-        </div>
+        
         {this.componentDidMount ? (
 
         <Table books={this.state.books} />
