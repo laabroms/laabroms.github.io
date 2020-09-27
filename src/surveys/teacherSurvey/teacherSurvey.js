@@ -21,7 +21,19 @@ import PacingScore from "../../components/pacingScore/pacingScore";
 import ContentWarning from "../../components/contentWarning/contentWarning";
 import FadeIn from "react-fade-in";
 import axios from "axios";
-
+import {Spinner} from 'react-bootstrap';
+import SillyScore from "../../tags/sillyScore";
+import SpookyScore from "../../tags/spookyScore";
+import FestivityFactor from "../../tags/festivityFactor";
+import ActionAverage from "../../tags/actionAverage";
+import FriendshipScore from "../../tags/friendshipScore";
+import AwesomeAnimals from "../../tags/awesomeAnimals";
+import MysteryMeter from "../../tags/mysteryMeter";
+import FantasyFactor from "../../tags/fantasyFactor";
+import RealnessRating from "../../tags/realnessRating";
+import HeartMeter from "../../tags/heartMeter";
+import ThrillFactor from "../../tags/thrillFactor";
+import SuspenseScale from "../../tags/suspenseScale";
 
 class TeacherSurvey extends React.Component {
   constructor(props) {
@@ -65,25 +77,28 @@ class TeacherSurvey extends React.Component {
   }
 
   componentDidMount = async () => {
-    const { title } = this.props.match.params;
 
-    // console.log(Object.values(this.state.title));
 
-    console.log(this.state.title);
 
     var url =
       "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/get_all_books";
     const response = await axios.get(url);
 
     this.setState({ books: response.data });
-    console.log(this.state.books);
+
+    var length = this.state.title.length;
 
     var index = findWithAttr(
       this.state.books,
       "title",
-      this.state.title.toString()
+      this.state.title.toString(),
+      length
     );
 
+    var title = this.state.books[index].fields["title"];
+    this.setState({
+      title: title,
+    });
     var author = this.state.books[index].fields["author"];
     this.setState({
       author: author,
@@ -408,29 +423,82 @@ class TeacherSurvey extends React.Component {
 
             <PersonalInfoAuthor onChange={this.handlePersonalInfo} />
             <TeacherInfo onChange={this.handleTeacherInfo} />
-            <ClearnessCalculator onChange={this.handleClearness} />
 
+            {this.state.age_range === "y" ? (
+              <>
+                <ClearnessCalculator onChange={this.handleClearness} />
+                <MasterpieceMeter onChange={this.handleMasterpiece} />
+              </>
+            ) : null}
             {/* for younger */}
-            <MasterpieceMeter onChange={this.handleMasterpiece} />
+
             {/* for older */}
-            <MasterpieceMeterOlder onChange={this.handleMasterpiece} />
+            {this.state.age_range === "o" ? (
+              <>
+                <MasterpieceMeterOlder onChange={this.handleMasterpiece} />
+              </>
+            ) : null}
 
             <InspirationElement onChange={this.handleInspiration} />
             <FeelingFactor onChange={this.handleFeeling} />
             <ChatterBarTeacher onChange={this.handleChatter} />
             <LivelyLibraries onChange={this.handleLively} />
             <AccessibilityScore onChange={this.handleAccessibility} />
+
+            {this.state.tags.includes("Humor") ? <SillyScore /> : null}
+
+            {this.state.tags.includes("Halloween") ? <SpookyScore /> : null}
+
+            {this.state.tags.includes("Holidays") ? <FestivityFactor /> : null}
+
+            {this.state.tags.includes("Adventure") ? <ActionAverage /> : null}
+
+            {this.state.tags.includes("Friendship") ? (
+              <FriendshipScore />
+            ) : null}
+
+            {this.state.tags.includes("Animals") ? <AwesomeAnimals /> : null}
+
+            {this.state.tags.includes("Graphic Novel") ? (
+              <MasterpieceMeterOlder />
+            ) : null}
+
+            {this.state.tags.includes("Mystery") ? <MysteryMeter /> : null}
+
+            {this.state.tags.includes("Fantasy") ||
+            this.state.tags.includes("Fairy Tales") ? (
+              <FantasyFactor />
+            ) : null}
+
+            {this.state.tags.includes("Realistic Fiction") ? (
+              <RealnessRating />
+            ) : null}
+
+            {this.state.tags.includes("Romance") ? <HeartMeter /> : null}
+
+            {this.state.tags.includes("Horror") ? <ThrillFactor /> : null}
+
+            {this.state.tags.includes("Suspense") ? <SuspenseScale /> : null}
+
             <ClassroomCreativity onChange={this.handleClassroomCreativity} />
             <GrippingGrade onChange={this.handleGripping} />
 
             {/* for older */}
-            <PacingScore onChange={this.handlePacing} />
+            {this.state.age_range === "o" ? (
+              <>
+                <PacingScore onChange={this.handlePacing} />
+              </>
+            ) : null}
 
             <DiversityRep onChange={this.handleDiversity} />
             <FavLeastFav onChange={this.handleFav} />
 
             {/* for older */}
-            <ContentWarning onChange={this.handleWarning} />
+            {this.state.age_range === "o" ? (
+              <>
+                <ContentWarning onChange={this.handleWarning} />
+              </>
+            ) : null}
 
             <StarRating onChange={this.handleStars} />
             <Keywords onChange={this.handleKeywords} />
@@ -449,9 +517,19 @@ class TeacherSurvey extends React.Component {
       </form>
     );
     } else {
-       return(
-         <div style={{paddingLeft:30}}>Loading...</div>
-       )
+       return (
+         <div
+           style={{
+             position: "fixed",
+             left: "50%",
+             top: "50%",
+           }}
+         >
+           <Spinner animation="border" role="status">
+             <span className="sr-only">Loading...</span>
+           </Spinner>
+         </div>
+       );
     }
   }
 }
@@ -459,9 +537,9 @@ class TeacherSurvey extends React.Component {
 
 
 
-function findWithAttr(array, attr, value) {
+function findWithAttr(array, attr, value, length) {
   for (var i = 0; i < array.length; i += 1) {
-    if (array[i].fields[attr] === value) {
+    if (array[i].fields[attr].substring(0, length) === value) {
       return i;
     }
   }

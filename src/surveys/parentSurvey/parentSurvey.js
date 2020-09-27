@@ -16,6 +16,21 @@ import InspirationElement from '../../components/inspirationElement/inspirationE
 import GrippingGrade from '../../components/grippingGrade/grippingGrade';
 import PacingScore from '../../components/pacingScore/pacingScore';
 import axios from 'axios';
+import {Spinner} from 'react-bootstrap';
+import MasterpieceMeter from '../../components/masterpieceMeter/masterpieceMeter';
+import MasterpieceMeterOlder from '../../components/masterpieceMeter/masterpieceMeterOlder';
+import SillyScore from '../../tags/sillyScore';
+import SpookyScore from '../../tags/spookyScore';
+import FestivityFactor from '../../tags/festivityFactor';
+import ActionAverage from '../../tags/actionAverage';
+import FriendshipScore from '../../tags/friendshipScore';
+import AwesomeAnimals from '../../tags/awesomeAnimals';
+import MysteryMeter from '../../tags/mysteryMeter';
+import FantasyFactor from '../../tags/fantasyFactor';
+import RealnessRating from '../../tags/realnessRating';
+import HeartMeter from '../../tags/heartMeter';
+import ThrillFactor from '../../tags/thrillFactor';
+import SuspenseScale from '../../tags/suspenseScale';
 
 export default class ParentSurvey extends React.Component {
   constructor(props) {
@@ -55,24 +70,26 @@ export default class ParentSurvey extends React.Component {
   }
 
   componentDidMount = async () => {
-    const { title } = this.props.match.params;
-
-    // console.log(Object.values(this.state.title));
-
-    console.log(this.state.title);
 
     var url =
       "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/get_all_books";
     const response = await axios.get(url);
 
     this.setState({ books: response.data });
-    console.log(this.state.books);
 
-    var index = findWithAttr(
-      this.state.books,
-      "title",
-      this.state.title.toString()
-    );
+   var length = this.state.title.length;
+
+   var index = findWithAttr(
+     this.state.books,
+     "title",
+     this.state.title.toString(),
+     length
+   );
+
+   var title = this.state.books[index].fields["title"];
+   this.setState({
+     title: title,
+   });
 
     var author = this.state.books[index].fields["author"];
     this.setState({
@@ -88,10 +105,11 @@ export default class ParentSurvey extends React.Component {
     });
     console.log(tags)
 
-    var eachTag = this.state.tags.split(',')
-    var numTags = eachTag.length;
-    console.log(numTags)
+    
+
   };
+
+
 
   handlePersonalInfo = (data) => {
     this.setState({
@@ -261,72 +279,10 @@ export default class ParentSurvey extends React.Component {
   };
 
   submitHandler = (e) => {
-    alert(
-      this.state.pacing +
-        this.state.chatterElements +
-        this.state.gripping +
-        "Name: " +
-        this.state.name +
-        ";" +
-        " Age: " +
-        this.state.age +
-        ";" +
-        " Location: " +
-        this.state.location +
-        ";" +
-        " Country: " +
-        this.state.country +
-        ";" +
-        " Clearness Calculator: " +
-        this.state.clearness +
-        ";" +
-        " Masterpiece Meter: " +
-        this.state.masterpiece +
-        ";" +
-        " Educational Element: " +
-        this.state.educational +
-        ";" +
-        " Chatter Bar: " +
-        this.state.chatter +
-        ";" +
-        " Heart to Heart: " +
-        this.state.heart +
-        ";" +
-        " Feeling Factor: " +
-        this.state.feeling +
-        ";" +
-        "Feeling Elements: " +
-        this.state.feelingElements +
-        ";" +
-        " Accessibility Score: " +
-        this.state.accessibility +
-        ";" +
-        " Diversity and Representation Response: " +
-        this.state.diversity +
-        ";" +
-        " Favorite Part: " +
-        this.state.favorite +
-        ";" +
-        " Critique: " +
-        this.state.critique +
-        ";" +
-        " Stars: " +
-        this.state.stars +
-        ";" +
-        " Keywords: " +
-        this.state.keywords +
-        ";" +
-        " Extra Info: " +
-        this.state.extraInfo +
-        ";" +
-        " Feedback: " +
-        this.state.feedback +
-        ";"
-    );
+   
   };
 
   render() {
-    const { title } = this.props.match.params;
 
     const container = {
       margin: "3%",
@@ -342,58 +298,122 @@ export default class ParentSurvey extends React.Component {
     if (this.state.author !== "") {
       return (
         <form method="POST" action="">
-          <FadeIn>
-            <div style={container}>
-              <h2>Book Level and Target Review</h2>
-              <p style={bookInfo}>
-                <i style={bookTitle}>{title}</i> by {this.state.author}
-              </p>
-              <PersonalInfo onChange={this.handlePersonalInfo} />
+          <>
+            <FadeIn>
+              <div style={container}>
+                <h2>Book Level and Target Review</h2>
+                <p style={bookInfo}>
+                  <i style={bookTitle}>{this.state.title}</i> by{" "}
+                  {this.state.author}
+                </p>
+                <PersonalInfo onChange={this.handlePersonalInfo} />
 
-              {/* for younger */}
-              <ClearnessCalculatorYounger onChange={this.handleClearness} />
+                {/* for younger */}
+                {this.state.age_range === "y" ? (
+                  <>
+                    <ClearnessCalculatorYounger
+                      onChange={this.handleClearness}
+                    />
+                    <MasterpieceMeter onChange={this.handleMasterpiece} />
+                  </>
+                ) : null}
 
-              <ChatterBar onChange={this.handleChatter} />
-              <InspirationElement onChange={this.handleInspiration} />
-              <FeelingFactor onChange={this.handleFeeling} />
-              <AccessibilityScore onChange={this.handleAccessibility} />
-              <GrippingGrade onChange={this.handleGripping} />
+                <ChatterBar onChange={this.handleChatter} />
+                <InspirationElement onChange={this.handleInspiration} />
+                <FeelingFactor onChange={this.handleFeeling} />
 
-              {/* for older */}
-              <PacingScore onChange={this.handlePacing} />
+                {this.state.tags.includes("Humor") ? <SillyScore /> : null}
 
-              <DiversityRep onChange={this.handleDiversity} />
-              <FavLeastFav onChange={this.handleFav} />
-              <StarRating onChange={this.handleStars} />
-              <Keywords onChange={this.handleKeywords} />
-              <ExtraInfo onChange={this.handleExtraInfo} />
-              <FeedbackSlider onChange={this.handleFeedback} />
+                {this.state.tags.includes("Halloween") ? <SpookyScore /> : null}
 
-              <button
-                type="submit"
-                className="submitButton"
-                onClick={this.submitHandler}
-              >
-                SUBMIT
-              </button>
-            </div>
-          </FadeIn>
+                {this.state.tags.includes("Holidays") ? (
+                  <FestivityFactor />
+                ) : null}
+
+                {this.state.tags.includes("Adventure") ? (
+                  <ActionAverage />
+                ) : null}
+
+                {this.state.tags.includes("Friendship") ? (
+                  <FriendshipScore />
+                ) : null}
+
+                {this.state.tags.includes("Animals") ? (
+                  <AwesomeAnimals />
+                ) : null}
+
+                {this.state.tags.includes("Graphic Novel") ? (
+                  <MasterpieceMeterOlder />
+                ) : null}
+
+                {this.state.tags.includes("Mystery") ? <MysteryMeter /> : null}
+
+                {this.state.tags.includes("Fantasy") ||
+                this.state.tags.includes("Fairy Tales") ? (
+                  <FantasyFactor />
+                ) : null}
+
+                {this.state.tags.includes("Realistic Fiction") ? <RealnessRating /> : null}
+
+                {this.state.tags.includes("Romance") ? <HeartMeter /> : null}
+
+                {this.state.tags.includes("Horror") ? <ThrillFactor /> : null}
+
+                {this.state.tags.includes("Suspense") ? <SuspenseScale /> : null}
+
+                <AccessibilityScore onChange={this.handleAccessibility} />
+                <GrippingGrade onChange={this.handleGripping} />
+
+                {/* for older */}
+                {this.state.age_range === "o" ? (
+                  <>
+                    <PacingScore onChange={this.handlePacing} />
+                  </>
+                ) : null}
+
+                <DiversityRep onChange={this.handleDiversity} />
+                <FavLeastFav onChange={this.handleFav} />
+                <StarRating onChange={this.handleStars} />
+                <Keywords onChange={this.handleKeywords} />
+                <ExtraInfo onChange={this.handleExtraInfo} />
+                <FeedbackSlider onChange={this.handleFeedback} />
+
+                <button
+                  type="submit"
+                  className="submitButton"
+                  onClick={this.submitHandler}
+                >
+                  SUBMIT
+                </button>
+              </div>
+            </FadeIn>
+          </>
         </form>
       );
     
     } else {
-       return(
-         <div style={{paddingLeft:30}}>Loading...</div>
-       )
+       return (
+         <div
+           style={{
+             position: "fixed",
+             left: "50%",
+             top: "50%",
+           }}
+         >
+           <Spinner animation="border" role="status">
+             <span className="sr-only">Loading...</span>
+           </Spinner>
+         </div>
+       );
     }
   }
 }
 
 
 
-function findWithAttr(array, attr, value) {
+function findWithAttr(array, attr, value, length) {
   for (var i = 0; i < array.length; i += 1) {
-    if (array[i].fields[attr] === value) {
+    if (array[i].fields[attr].substring(0, length) === value) {
       return i;
     }
   }

@@ -18,8 +18,20 @@ import GrippingGrade from "../../components/grippingGrade/grippingGrade";
 import PacingScore from "../../components/pacingScore/pacingScore";
 import ContentWarning from "../../components/contentWarning/contentWarning";
 import axios from "axios";
-
-
+import {Spinner} from 'react-bootstrap';
+import MasterpieceMeterOlder from "../../components/masterpieceMeter/masterpieceMeterOlder";
+import SillyScore from "../../tags/sillyScore";
+import SpookyScore from "../../tags/spookyScore";
+import FestivityFactor from "../../tags/festivityFactor";
+import ActionAverage from "../../tags/actionAverage";
+import FriendshipScore from "../../tags/friendshipScore";
+import AwesomeAnimals from "../../tags/awesomeAnimals";
+import MysteryMeter from "../../tags/mysteryMeter";
+import FantasyFactor from "../../tags/fantasyFactor";
+import RealnessRating from "../../tags/realnessRating";
+import HeartMeter from "../../tags/heartMeter";
+import ThrillFactor from "../../tags/thrillFactor";
+import SuspenseScale from "../../tags/suspenseScale";
 
 class CriticSurvey extends React.Component {
   constructor(props) {
@@ -62,24 +74,28 @@ class CriticSurvey extends React.Component {
   }
 
   componentDidMount = async () => {
-    const { title } = this.props.match.params;
 
-    // console.log(Object.values(this.state.title));
 
-    console.log(this.state.title);
 
     var url =
       "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/get_all_books";
     const response = await axios.get(url);
 
     this.setState({ books: response.data });
-    console.log(this.state.books);
+
+    var length = this.state.title.length;
 
     var index = findWithAttr(
       this.state.books,
       "title",
-      this.state.title.toString()
+      this.state.title.toString(),
+      length
     );
+
+    var title = this.state.books[index].fields["title"];
+    this.setState({
+      title: title,
+    });
 
     var author = this.state.books[index].fields["author"];
     this.setState({
@@ -377,6 +393,42 @@ class CriticSurvey extends React.Component {
             <ChatterBar onChange={this.handleChatter} />
             <InspirationElement onChange={this.handleInspiration} />
             <FeelingFactor onChange={this.handleFeeling} />
+
+            {this.state.tags.includes("Humor") ? <SillyScore /> : null}
+
+            {this.state.tags.includes("Halloween") ? <SpookyScore /> : null}
+
+            {this.state.tags.includes("Holidays") ? <FestivityFactor /> : null}
+
+            {this.state.tags.includes("Adventure") ? <ActionAverage /> : null}
+
+            {this.state.tags.includes("Friendship") ? (
+              <FriendshipScore />
+            ) : null}
+
+            {this.state.tags.includes("Animals") ? <AwesomeAnimals /> : null}
+
+            {this.state.tags.includes("Graphic Novel") ? (
+              <MasterpieceMeterOlder />
+            ) : null}
+
+            {this.state.tags.includes("Mystery") ? <MysteryMeter /> : null}
+
+            {this.state.tags.includes("Fantasy") ||
+            this.state.tags.includes("Fairy Tales") ? (
+              <FantasyFactor />
+            ) : null}
+
+            {this.state.tags.includes("Realistic Fiction") ? (
+              <RealnessRating />
+            ) : null}
+
+            {this.state.tags.includes("Romance") ? <HeartMeter /> : null}
+
+            {this.state.tags.includes("Horror") ? <ThrillFactor /> : null}
+
+            {this.state.tags.includes("Suspense") ? <SuspenseScale /> : null}
+
             <AccessibilityScore onChange={this.handleAccessibility} />
             <GrippingGrade onChange={this.handleGripping} />
             <PacingScore onChange={this.handlePacing} />
@@ -400,16 +452,28 @@ class CriticSurvey extends React.Component {
       </form>
     );
     } else {
-       return <div style={{ paddingLeft: 30 }}>Loading...</div>;
+       return (
+         <div
+           style={{
+             position: "fixed",
+             left: "50%",
+             top: "50%",
+           }}
+         >
+           <Spinner animation="border" role="status">
+             <span className="sr-only">Loading...</span>
+           </Spinner>
+         </div>
+       );
     }
   }
 }
 
 
 
-function findWithAttr(array, attr, value) {
+function findWithAttr(array, attr, value, length) {
   for (var i = 0; i < array.length; i += 1) {
-    if (array[i].fields[attr] === value) {
+    if (array[i].fields[attr].substring(0, length) === value) {
       return i;
     }
   }

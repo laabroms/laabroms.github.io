@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import {Spinner} from "react-bootstrap";
 
 
 
@@ -14,45 +14,26 @@ class Table extends React.Component {
   }
 
   
-//   handleClick = (book) => {
-//       this.setState({
-//           books: book
-          
-//       })
-//     //   console.log(this.state.books)
-//    }
-
 
 
 
  
   render() {
-      if (!this.props.books) return (<div>Loading...</div>);
+      if (!this.props.books) return (
+        <div style={{ position: 'fixed', left: "50%", top: "50%" }}>
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        </div>
+      );
 
 
 
       
 
-    //   console.log(books)
-
-    //   console.log(books.length)
-
-        // const originalQuestions = JSON.stringify(books[0].fields.title);
-
-        
-
-        // const questionObjects = Object.values(
-        //   JSON.stringify(books)
-        // );
-
       return (
           <>
-          <div>
-              {/* {questionObjects} */}
-          </div>
-          
-
-          
+         
         <table>
           <thead>
             <tr>
@@ -62,6 +43,7 @@ class Table extends React.Component {
               <th>ISBN</th>
               <th>Tags</th>
               <th>Publishing Year</th>
+              <th>Age Range</th>
             </tr>
           </thead>
           <tbody>
@@ -85,6 +67,7 @@ class Table extends React.Component {
                       <td>{book.fields.isbn}</td>
                       <td>{book.fields.tags}</td>
                       <td>{book.fields.pub_year}</td>
+                      <td>{book.fields.age_range}</td>
                     </tr>
                   </>
                 );

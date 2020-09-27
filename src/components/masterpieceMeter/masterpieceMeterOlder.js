@@ -30,7 +30,7 @@ class MasterpieceMeterOlder extends React.Component {
     return (
       <>
         <p className="title">
-          <span className="colorChange">MASTERPIECE METER:</span> Did you like this book's <span className="colorChange">graphic design and artistic style</span>?
+          <span className="colorChange">MASTERPIECE METER:</span> Did you like this book's <span className="colorChange">graphic design and artistic style?</span>
         </p>
 
         <div className={classes.root}>

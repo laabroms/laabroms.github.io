@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Route, Link } from "react-router-dom";
 import axios from 'axios';
 import FadeIn from "react-fade-in";
+import { Spinner } from "react-bootstrap";
 
 
 class BookInfo extends React.Component {
@@ -14,6 +15,7 @@ class BookInfo extends React.Component {
       publisher: '',
       pub_year: '',
       isbn: '',
+      avg_score: ''
     };
   }
   
@@ -30,12 +32,25 @@ class BookInfo extends React.Component {
 
         this.setState({books: response.data}) 
 
-        var index = findWithAttr(this.state.books, 'title', this.state.title.toString());
+        var length = this.state.title.length;
+        console.log(length)
 
+
+
+        var index = findWithAttr(this.state.books, 'title', this.state.title.toString(), length);
+
+
+        var title = this.state.books[index].fields['title'];
+         this.setState({
+           title: title,
+         });
+
+        // console.log(this.state.title)
         var author = this.state.books[index].fields['author'];
         this.setState({
           author: author
         })
+        console.log(this.state.author)
         var publisher = this.state.books[index].fields['publisher'];
         this.setState({
           publisher: publisher
@@ -47,6 +62,10 @@ class BookInfo extends React.Component {
         var isbn = this.state.books[index].fields['isbn'];
         this.setState({
           isbn: isbn
+        })
+        var avg_score = this.state.books[index].fields['avg_score'];
+        this.setState({
+          avg_score: avg_score
         })
 
 
@@ -72,6 +91,7 @@ class BookInfo extends React.Component {
             <p>Publisher: {this.state.publisher}</p>
             <p>Publishing Year: {this.state.pub_year}</p>
             <p>ISBN: {this.state.isbn}</p>
+            <p>Average Score: {this.state.avg_score}</p>
 
             <nav>
               <p>
@@ -95,17 +115,27 @@ class BookInfo extends React.Component {
         </FadeIn>
       );
     } else {
-        return ( 
-        <div style={{paddingLeft: 30}}>Loading...</div>
-        )
+        return (
+          <div
+            style={{
+              position: "fixed",
+              left: "50%",
+              top: "50%",
+            }}
+          >
+            <Spinner animation="border" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+          </div>
+        );
       }
   }
 }
 
 
-function findWithAttr(array, attr, value) {
+function findWithAttr(array, attr, value, length) {
   for (var i = 0; i < array.length; i += 1) {
-    if (array[i].fields[attr] === value) {
+    if (array[i].fields[attr].substring(0, length) === value) {
       return i;
     }
   }

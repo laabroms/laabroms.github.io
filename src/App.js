@@ -27,18 +27,7 @@ function App({books}) {
             <li>
               <Link to="/books">Books</Link>
             </li>
-            <li>
-              <Link to="/parent-survey">Parent Survey</Link>
-            </li>
-            <li>
-              <Link to="/author-survey">Author Survey</Link>
-            </li>
-            <li>
-              <Link to="/critic-survey">Critic Survey</Link>
-            </li>
-            <li>
-              <Link to="/teacher-survey">Teacher Survey</Link>
-            </li>
+            
           </ul>
         </nav>
 
