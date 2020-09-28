@@ -127,7 +127,7 @@ class FestivityFactor extends React.Component {
                   }}
                 />
               }
-              label="Silly Characters"
+              label="Silly characters"
             />
 
             <div className="otherInfoSection">

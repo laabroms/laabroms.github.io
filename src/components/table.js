@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import {Spinner} from "react-bootstrap";
 
@@ -41,9 +42,9 @@ class Table extends React.Component {
               <th>Author</th>
               <th>Publisher</th>
               <th>ISBN</th>
-              <th>Tags</th>
+              {/* <th>Tags</th> */}
               <th>Publishing Year</th>
-              <th>Age Range</th>
+              {/* <th>Age Range</th> */}
             </tr>
           </thead>
           <tbody>
@@ -65,9 +66,9 @@ class Table extends React.Component {
                       <td>{book.fields.author}</td>
                       <td>{book.fields.publisher}</td>
                       <td>{book.fields.isbn}</td>
-                      <td>{book.fields.tags}</td>
+                      {/* <td>{book.fields.tags}</td> */}
                       <td>{book.fields.pub_year}</td>
-                      <td>{book.fields.age_range}</td>
+                      {/* <td>{book.fields.age_range}</td> */}
                     </tr>
                   </>
                 );

@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line
 import { BrowserRouter as Route, Link } from "react-router-dom";
 import axios from 'axios';
 import FadeIn from "react-fade-in";
@@ -33,7 +34,7 @@ class BookInfo extends React.Component {
         this.setState({books: response.data}) 
 
         var length = this.state.title.length;
-        console.log(length)
+        // console.log(length)
 
 
 
@@ -50,7 +51,7 @@ class BookInfo extends React.Component {
         this.setState({
           author: author
         })
-        console.log(this.state.author)
+        // console.log(this.state.author)
         var publisher = this.state.books[index].fields['publisher'];
         this.setState({
           publisher: publisher
