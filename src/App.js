@@ -5,11 +5,11 @@ import ParentSurvey from "./surveys/parentSurvey/parentSurvey.js";
 import AuthorSurvey from "./surveys/authorSurvey/authorSurvey";
 import CriticSurvey from "./surveys/criticSurvey/criticSurvey";
 import TeacherSurvey from "./surveys/teacherSurvey/teacherSurvey";
-import Tags from './surveys/tags';
+// import Tags from './surveys/tags';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Books from './surveys/books';
 import BookInfo from './components/bookInfo';
-
+import Home from './components/home';
 
 function App({books}) {
 
@@ -33,7 +33,7 @@ function App({books}) {
 
         <Switch>
           <Route path="/" exact>
-            <Tags />
+            <Home />
           </Route>
           <Route path={"/books/:title/parent-survey"} component={ParentSurvey}>
           </Route>

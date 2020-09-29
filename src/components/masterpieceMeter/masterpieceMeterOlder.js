@@ -7,7 +7,7 @@ class MasterpieceMeterOlder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      masterpiece: "50",
+      masterpiece: 50,
     };
   }
 

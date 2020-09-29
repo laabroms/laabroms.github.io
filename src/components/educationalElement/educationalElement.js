@@ -7,7 +7,7 @@ class EducationalElement extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        educational: '50'
+        educational: 50
       }
     }
 

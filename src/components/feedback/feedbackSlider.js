@@ -6,7 +6,7 @@ class FeedbackSlider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      feedback: "50",
+      feedback: 50,
     };
   }
 

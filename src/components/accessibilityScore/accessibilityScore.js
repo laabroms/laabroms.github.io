@@ -7,7 +7,7 @@ class AccessibilityScore extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        accessibility: '50',
+        accessibility: 50,
       }
     }
 

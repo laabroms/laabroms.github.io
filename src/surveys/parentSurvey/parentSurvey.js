@@ -32,6 +32,8 @@ import HeartMeter from '../../tags/heartMeter';
 import ThrillFactor from '../../tags/thrillFactor';
 import SuspenseScale from '../../tags/suspenseScale';
 import ComplexCharacter from '../../tags/complexCharacter';
+import { Link } from 'react-router-dom';
+import Submitted from '../../components/submitted';
 
 export default class ParentSurvey extends React.Component {
   constructor(props) {
@@ -47,16 +49,16 @@ export default class ParentSurvey extends React.Component {
       age: "",
       location: "",
       country: "",
-      clearness: "50",
-      masterpiece: "50",
-      educational: "50",
-      chatter: "50",
+      clearness: 50,
+      masterpiece: 50,
+      educational: 50,
+      chatter: 50,
       chatterElements: "",
-      inspiration: "50",
+      inspiration: 50,
       inspirationElements: "",
-      feeling: "50",
+      feeling: 50,
       feelingElements: "",
-      accessibility: "50",
+      accessibility: 50,
       diversity: "",
       favorite: "",
       critique: "",
@@ -67,29 +69,29 @@ export default class ParentSurvey extends React.Component {
       gripping: "",
       pacing: "",
 
-      silly: "50",
+      silly: 50,
       sillyElements: "",
-      spooky: "50",
+      spooky: 50,
       spookyElements: "",
-      festivity: "50",
+      festivity: 50,
       festivityElements: "",
-      action: "50",
+      action: 50,
       actionElements: "",
-      friendship: "50",
+      friendship: 50,
       friendshipElements: "",
-      animal: "50",
+      animal: 50,
       animalElements: "",
-      mystery: "50",
+      mystery: 50,
       mysteryElements: "",
-      fantasy: "50",
+      fantasy: 50,
       fantasyElements: "",
-      realness: "50",
+      realness: 50,
       realnessElements: "",
-      heart: "50",
+      heart: 50,
       heartElements: "",
-      thrill: "50",
+      thrill: 50,
       thrillElements: "",
-      suspense: "50",
+      suspense: 50,
       suspenseElements: "",
       complex: "",
     };
@@ -621,7 +623,15 @@ export default class ParentSurvey extends React.Component {
     });
   };
 
-  submitHandler = (e) => {};
+  submitHandler = async(e) => {
+    var url =
+          "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/save_parent";
+        const response = await axios.post(url)
+       
+        
+
+
+  };
 
   render() {
     const container = {
@@ -758,7 +768,7 @@ export default class ParentSurvey extends React.Component {
             top: "50%",
           }}
         >
-          <Spinner animation="border" role="status">
+          <Spinner animation="border" role="status" variant="secondary">
             <span className="sr-only">Loading...</span>
           </Spinner>
         </div>

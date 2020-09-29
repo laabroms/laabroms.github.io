@@ -15,7 +15,7 @@ class ChatterBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatter: "50",
+      chatter: 50,
       character: false,
       plot: false,
       setting: false,

@@ -85,8 +85,8 @@ class BookInfo extends React.Component {
       return (
         <FadeIn>
           <div style={{ paddingLeft: 30 }}>
-            <p style={{ fontSize: 20, fontWeight: "bold" }}>
-              {this.state.title} by {this.state.author}
+            <p style={{ fontSize: 20}}>
+              <span style={{fontStyle: 'italic', fontWeight: 'bold'}}>{this.state.title}</span> by {this.state.author}
             </p>
 
             <p>Publisher: {this.state.publisher}</p>
@@ -124,7 +124,7 @@ class BookInfo extends React.Component {
               top: "50%",
             }}
           >
-            <Spinner animation="border" role="status">
+            <Spinner animation="border" role="status" variant="secondary">
               <span className="sr-only">Loading...</span>
             </Spinner>
           </div>

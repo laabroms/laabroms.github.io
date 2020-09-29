@@ -7,7 +7,7 @@ class DiscussionDial extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      discussion: "50",
+      discussion: 50,
     };
   }
 

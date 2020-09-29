@@ -7,7 +7,7 @@ class LivelyLibraries extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      livelyLibraries: "50",
+      livelyLibraries: 50,
     };
   }
 

@@ -15,7 +15,7 @@ class InspirationElement extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inspiration: "50",
+      inspiration: 50,
       resilience: false,
       perseverance: false,
       kindness: false,

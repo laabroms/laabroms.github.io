@@ -15,7 +15,7 @@ class FeelingFactor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      feeling: "50",
+      feeling: 50,
       happiness: false,
       sadness: false,
       fear: false,

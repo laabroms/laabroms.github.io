@@ -50,14 +50,13 @@ class CriticSurvey extends React.Component {
       platform: "",
       accountName: "",
       bookType: "",
-      clearness: "50",
-      masterpiece: "50",
-      educational: "50",
-      discussion: "50",
-      heart: "50",
-      feeling: "50",
+      clearness: 50,
+      masterpiece: 50,
+      educational: 50,
+      discussion: 50,
+      feeling: 50,
       feelingElements: "",
-      accessibility: "50",
+      accessibility: 50,
       diversity: "",
       favorite: "",
       leastFav: "",
@@ -65,36 +64,38 @@ class CriticSurvey extends React.Component {
       keywords: "",
       extraInfo: "",
       feedback: "",
-      chatter: "50",
+      chatter: 50,
       chatterElements: "",
-      inspiration: "50",
+      inspiration: 50,
       inspirationElements: "",
       pacing: "",
       gripping: "",
       contentWarning: "",
-      silly: "50",
+
+
+      silly: 50,
       sillyElements: "",
-      spooky: "50",
+      spooky: 50,
       spookyElements: "",
-      festivity: "50",
+      festivity: 50,
       festivityElements: "",
-      action: "50",
+      action: 50,
       actionElements: "",
-      friendship: "50",
+      friendship: 50,
       friendshipElements: "",
-      animal: "50",
+      animal: 50,
       animalElements: "",
-      mystery: "50",
+      mystery: 50,
       mysteryElements: "",
-      fantasy: "50",
+      fantasy: 50,
       fantasyElements: "",
-      realness: "50",
+      realness: 50,
       realnessElements: "",
-      heart: "50",
+      heart: 50,
       heartElements: "",
-      thrill: "50",
+      thrill: 50,
       thrillElements: "",
-      suspense: "50",
+      suspense: 50,
       suspenseElements: "",
       complex: "",
     };
@@ -748,62 +749,62 @@ class CriticSurvey extends React.Component {
               <FeelingFactor onChange={this.handleFeeling} />
 
               {this.state.tags.includes("Humor") ? (
-                  <SillyScore onChange={this.handleSilly} />
-                ) : null}
+                <SillyScore onChange={this.handleSilly} />
+              ) : null}
 
-                {this.state.tags.includes("Halloween") ? (
-                  <SpookyScore onChange={this.handleSpooky} />
-                ) : null}
+              {this.state.tags.includes("Halloween") ? (
+                <SpookyScore onChange={this.handleSpooky} />
+              ) : null}
 
-                {this.state.tags.includes("Holidays") ? (
-                  <FestivityFactor onChange={this.handleFestivity} />
-                ) : null}
+              {this.state.tags.includes("Holidays") ? (
+                <FestivityFactor onChange={this.handleFestivity} />
+              ) : null}
 
-                {this.state.tags.includes("Adventure") ? (
-                  <ActionAverage onChange={this.handleAction} />
-                ) : null}
+              {this.state.tags.includes("Adventure") ? (
+                <ActionAverage onChange={this.handleAction} />
+              ) : null}
 
-                {this.state.tags.includes("Friendship") ? (
-                  <FriendshipScore onChange={this.handleFriendship} />
-                ) : null}
+              {this.state.tags.includes("Friendship") ? (
+                <FriendshipScore onChange={this.handleFriendship} />
+              ) : null}
 
-                {this.state.tags.includes("Animals") ? (
-                  <AwesomeAnimals onChange={this.handleAwesome} />
-                ) : null}
+              {this.state.tags.includes("Animals") ? (
+                <AwesomeAnimals onChange={this.handleAwesome} />
+              ) : null}
 
-                {this.state.tags.includes("Graphic Novel") ? (
-                  <MasterpieceMeterOlder onChange={this.handleMasterpiece} />
-                ) : null}
+              {this.state.tags.includes("Graphic Novel") ? (
+                <MasterpieceMeterOlder onChange={this.handleMasterpiece} />
+              ) : null}
 
-                {this.state.tags.includes("Mystery") ? (
-                  <MysteryMeter onChange={this.handleMystery} />
-                ) : null}
+              {this.state.tags.includes("Mystery") ? (
+                <MysteryMeter onChange={this.handleMystery} />
+              ) : null}
 
-                {this.state.tags.includes("Fantasy") ||
-                this.state.tags.includes("Fairy Tales") ? (
-                  <FantasyFactor onChange={this.handleFantasy} />
-                ) : null}
+              {this.state.tags.includes("Fantasy") ||
+              this.state.tags.includes("Fairy Tales") ? (
+                <FantasyFactor onChange={this.handleFantasy} />
+              ) : null}
 
-                {this.state.tags.includes("Realistic Fiction") ? (
-                  <RealnessRating onChange={this.handleRealness} />
-                ) : null}
+              {this.state.tags.includes("Realistic Fiction") ? (
+                <RealnessRating onChange={this.handleRealness} />
+              ) : null}
 
-                {this.state.tags.includes("Romance") ? (
-                  <HeartMeter onChange={this.handleHeart} />
-                ) : null}
+              {this.state.tags.includes("Romance") ? (
+                <HeartMeter onChange={this.handleHeart} />
+              ) : null}
 
-                {this.state.tags.includes("Horror") ? (
-                  <ThrillFactor onChange={this.handleThrill} />
-                ) : null}
+              {this.state.tags.includes("Horror") ? (
+                <ThrillFactor onChange={this.handleThrill} />
+              ) : null}
 
-                {this.state.tags.includes("Suspense") ? (
-                  <SuspenseScale onChange={this.handleSuspense} />
-                ) : null}
+              {this.state.tags.includes("Suspense") ? (
+                <SuspenseScale onChange={this.handleSuspense} />
+              ) : null}
 
-                {this.state.title === "A Boy Called Bat" ||
-                this.state.title === "Front Desk" ? (
-                  <ComplexCharacter onChange={this.handleComplex} />
-                ) : null}
+              {this.state.title === "A Boy Called Bat" ||
+              this.state.title === "Front Desk" ? (
+                <ComplexCharacter onChange={this.handleComplex} />
+              ) : null}
 
               <AccessibilityScore onChange={this.handleAccessibility} />
               <GrippingGrade onChange={this.handleGripping} />
@@ -836,7 +837,7 @@ class CriticSurvey extends React.Component {
             top: "50%",
           }}
         >
-          <Spinner animation="border" role="status">
+          <Spinner animation="border" role="status" variant="secondary">
             <span className="sr-only">Loading...</span>
           </Spinner>
         </div>

@@ -8,7 +8,7 @@ class ClearnessCalculatorYounger extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      clearness: "50",
+      clearness: 50,
     };
   }
 
