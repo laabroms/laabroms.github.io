@@ -11,6 +11,8 @@ import Books from './surveys/books';
 import BookInfo from './components/bookInfo';
 import Home from './components/home';
 import Submitted from './components/submitted';
+import NotFoundPage from './surveys/404';
+
 function App({books}) {
 
 
@@ -27,7 +29,6 @@ function App({books}) {
             <li>
               <Link to="/books">Books</Link>
             </li>
-            
           </ul>
         </nav>
 
@@ -35,21 +36,28 @@ function App({books}) {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path={"/books/:title/parent-survey"} component={ParentSurvey}>
-          </Route>
-          <Route path={"/books/:title/author-survey"} component={AuthorSurvey}>
-          </Route>
-          <Route path={"/books/:title/critic-survey"} component={CriticSurvey}>
-          </Route>
-          <Route path={"/books/:title/teacher-survey"} component={TeacherSurvey}>
-          </Route>
+          <Route
+            path={"/books/:title/parent-survey"}
+            component={ParentSurvey}
+          ></Route>
+          <Route
+            path={"/books/:title/author-survey"}
+            component={AuthorSurvey}
+          ></Route>
+          <Route
+            path={"/books/:title/critic-survey"}
+            component={CriticSurvey}
+          ></Route>
+          <Route
+            path={"/books/:title/teacher-survey"}
+            component={TeacherSurvey}
+          ></Route>
           <Route path="/books" exact>
             <Books />
           </Route>
-          <Route path={"/books/:title"} component={BookInfo} exact>
-          </Route>
-          <Route path={"/submitted"} component={Submitted} exact>
-          </Route>
+          <Route path={"/books/:title"} component={BookInfo} exact></Route>
+          <Route path={"/submitted"} component={Submitted} exact></Route>
+          <Route path="*" component={NotFoundPage} />
         </Switch>
       </div>
     </Router>
