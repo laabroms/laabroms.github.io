@@ -1,7 +1,9 @@
 {
   "name": "book_reviews",
   "version": "0.1.0",
-  "private": true,
+  "engines": {
+    "node": "12.x"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
@@ -51,4 +53,5 @@
       "last 1 safari version"
     ]
   }
+  
 }
