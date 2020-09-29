@@ -45,6 +45,7 @@ class TeacherSurvey extends React.Component {
       author: "",
       tags: "",
       age_range: "",
+      isbn: '',
 
       name: "",
       location: "",
@@ -134,11 +135,11 @@ class TeacherSurvey extends React.Component {
     this.setState({
       age_range: age_range,
     });
-    console.log(tags);
+    var isbn = this.state.books[index].fields["isbn"];
+    this.setState({
+      isbn: isbn,
+  })
 
-    var eachTag = this.state.tags.split(",");
-    var numTags = eachTag.length;
-    console.log(numTags);
   };
 
   handlePersonalInfo = (data) => {
@@ -673,75 +674,99 @@ class TeacherSurvey extends React.Component {
     });
   };
 
-  submitHandler = (e) => {
-    alert(
-      "Name: " +
-        this.state.name +
-        ";" +
-        " Location: " +
-        this.state.location +
-        ";" +
-        " Country: " +
-        this.state.country +
-        ";" +
-        " Grade Level: " +
-        this.state.gradeLevel +
-        ";" +
-        " School: " +
-        this.state.school +
-        ";" +
-        " Clearness Calculator: " +
-        this.state.clearness +
-        ";" +
-        " Masterpiece Meter: " +
-        this.state.masterpiece +
-        ";" +
-        " Educational Element: " +
-        this.state.educational +
-        ";" +
-        " Chatter Bar: " +
-        this.state.chatter +
-        ";" +
-        " Heart to Heart: " +
-        this.state.heart +
-        ";" +
-        " Feeling Factor: " +
-        this.state.feeling +
-        ";" +
-        " Discussion Dial: " +
-        this.state.discussion +
-        ";" +
-        " Lively Libraries: " +
-        this.state.livelyLibraries +
-        ";" +
-        " Accessibility Score: " +
-        this.state.accessibility +
-        ";" +
-        " Classroom Creativity: " +
-        this.state.classroomCreativity +
-        ";" +
-        " Diversity and Representation Response: " +
-        this.state.diversity +
-        ";" +
-        " Favorite Part: " +
-        this.state.favorite +
-        ";" +
-        " Least Favorite Part: " +
-        this.state.leastFav +
-        ";" +
-        " Stars: " +
-        this.state.stars +
-        ";" +
-        " Keywords: " +
-        this.state.keywords +
-        ";" +
-        " Extra Info: " +
-        this.state.extraInfo +
-        ";" +
-        " Feedback: " +
-        this.state.feedback +
-        ";"
-    );
+  submitHandler = async(e) => {
+
+  
+    var bodyFormData = new FormData();
+
+  
+    bodyFormData.append('isbn', this.state.isbn);
+    bodyFormData.append('name', this.state.name);
+    bodyFormData.append('location', this.state.location);
+    bodyFormData.append('country', this.state.country);
+    bodyFormData.append('gradeLevel', this.state.gradeLevel);
+    bodyFormData.append('school', this.state.school);
+
+    bodyFormData.append('clearness', this.state.clearness);
+    bodyFormData.append('discussion', this.state.discussion);
+    bodyFormData.append('masterpiece', this.state.masterpiece);
+    bodyFormData.append('educational', this.state.educational);
+    bodyFormData.append('chatter', this.state.chatter);
+    bodyFormData.append('chatterElements', this.state.chatterElements);
+    bodyFormData.append('inspiration', this.state.inspiration);
+    bodyFormData.append('inspirationElements', this.state.inspirationElements);
+    bodyFormData.append('feeling', this.state.feeling);
+    bodyFormData.append('feelingElements', this.state.feelingElements);
+    bodyFormData.append('accessibility', this.state.accessibility);
+    bodyFormData.append('livelyLibraries', this.state.livelyLibraries);
+    bodyFormData.append('classroomCreativity', this.state.classroomCreativity);
+    bodyFormData.append('diversity', this.state.diversity);
+    bodyFormData.append('favorite', this.state.favorite);
+    bodyFormData.append('critique', this.state.critique);
+    bodyFormData.append('stars', this.state.stars);
+    bodyFormData.append('keywords', this.state.keywords);
+    bodyFormData.append('extraInfo', this.state.extraInfo);
+    bodyFormData.append('feedback', this.state.feedback);
+    bodyFormData.append('gripping', this.state.gripping);
+    bodyFormData.append('pacing', this.state.pacing);
+    bodyFormData.append('contentWarning', this.state.contentWarning);
+    bodyFormData.append('favorite', this.state.favorite);
+
+   
+  
+    if (this.state.sillyElements !== '') {
+      bodyFormData.append('silly', this.state.silly)
+    }
+    if (this.state.spookyElements !== '') {
+      bodyFormData.append('silly', this.state.spooky)
+    }
+    if (this.state.festivityElements !== '') {
+      bodyFormData.append('silly', this.state.festivity)
+    }
+    if (this.state.actionElements !== '') {
+      bodyFormData.append('silly', this.state.action)
+    }
+    if (this.state.friendshipElements !== '') {
+      bodyFormData.append('silly', this.state.friendship)
+    }
+    if (this.state.animalElements !== '') {
+      bodyFormData.append('silly', this.state.animal)
+    }
+    if (this.state.mysteryElements !== '') {
+      bodyFormData.append('silly', this.state.mystery)
+    }
+    if (this.state.fantasyElements !== '') {
+      bodyFormData.append('silly', this.state.fantasy)
+    }
+    if (this.state.realnessElements !== '') {
+      bodyFormData.append('silly', this.state.realness)
+    }
+    if (this.state.heartElements !== '') {
+      bodyFormData.append('silly', this.state.heart)
+    }
+    if (this.state.thrillElements !== '') {
+      bodyFormData.append('silly', this.state.thrill)
+    }
+    if (this.state.suspenseElements !== '') {
+      bodyFormData.append('silly', this.state.suspense)
+    }
+    if (this.state.complex !== '') {
+      bodyFormData.append('complex', this.state.complex)
+    }
+
+
+
+    var url =
+      "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/saveParentSurvey";
+    const response = await axios({
+      method: "post",
+      url: url,
+      data: bodyFormData,
+      headers: {
+        "content-type": `multipart/form-data; boundary=$(form._boundary)`,
+      },
+    });
+    
   };
 
   render() {

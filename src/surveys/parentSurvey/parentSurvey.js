@@ -16,7 +16,7 @@ import InspirationElement from '../../components/inspirationElement/inspirationE
 import GrippingGrade from '../../components/grippingGrade/grippingGrade';
 import PacingScore from '../../components/pacingScore/pacingScore';
 import axios from 'axios';
-import {Spinner} from 'react-bootstrap';
+import {Form, Spinner} from 'react-bootstrap';
 import MasterpieceMeter from '../../components/masterpieceMeter/masterpieceMeter';
 import MasterpieceMeterOlder from '../../components/masterpieceMeter/masterpieceMeterOlder';
 import SillyScore from '../../tags/sillyScore';
@@ -44,6 +44,7 @@ export default class ParentSurvey extends React.Component {
       author: "",
       tags: "",
       age_range: "",
+      isbn: '',
 
       name: "",
       age: "",
@@ -130,7 +131,10 @@ export default class ParentSurvey extends React.Component {
     this.setState({
       age_range: age_range,
     });
-    console.log(tags);
+    var isbn = this.state.books[index].fields["isbn"];
+    this.setState({
+      isbn: isbn,
+    });
   };
 
   handlePersonalInfo = (data) => {
@@ -624,9 +628,96 @@ export default class ParentSurvey extends React.Component {
   };
 
   submitHandler = async(e) => {
+
+    var bodyFormData = new FormData();
+
+  
+    bodyFormData.append('isbn', this.state.isbn);
+    bodyFormData.append('name', this.state.name);
+    bodyFormData.append('age', this.state.age);
+    bodyFormData.append('location', this.state.location);
+    bodyFormData.append('country', this.state.country);
+    bodyFormData.append('clearness', this.state.clearness);
+    bodyFormData.append('masterpiece', this.state.masterpiece);
+    bodyFormData.append('educational', this.state.educational);
+    bodyFormData.append('chatter', this.state.chatter);
+    bodyFormData.append('chatterElements', this.state.chatterElements);
+    bodyFormData.append('inspiration', this.state.inspiration);
+    bodyFormData.append('inspirationElements', this.state.inspirationElements);
+    bodyFormData.append('feeling', this.state.feeling);
+    bodyFormData.append('feelingElements', this.state.feelingElements);
+    bodyFormData.append('accessibility', this.state.accessibility);
+    bodyFormData.append('diversity', this.state.diversity);
+    bodyFormData.append('favorite', this.state.favorite);
+    bodyFormData.append('critique', this.state.critique);
+    bodyFormData.append('stars', this.state.stars);
+    bodyFormData.append('keywords', this.state.keywords);
+    bodyFormData.append('extraInfo', this.state.extraInfo);
+    bodyFormData.append('feedback', this.state.feedback);
+    bodyFormData.append('gripping', this.state.gripping);
+    bodyFormData.append('pacing', this.state.pacing);
+    bodyFormData.append('favorite', this.state.favorite);
+
+   
+  
+    if (this.state.sillyElements !== '') {
+      bodyFormData.append('silly', this.state.silly)
+    }
+    if (this.state.spookyElements !== '') {
+      bodyFormData.append('silly', this.state.spooky)
+    }
+    if (this.state.festivityElements !== '') {
+      bodyFormData.append('silly', this.state.festivity)
+    }
+    if (this.state.actionElements !== '') {
+      bodyFormData.append('silly', this.state.action)
+    }
+    if (this.state.friendshipElements !== '') {
+      bodyFormData.append('silly', this.state.friendship)
+    }
+    if (this.state.animalElements !== '') {
+      bodyFormData.append('silly', this.state.animal)
+    }
+    if (this.state.mysteryElements !== '') {
+      bodyFormData.append('silly', this.state.mystery)
+    }
+    if (this.state.fantasyElements !== '') {
+      bodyFormData.append('silly', this.state.fantasy)
+    }
+    if (this.state.realnessElements !== '') {
+      bodyFormData.append('silly', this.state.realness)
+    }
+    if (this.state.heartElements !== '') {
+      bodyFormData.append('silly', this.state.heart)
+    }
+    if (this.state.thrillElements !== '') {
+      bodyFormData.append('silly', this.state.thrill)
+    }
+    if (this.state.suspenseElements !== '') {
+      bodyFormData.append('silly', this.state.suspense)
+    }
+    if (this.state.complex !== '') {
+      bodyFormData.append('complex', this.state.complex)
+    }
+
+
+
+
+
+
+
     var url =
-          "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/save_parent";
-        const response = await axios.post(url)
+          "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/saveParentSurvey";
+        const response = await axios({
+          method: 'post',
+          url: url,
+          data: bodyFormData,
+          headers: {
+            'content-type': `multipart/form-data; boundary=$(form._boundary)`,
+          }
+        })
+
+    
        
         
 
@@ -647,7 +738,7 @@ export default class ParentSurvey extends React.Component {
 
     if (this.state.author !== "") {
       return (
-        <form method="POST" action="">
+        <form>
           <>
             <FadeIn>
               <div style={container}>
