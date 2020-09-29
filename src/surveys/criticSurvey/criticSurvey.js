@@ -54,9 +54,8 @@ class CriticSurvey extends React.Component {
       clearness: 50,
       masterpiece: 50,
       educational: 50,
-      discussion: 50,
-      feeling: 50,
-      feelingElements: "",
+      feelings: 50,
+      feelingsElements: "",
       accessibility: 50,
       diversity: "",
       favorite: "",
@@ -98,7 +97,7 @@ class CriticSurvey extends React.Component {
       thrillElements: "",
       suspense: 50,
       suspenseElements: "",
-      complex: "",
+      complexity: "",
     };
   }
 
@@ -169,13 +168,6 @@ class CriticSurvey extends React.Component {
       critique: data.leastFav,
     });
   };
-
-  handleDiscussion = (data) => {
-    this.setState({
-      discussion: data.discussion,
-    });
-  };
-
   handleKeywords = (data) => {
     this.setState({
       keywords: data.keywords,
@@ -278,26 +270,26 @@ class CriticSurvey extends React.Component {
   };
 
   handleFeeling = (data) => {
-    var feelingElements = "";
+    var feelingsElements = "";
     if (data.happiness === true) {
-      feelingElements += "happiness, ";
+      feelingsElements += "happiness, ";
     }
     if (data.sadness === true) {
-      feelingElements += "sadness, ";
+      feelingsElements += "sadness, ";
     }
     if (data.fear === true) {
-      feelingElements += "fear, ";
+      feelingsElements += "fear, ";
     }
     if (data.anger === true) {
-      feelingElements += "anger, ";
+      feelingsElements += "anger, ";
     }
     if (data.other === true) {
-      feelingElements += data.otherInfo;
+      feelingsElements += data.otherInfo;
     }
 
     this.setState({
-      feeling: data.feeling,
-      feelingElements: feelingElements,
+      feelings: data.feeling,
+      feelingsElements: feelingsElements,
     });
   };
 
@@ -647,104 +639,99 @@ class CriticSurvey extends React.Component {
   };
   handleComplex = (data) => {
     this.setState({
-      complex: data.complexCharacter,
+      complexity: data.complexCharacter,
     });
   };
 
   submitHandler = async(e) => {
+    var bodyFormDataCritic = new FormData();
 
-    
+    bodyFormDataCritic.append("isbn", this.state.isbn);
+    bodyFormDataCritic.append("name", this.state.name);
+    bodyFormDataCritic.append("location", this.state.location);
+    bodyFormDataCritic.append("country", this.state.country);
+    bodyFormDataCritic.append("platform", this.state.platform);
+    bodyFormDataCritic.append("accountName", this.state.accountName);
+    bodyFormDataCritic.append("bookType", this.state.bookType);
 
-    var bodyFormData = new FormData();
+    if (this.state.age_range === 'y') {
+      bodyFormDataCritic.append("clearness", this.state.clearness);
+      bodyFormDataCritic.append("masterpiece", this.state.masterpiece);
+    }
+    bodyFormDataCritic.append("educational", this.state.educational);
+    bodyFormDataCritic.append("chatter", this.state.chatter);
+    bodyFormDataCritic.append("chatterElements", this.state.chatterElements);
+    bodyFormDataCritic.append("inspiration", this.state.inspiration);
+    bodyFormDataCritic.append("inspirationElements", this.state.inspirationElements);
+    bodyFormDataCritic.append("feelings", this.state.feelings);
+    bodyFormDataCritic.append("feelingsElements", this.state.feelingsElements);
+    bodyFormDataCritic.append("accessibility", this.state.accessibility);
+    bodyFormDataCritic.append("diversity", this.state.diversity);
+    bodyFormDataCritic.append("favorite", this.state.favorite);
+    bodyFormDataCritic.append("critique", this.state.critique);
+    bodyFormDataCritic.append("stars", this.state.stars);
+    bodyFormDataCritic.append("keywords", this.state.keywords);
+    bodyFormDataCritic.append("extraInfo", this.state.extraInfo);
+    bodyFormDataCritic.append("feedback", this.state.feedback);
+    bodyFormDataCritic.append("gripping", this.state.gripping);
+    bodyFormDataCritic.append("pacing", this.state.pacing);
+    bodyFormDataCritic.append("contentWarning", this.state.contentWarning);
+    bodyFormDataCritic.append("favorite", this.state.favorite);
 
-     
-  
-    bodyFormData.append('isbn', this.state.isbn);
-    bodyFormData.append('name', this.state.name);
-    bodyFormData.append('location', this.state.location);
-    bodyFormData.append('country', this.state.country);
-    bodyFormData.append('platform', this.state.platform);
-    bodyFormData.append('accountName', this.state.accountName);
-    bodyFormData.append('bookType', this.state.bookType);
-
-    bodyFormData.append('clearness', this.state.clearness);
-    bodyFormData.append('discussion', this.state.discussion);
-    bodyFormData.append('masterpiece', this.state.masterpiece);
-    bodyFormData.append('educational', this.state.educational);
-    bodyFormData.append('chatter', this.state.chatter);
-    bodyFormData.append('chatterElements', this.state.chatterElements);
-    bodyFormData.append('inspiration', this.state.inspiration);
-    bodyFormData.append('inspirationElements', this.state.inspirationElements);
-    bodyFormData.append('feeling', this.state.feeling);
-    bodyFormData.append('feelingElements', this.state.feelingElements);
-    bodyFormData.append('accessibility', this.state.accessibility);
-    bodyFormData.append('diversity', this.state.diversity);
-    bodyFormData.append('favorite', this.state.favorite);
-    bodyFormData.append('critique', this.state.critique);
-    bodyFormData.append('stars', this.state.stars);
-    bodyFormData.append('keywords', this.state.keywords);
-    bodyFormData.append('extraInfo', this.state.extraInfo);
-    bodyFormData.append('feedback', this.state.feedback);
-    bodyFormData.append('gripping', this.state.gripping);
-    bodyFormData.append('pacing', this.state.pacing);
-    bodyFormData.append('contentWarning', this.state.contentWarning);
-    bodyFormData.append('favorite', this.state.favorite);
-
-   
-  
-    if (this.state.sillyElements !== '') {
-      bodyFormData.append('silly', this.state.silly)
+    if (this.state.sillyElements !== "") {
+      bodyFormDataCritic.append("silly", this.state.silly);
     }
-    if (this.state.spookyElements !== '') {
-      bodyFormData.append('silly', this.state.spooky)
+    if (this.state.spookyElements !== "") {
+      bodyFormDataCritic.append("spooky", this.state.spooky);
     }
-    if (this.state.festivityElements !== '') {
-      bodyFormData.append('silly', this.state.festivity)
+    if (this.state.festivityElements !== "") {
+      bodyFormDataCritic.append("festivity", this.state.festivity);
     }
-    if (this.state.actionElements !== '') {
-      bodyFormData.append('silly', this.state.action)
+    if (this.state.actionElements !== "") {
+      bodyFormDataCritic.append("action", this.state.action);
     }
-    if (this.state.friendshipElements !== '') {
-      bodyFormData.append('silly', this.state.friendship)
+    if (this.state.friendshipElements !== "") {
+      bodyFormDataCritic.append("friendship", this.state.friendship);
     }
-    if (this.state.animalElements !== '') {
-      bodyFormData.append('silly', this.state.animal)
+    if (this.state.animalElements !== "") {
+      bodyFormDataCritic.append("animal", this.state.animal);
     }
-    if (this.state.mysteryElements !== '') {
-      bodyFormData.append('silly', this.state.mystery)
+    if (this.state.mysteryElements !== "") {
+      bodyFormDataCritic.append("mystery", this.state.mystery);
     }
-    if (this.state.fantasyElements !== '') {
-      bodyFormData.append('silly', this.state.fantasy)
+    if (this.state.fantasyElements !== "") {
+      bodyFormDataCritic.append("fantasy", this.state.fantasy);
     }
-    if (this.state.realnessElements !== '') {
-      bodyFormData.append('silly', this.state.realness)
+    if (this.state.realnessElements !== "") {
+      bodyFormDataCritic.append("realness", this.state.realness);
     }
-    if (this.state.heartElements !== '') {
-      bodyFormData.append('silly', this.state.heart)
+    if (this.state.heartElements !== "") {
+      bodyFormDataCritic.append("heart", this.state.heart);
     }
-    if (this.state.thrillElements !== '') {
-      bodyFormData.append('silly', this.state.thrill)
+    if (this.state.thrillElements !== "") {
+      bodyFormDataCritic.append("thrill", this.state.thrill);
     }
-    if (this.state.suspenseElements !== '') {
-      bodyFormData.append('silly', this.state.suspense)
+    if (this.state.suspenseElements !== "") {
+      bodyFormDataCritic.append("suspense", this.state.suspense);
     }
-    if (this.state.complex !== '') {
-      bodyFormData.append('complex', this.state.complex)
+    if (this.state.complex !== "") {
+      bodyFormDataCritic.append("complexity", this.state.complexity);
     }
-
-
 
     var url =
-      "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/saveParentSurvey";
+      "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/saveCriticSurvey";
+    // eslint-disable-next-line
     const response = await axios({
       method: "post",
       url: url,
-      data: bodyFormData,
+      data: bodyFormDataCritic,
       headers: {
         "content-type": `multipart/form-data; boundary=$(form._boundary)`,
       },
     });
 
+
+   
     
   }
 
@@ -763,7 +750,7 @@ class CriticSurvey extends React.Component {
 
     if (this.state.author !== "") {
       return (
-        <form method="POST" action="">
+        <form type='submit'>
           <FadeIn>
             <div style={container}>
               <h2>Book Level and Target Review</h2>
@@ -776,8 +763,12 @@ class CriticSurvey extends React.Component {
               <PlatformInfo onChange={this.handlePlatformInfo} />
 
               {/* for younger */}
-              <ClearnessCalculator onChange={this.handleClearness} />
-              <MasterpieceMeter onChange={this.handleMasterpiece} />
+              {this.state.age_range === 'y' ? (
+                <>
+                <ClearnessCalculator onChange={this.handleClearness} />
+                <MasterpieceMeter onChange={this.handleMasterpiece} />
+                </>
+              ) : null}
 
               <ChatterBar onChange={this.handleChatter} />
               <InspirationElement onChange={this.handleInspiration} />

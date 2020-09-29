@@ -54,9 +54,8 @@ class AuthorSurvey extends React.Component {
       clearness: 50,
       masterpiece: 50,
       educational: 50,
-      discussion: 50,
-      feeling: 50,
-      feelingElements: "",
+      feelings: 50,
+      feelingsElements: "",
       accessibility: 50,
       diversity: "",
       favorite: "",
@@ -96,7 +95,7 @@ class AuthorSurvey extends React.Component {
       thrillElements: "",
       suspense: 50,
       suspenseElements: "",
-      complex: "",
+      complexity: "",
     };
   }
 
@@ -170,11 +169,7 @@ class AuthorSurvey extends React.Component {
     });
   };
 
-  handleDiscussion = (data) => {
-    this.setState({
-      discussion: data.discussion,
-    });
-  };
+  
 
   handleKeywords = (data) => {
     this.setState({
@@ -278,26 +273,26 @@ class AuthorSurvey extends React.Component {
   };
 
   handleFeeling = (data) => {
-    var feelingElements = "";
+    var feelingsElements = "";
     if (data.happiness === true) {
-      feelingElements += "happiness, ";
+      feelingsElements += "happiness, ";
     }
     if (data.sadness === true) {
-      feelingElements += "sadness, ";
+      feelingsElements += "sadness, ";
     }
     if (data.fear === true) {
-      feelingElements += "fear, ";
+      feelingsElements += "fear, ";
     }
     if (data.anger === true) {
-      feelingElements += "anger, ";
+      feelingsElements += "anger, ";
     }
     if (data.other === true) {
-      feelingElements += data.otherInfo;
+      feelingsElements += data.otherInfo;
     }
 
     this.setState({
-      feeling: data.feeling,
-      feelingElements: feelingElements,
+      feelings: data.feeling,
+      feelingsElements: feelingsElements,
     });
   };
 
@@ -648,104 +643,98 @@ class AuthorSurvey extends React.Component {
   };
   handleComplex = (data) => {
     this.setState({
-      complex: data.complexCharacter,
+      complexity: data.complexCharacter,
     });
   };
 
   submitHandler = async(e) => {
+    var bodyFormDataAuthor = new FormData();
 
-    
+    bodyFormDataAuthor.append("isbn", this.state.isbn);
+    bodyFormDataAuthor.append("name", this.state.name);
+    bodyFormDataAuthor.append("location", this.state.location);
+    bodyFormDataAuthor.append("country", this.state.country);
+    bodyFormDataAuthor.append("genre", this.state.genre);
+    bodyFormDataAuthor.append("bookType", this.state.bookType);
 
-    var bodyFormData = new FormData();
-
-  
-    bodyFormData.append('isbn', this.state.isbn);
-    bodyFormData.append('name', this.state.name);
-    bodyFormData.append('location', this.state.location);
-    bodyFormData.append('country', this.state.country);
-    bodyFormData.append('genre', this.state.genre);
-    bodyFormData.append('bookType', this.state.bookType);
-
-    bodyFormData.append('clearness', this.state.clearness);
-    bodyFormData.append('discussion', this.state.discussion);
-    bodyFormData.append('masterpiece', this.state.masterpiece);
-    bodyFormData.append('educational', this.state.educational);
-    bodyFormData.append('chatter', this.state.chatter);
-    bodyFormData.append('chatterElements', this.state.chatterElements);
-    bodyFormData.append('inspiration', this.state.inspiration);
-    bodyFormData.append('inspirationElements', this.state.inspirationElements);
-    bodyFormData.append('feeling', this.state.feeling);
-    bodyFormData.append('feelingElements', this.state.feelingElements);
-    bodyFormData.append('accessibility', this.state.accessibility);
-    bodyFormData.append('diversity', this.state.diversity);
-    bodyFormData.append('favorite', this.state.favorite);
-    bodyFormData.append('critique', this.state.critique);
-    bodyFormData.append('stars', this.state.stars);
-    bodyFormData.append('keywords', this.state.keywords);
-    bodyFormData.append('extraInfo', this.state.extraInfo);
-    bodyFormData.append('feedback', this.state.feedback);
-    bodyFormData.append('gripping', this.state.gripping);
-    bodyFormData.append('pacing', this.state.pacing);
-    bodyFormData.append('contentWarning', this.state.contentWarning);
-    bodyFormData.append('favorite', this.state.favorite);
-
-   
-  
-    if (this.state.sillyElements !== '') {
-      bodyFormData.append('silly', this.state.silly)
-    }
-    if (this.state.spookyElements !== '') {
-      bodyFormData.append('silly', this.state.spooky)
-    }
-    if (this.state.festivityElements !== '') {
-      bodyFormData.append('silly', this.state.festivity)
-    }
-    if (this.state.actionElements !== '') {
-      bodyFormData.append('silly', this.state.action)
-    }
-    if (this.state.friendshipElements !== '') {
-      bodyFormData.append('silly', this.state.friendship)
-    }
-    if (this.state.animalElements !== '') {
-      bodyFormData.append('silly', this.state.animal)
-    }
-    if (this.state.mysteryElements !== '') {
-      bodyFormData.append('silly', this.state.mystery)
-    }
-    if (this.state.fantasyElements !== '') {
-      bodyFormData.append('silly', this.state.fantasy)
-    }
-    if (this.state.realnessElements !== '') {
-      bodyFormData.append('silly', this.state.realness)
-    }
-    if (this.state.heartElements !== '') {
-      bodyFormData.append('silly', this.state.heart)
-    }
-    if (this.state.thrillElements !== '') {
-      bodyFormData.append('silly', this.state.thrill)
-    }
-    if (this.state.suspenseElements !== '') {
-      bodyFormData.append('silly', this.state.suspense)
-    }
-    if (this.state.complex !== '') {
-      bodyFormData.append('complex', this.state.complex)
+    if (this.state.age_range === 'y') {
+      bodyFormDataAuthor.append("clearness", this.state.clearness);
+      bodyFormDataAuthor.append("masterpiece", this.state.masterpiece);
     }
 
+    bodyFormDataAuthor.append("educational", this.state.educational);
+    bodyFormDataAuthor.append("chatter", this.state.chatter);
+    bodyFormDataAuthor.append("chatterElements", this.state.chatterElements);
+    bodyFormDataAuthor.append("inspiration", this.state.inspiration);
+    bodyFormDataAuthor.append("inspirationElements", this.state.inspirationElements);
+    bodyFormDataAuthor.append("feelings", this.state.feelings);
+    bodyFormDataAuthor.append("feelingsElements", this.state.feelingsElements);
+    bodyFormDataAuthor.append("accessibility", this.state.accessibility);
+    bodyFormDataAuthor.append("diversity", this.state.diversity);
+    bodyFormDataAuthor.append("favorite", this.state.favorite);
+    bodyFormDataAuthor.append("critique", this.state.critique);
+    bodyFormDataAuthor.append("stars", this.state.stars);
+    bodyFormDataAuthor.append("keywords", this.state.keywords);
+    bodyFormDataAuthor.append("extraInfo", this.state.extraInfo);
+    bodyFormDataAuthor.append("feedback", this.state.feedback);
+    bodyFormDataAuthor.append("gripping", this.state.gripping);
 
+    if (this.state.age_range === 'o') {
+    bodyFormDataAuthor.append("pacing", this.state.pacing);
+    bodyFormDataAuthor.append("contentWarning", this.state.contentWarning);
+    }
+
+    if (this.state.sillyElements !== "") {
+      bodyFormDataAuthor.append("silly", this.state.silly);
+    }
+    if (this.state.spookyElements !== "") {
+      bodyFormDataAuthor.append("spooky", this.state.spooky);
+    }
+    if (this.state.festivityElements !== "") {
+      bodyFormDataAuthor.append("festivity", this.state.festivity);
+    }
+    if (this.state.actionElements !== "") {
+      bodyFormDataAuthor.append("action", this.state.action);
+    }
+    if (this.state.friendshipElements !== "") {
+      bodyFormDataAuthor.append("friendship", this.state.friendship);
+    }
+    if (this.state.animalElements !== "") {
+      bodyFormDataAuthor.append("animal", this.state.animal);
+    }
+    if (this.state.mysteryElements !== "") {
+      bodyFormDataAuthor.append("mystery", this.state.mystery);
+    }
+    if (this.state.fantasyElements !== "") {
+      bodyFormDataAuthor.append("fantasy", this.state.fantasy);
+    }
+    if (this.state.realnessElements !== "") {
+      bodyFormDataAuthor.append("realness", this.state.realness);
+    }
+    if (this.state.heartElements !== "") {
+      bodyFormDataAuthor.append("heart", this.state.heart);
+    }
+    if (this.state.thrillElements !== "") {
+      bodyFormDataAuthor.append("thrill", this.state.thrill);
+    }
+    if (this.state.suspenseElements !== "") {
+      bodyFormDataAuthor.append("suspense", this.state.suspense);
+    }
+    if (this.state.complex !== "") {
+      bodyFormDataAuthor.append("complexity", this.state.complexity);
+    }
 
     var url =
-      "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/saveParentSurvey";
+      "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/saveAuthorSurvey";
+    // eslint-disable-next-line
     const response = await axios({
       method: "post",
       url: url,
-      data: bodyFormData,
+      data: bodyFormDataAuthor,
       headers: {
         "content-type": `multipart/form-data; boundary=$(form._boundary)`,
       },
     });
-
-    
-
   }
 
 
@@ -765,7 +754,7 @@ class AuthorSurvey extends React.Component {
 
     if (this.state.author !== "") {
       return (
-        <form method="POST" action="" className="form">
+        <form type='submit' className="form">
           <FadeIn>
             <div style={container}>
               <h2>Book Level and Target Review</h2>
@@ -778,8 +767,12 @@ class AuthorSurvey extends React.Component {
               <AuthorInfo onChange={this.handleAuthorInfo} />
 
               {/* for younger */}
-              <ClearnessCalculator onChange={this.handleClearness} />
-              <MasterpieceMeter onChange={this.handleMasterpiece} />
+              {this.state.age_range === "y" ? (
+                <>
+                  <ClearnessCalculator onChange={this.handleClearness} />
+                  <MasterpieceMeter onChange={this.handleMasterpiece} />
+                </>
+              ) : null}
 
               <ChatterBar onChange={this.handleChatter} />
               <InspirationElement onChange={this.handleInspiration} />
@@ -845,10 +838,17 @@ class AuthorSurvey extends React.Component {
 
               <AccessibilityScore onChange={this.handleAccessibility} />
               <GrippingGrade onChange={this.handleGripping} />
-              <PacingScore onChange={this.handlePacing} />
+
+              {this.state.age_range === "o" ? (
+                <PacingScore onChange={this.handlePacing} />
+              ) : null}
               <DiversityRep onChange={this.handleDiversity} />
               <FavLeastFav onChange={this.handleFav} />
-              <ContentWarning onChange={this.handleWarning} />
+
+              {this.state.age_range === "o" ? (
+                <ContentWarning onChange={this.handleWarning} />
+              ) : null}
+
               <StarRating onChange={this.handleStars} />
               <Keywords onChange={this.handleKeywords} />
               <ExtraInfo onChange={this.handleExtraInfo} />

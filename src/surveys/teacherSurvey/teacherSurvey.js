@@ -55,9 +55,8 @@ class TeacherSurvey extends React.Component {
       clearness: 50,
       masterpiece: 50,
       educational: 50,
-      discussion: 50,
-      feeling: 50,
-      feelingElements: "",
+      feelings: 50,
+      feelingsElements: "",
       accessibility: 50,
       livelyLibraries: 50,
       classroomCreativity: "",
@@ -191,26 +190,26 @@ class TeacherSurvey extends React.Component {
   };
 
   handleFeeling = (data) => {
-    var feelingElements = "";
+    var feelingsElements = "";
     if (data.happiness === true) {
-      feelingElements += "happiness, ";
+      feelingsElements += "happiness, ";
     }
     if (data.sadness === true) {
-      feelingElements += "sadness, ";
+      feelingsElements += "sadness, ";
     }
     if (data.fear === true) {
-      feelingElements += "fear, ";
+      feelingsElements += "fear, ";
     }
     if (data.anger === true) {
-      feelingElements += "anger, ";
+      feelingsElements += "anger, ";
     }
     if (data.other === true) {
-      feelingElements += data.otherInfo;
+      feelingsElements += data.otherInfo;
     }
 
     this.setState({
-      feeling: data.feeling,
-      feelingElements: feelingElements,
+      feelings: data.feeling,
+      feelingsElements: feelingsElements,
     });
   };
 
@@ -250,12 +249,6 @@ class TeacherSurvey extends React.Component {
     this.setState({
       favorite: data.favorite,
       leastFav: data.leastFav,
-    });
-  };
-
-  handleDiscussion = (data) => {
-    this.setState({
-      discussion: data.discussion,
     });
   };
 
@@ -675,98 +668,100 @@ class TeacherSurvey extends React.Component {
   };
 
   submitHandler = async(e) => {
+    var bodyFormDataTeacher = new FormData();
 
-  
-    var bodyFormData = new FormData();
+    bodyFormDataTeacher.append("isbn", this.state.isbn);
+    bodyFormDataTeacher.append("name", this.state.name);
+    bodyFormDataTeacher.append("location", this.state.location);
+    bodyFormDataTeacher.append("country", this.state.country);
+    bodyFormDataTeacher.append("gradeLevel", this.state.gradeLevel);
+    bodyFormDataTeacher.append("school", this.state.school);
 
-  
-    bodyFormData.append('isbn', this.state.isbn);
-    bodyFormData.append('name', this.state.name);
-    bodyFormData.append('location', this.state.location);
-    bodyFormData.append('country', this.state.country);
-    bodyFormData.append('gradeLevel', this.state.gradeLevel);
-    bodyFormData.append('school', this.state.school);
-
-    bodyFormData.append('clearness', this.state.clearness);
-    bodyFormData.append('discussion', this.state.discussion);
-    bodyFormData.append('masterpiece', this.state.masterpiece);
-    bodyFormData.append('educational', this.state.educational);
-    bodyFormData.append('chatter', this.state.chatter);
-    bodyFormData.append('chatterElements', this.state.chatterElements);
-    bodyFormData.append('inspiration', this.state.inspiration);
-    bodyFormData.append('inspirationElements', this.state.inspirationElements);
-    bodyFormData.append('feeling', this.state.feeling);
-    bodyFormData.append('feelingElements', this.state.feelingElements);
-    bodyFormData.append('accessibility', this.state.accessibility);
-    bodyFormData.append('livelyLibraries', this.state.livelyLibraries);
-    bodyFormData.append('classroomCreativity', this.state.classroomCreativity);
-    bodyFormData.append('diversity', this.state.diversity);
-    bodyFormData.append('favorite', this.state.favorite);
-    bodyFormData.append('critique', this.state.critique);
-    bodyFormData.append('stars', this.state.stars);
-    bodyFormData.append('keywords', this.state.keywords);
-    bodyFormData.append('extraInfo', this.state.extraInfo);
-    bodyFormData.append('feedback', this.state.feedback);
-    bodyFormData.append('gripping', this.state.gripping);
-    bodyFormData.append('pacing', this.state.pacing);
-    bodyFormData.append('contentWarning', this.state.contentWarning);
-    bodyFormData.append('favorite', this.state.favorite);
-
-   
-  
-    if (this.state.sillyElements !== '') {
-      bodyFormData.append('silly', this.state.silly)
-    }
-    if (this.state.spookyElements !== '') {
-      bodyFormData.append('silly', this.state.spooky)
-    }
-    if (this.state.festivityElements !== '') {
-      bodyFormData.append('silly', this.state.festivity)
-    }
-    if (this.state.actionElements !== '') {
-      bodyFormData.append('silly', this.state.action)
-    }
-    if (this.state.friendshipElements !== '') {
-      bodyFormData.append('silly', this.state.friendship)
-    }
-    if (this.state.animalElements !== '') {
-      bodyFormData.append('silly', this.state.animal)
-    }
-    if (this.state.mysteryElements !== '') {
-      bodyFormData.append('silly', this.state.mystery)
-    }
-    if (this.state.fantasyElements !== '') {
-      bodyFormData.append('silly', this.state.fantasy)
-    }
-    if (this.state.realnessElements !== '') {
-      bodyFormData.append('silly', this.state.realness)
-    }
-    if (this.state.heartElements !== '') {
-      bodyFormData.append('silly', this.state.heart)
-    }
-    if (this.state.thrillElements !== '') {
-      bodyFormData.append('silly', this.state.thrill)
-    }
-    if (this.state.suspenseElements !== '') {
-      bodyFormData.append('silly', this.state.suspense)
-    }
-    if (this.state.complex !== '') {
-      bodyFormData.append('complex', this.state.complex)
+    if (this.state.age_range === 'y') {
+      bodyFormDataTeacher.append("clearness", this.state.clearness);
     }
 
+    
+    bodyFormDataTeacher.append("masterpiece", this.state.masterpiece);
 
+
+    bodyFormDataTeacher.append("educational", this.state.educational);
+    bodyFormDataTeacher.append("chatter", this.state.chatter);
+    bodyFormDataTeacher.append("chatterElements", this.state.chatterElements);
+    bodyFormDataTeacher.append("inspiration", this.state.inspiration);
+    bodyFormDataTeacher.append("inspirationElements", this.state.inspirationElements);
+    bodyFormDataTeacher.append("feelings", this.state.feelings);
+    bodyFormDataTeacher.append("feelingsElements", this.state.feelingsElements);
+    bodyFormDataTeacher.append("accessibility", this.state.accessibility);
+    bodyFormDataTeacher.append("livelyLibraries", this.state.livelyLibraries);
+    bodyFormDataTeacher.append("classroomCreativity", this.state.classroomCreativity);
+    bodyFormDataTeacher.append("diversity", this.state.diversity);
+    bodyFormDataTeacher.append("favorite", this.state.favorite);
+    bodyFormDataTeacher.append("critique", this.state.critique);
+    bodyFormDataTeacher.append("stars", this.state.stars);
+    bodyFormDataTeacher.append("keywords", this.state.keywords);
+    bodyFormDataTeacher.append("extraInfo", this.state.extraInfo);
+    bodyFormDataTeacher.append("feedback", this.state.feedback);
+
+    if (this.state.age_range === 'o') {
+      bodyFormDataTeacher.append("pacing", this.state.pacing);
+      bodyFormDataTeacher.append("contentWarning", this.state.contentWarning);
+    }
+
+    bodyFormDataTeacher.append("gripping", this.state.gripping);
+    bodyFormDataTeacher.append("favorite", this.state.favorite);
+
+    if (this.state.sillyElements !== "") {
+      bodyFormDataTeacher.append("silly", this.state.silly);
+    }
+    if (this.state.spookyElements !== "") {
+      bodyFormDataTeacher.append("spooky", this.state.spooky);
+    }
+    if (this.state.festivityElements !== "") {
+      bodyFormDataTeacher.append("festivity", this.state.festivity);
+    }
+    if (this.state.actionElements !== "") {
+      bodyFormDataTeacher.append("action", this.state.action);
+    }
+    if (this.state.friendshipElements !== "") {
+      bodyFormDataTeacher.append("friendship", this.state.friendship);
+    }
+    if (this.state.animalElements !== "") {
+      bodyFormDataTeacher.append("animal", this.state.animal);
+    }
+    if (this.state.mysteryElements !== "") {
+      bodyFormDataTeacher.append("mystery", this.state.mystery);
+    }
+    if (this.state.fantasyElements !== "") {
+      bodyFormDataTeacher.append("fantasy", this.state.fantasy);
+    }
+    if (this.state.realnessElements !== "") {
+      bodyFormDataTeacher.append("realness", this.state.realness);
+    }
+    if (this.state.heartElements !== "") {
+      bodyFormDataTeacher.append("heart", this.state.heart);
+    }
+    if (this.state.thrillElements !== "") {
+      bodyFormDataTeacher.append("thrill", this.state.thrill);
+    }
+    if (this.state.suspenseElements !== "") {
+      bodyFormDataTeacher.append("suspense", this.state.suspense);
+    }
+    if (this.state.complex !== "") {
+      bodyFormDataTeacher.append("complex", this.state.complex);
+    }
 
     var url =
-      "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/saveParentSurvey";
+      "https://cors-anywhere.herokuapp.com/https://rotten-books.herokuapp.com/bookAdmin/api/saveTeacherSurvey";
+    // eslint-disable-next-line
     const response = await axios({
       method: "post",
       url: url,
-      data: bodyFormData,
+      data: bodyFormDataTeacher,
       headers: {
         "content-type": `multipart/form-data; boundary=$(form._boundary)`,
       },
     });
-    
   };
 
   render() {
@@ -783,7 +778,7 @@ class TeacherSurvey extends React.Component {
 
     if (this.state.author !== "") {
       return (
-        <form method="POST" action="">
+        <form type='submit'>
           <FadeIn>
             <div style={container}>
               <h2>Book Level and Target Review</h2>

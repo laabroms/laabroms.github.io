@@ -10,7 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Books from './surveys/books';
 import BookInfo from './components/bookInfo';
 import Home from './components/home';
-
+import Submitted from './components/submitted';
 function App({books}) {
 
 
@@ -47,6 +47,8 @@ function App({books}) {
             <Books />
           </Route>
           <Route path={"/books/:title"} component={BookInfo} exact>
+          </Route>
+          <Route path={"/submitted"} component={Submitted} exact>
           </Route>
         </Switch>
       </div>
