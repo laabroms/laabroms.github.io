@@ -6,11 +6,11 @@ import express from 'express';
 
 import App from './App';
 
-const PORT = process.env.PORT || '8080'
+// const PORT = process.env.PORT || '8080'
 
-var app = express();
+// var app = express();
 
-app.set('port', PORT)
+// app.set('port', PORT)
 
 ReactDOM.render(
   <React.StrictMode>
