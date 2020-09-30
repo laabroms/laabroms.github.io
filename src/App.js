@@ -19,7 +19,7 @@ function App({books}) {
   
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <div>
         <nav>
           <ul>
