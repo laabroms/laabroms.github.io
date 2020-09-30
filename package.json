@@ -1,8 +1,13 @@
 {
   "name": "book_reviews",
   "version": "0.1.0",
-  "engines": {
-    "node": "12.x"
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
@@ -32,12 +37,7 @@
     "react-star-ratings": "^2.3.0",
     "redux": "^4.0.5"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+  
   "eslintConfig": {
     "extends": "react-app"
   },
