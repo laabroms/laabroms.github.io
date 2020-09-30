@@ -5,6 +5,12 @@ import * as serviceWorker from './serviceWorker';
 
 import App from './App';
 
+const PORT = process.env.PORT || '8080'
+
+app = express();
+
+app.set('port', PORT)
+
 ReactDOM.render(
   <React.StrictMode>
      <App />

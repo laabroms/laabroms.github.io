@@ -37,7 +37,6 @@
     "react-star-ratings": "^2.3.0",
     "redux": "^4.0.5"
   },
-  
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -53,5 +52,4 @@
       "last 1 safari version"
     ]
   }
-  
 }
