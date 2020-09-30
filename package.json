@@ -25,6 +25,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "express": "^4.17.1",
     "fontsource-roboto": "^3.0.3",
     "jquery": "^3.5.1",
     "node": "^14.13.0",
